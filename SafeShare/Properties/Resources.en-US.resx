@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACCOUNT_NAME_CONFLICT" xml:space="preserve">
+    <value>An account with this name already exists. Please choose a different name.</value>
+  </data>
+  <data name="APPLICATION_NAME" xml:space="preserve">
+    <value>WinZip®SafeShare</value>
+  </data>
+  <data name="COMBINE_INTO_ONE_PDF_SETTING" xml:space="preserve">
+    <value>Combine into One PDF Settings</value>
+  </data>
+  <data name="COMBINE_PDF_SUMMARY_TEXT" xml:space="preserve">
+    <value>Enable to combine {0} {1} into a new PDF.</value>
+  </data>
+  <data name="CONVERT_TO_PDF_SETTING" xml:space="preserve">
+    <value>Convert to PDF Settings</value>
+  </data>
+  <data name="D2P_SUMMARY_TEXT" xml:space="preserve">
+    <value>Enable to convert {0} {1} to PDF.</value>
+  </data>
+  <data name="DELETE_FILE_IN" xml:space="preserve">
+    <value>Delete files from the cloud in {0} day(s)</value>
+  </data>
+  <data name="REDUCE_IMAGE_SUMMARY_TEXT" xml:space="preserve">
+    <value>Enable to reduce {0} {1} to the selected size. Photos will retain the original aspect ratio.</value>
+  </data>
+  <data name="REDUCE_PHOTOS_SETTING" xml:space="preserve">
+    <value>Reduce Photos Settings</value>
+  </data>
+  <data name="REMOVE_PERSONAL_DATA_SETTING" xml:space="preserve">
+    <value>Remove Personal Data Settings</value>
+  </data>
+  <data name="RMPD_SUMMARY_TEXT" xml:space="preserve">
+    <value>Enable to remove all personal data from {0} {1}.</value>
+  </data>
+  <data name="SELECTFOLDER_PICKER_BUTTON" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="SELECTFOLDER_PICKER_TITLE" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="SELECT_BUTTON_TITLE" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SELECT_FILES" xml:space="preserve">
+    <value>Select Files</value>
+  </data>
+  <data name="SERVICE_NAME_CONFLICT" xml:space="preserve">
+    <value>There is already a service with the name you specified.</value>
+  </data>
+  <data name="WARKMARK_SETTING" xml:space="preserve">
+    <value>Watermark Settings</value>
+  </data>
+  <data name="WATERMARK_SUMMARY_TEXT" xml:space="preserve">
+    <value>Enable to watermark {0} {1}.</value>
+  </data>
+  <data name="REQUIRED_FIELD_EMPTY" xml:space="preserve">
+    <value>At least one required field is empty. Please check and try again.</value>
+  </data>
+  <data name="TEXT_ADD_ACCOUNT" xml:space="preserve">
+    <value>Add account</value>
+  </data>
+  <data name="TEXT_ADD_NEW_SERVICE" xml:space="preserve">
+    <value>Add a new service</value>
+  </data>
+  <data name="TEXT_ADVANCED_SETUP" xml:space="preserve">
+    <value>Advanced Setup</value>
+  </data>
+  <data name="ACCOUNT_NEEDED" xml:space="preserve">
+    <value>Please add an account to share.</value>
+  </data>
+  <data name="FILE_NAME_EMPTY" xml:space="preserve">
+    <value>File name cannot be empty.</value>
+  </data>
+  <data name="FILE_NAME_TOO_LONG" xml:space="preserve">
+    <value>File name too long.</value>
+  </data>
+  <data name="ILLEGAL_CHAR_MSG" xml:space="preserve">
+    <value>A file name cannot contain any of the following characters:
+      \/:*?"&lt;&gt;|</value>
+  </data>
+  <data name="ADD" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="ERROR_PASSWORD_EMPTY" xml:space="preserve">
+    <value>The password cannot be empty.</value>
+  </data>
+  <data name="ERROR_PASSWORD_NOT MEET_POLICY" xml:space="preserve">
+    <value>Password does not meet the password policy.</value>
+  </data>
+  <data name="ERROR_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>The passwords you typed do not match.</value>
+  </data>
+  <data name="PASSWORD_COPIED_TEXT" xml:space="preserve">
+    <value>Copied to clipboard</value>
+  </data>
+  <data name="PASSWORD_COPY_TEXT" xml:space="preserve">
+    <value>Click to copy</value>
+  </data>
+  <data name="PASSWORD_CUSTOM_TEXT" xml:space="preserve">
+    <value>Custom password: {0}</value>
+  </data>
+  <data name="PASSWORD_TEXT" xml:space="preserve">
+    <value>Password: {0}</value>
+  </data>
+  <data name="ERROR_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>Password must be at least {0} characters long.</value>
+  </data>
+  <data name="CONVERSION_COMBINE_PDF_NAME" xml:space="preserve">
+    <value>Combine files into one PDF</value>
+  </data>
+  <data name="CONVERSION_CONVERT_TO_PDF_NAME" xml:space="preserve">
+    <value>Convert to PDF</value>
+  </data>
+  <data name="CONVERSION_REDUCE_PHOTO_NAME" xml:space="preserve">
+    <value>Reduce Photos</value>
+  </data>
+  <data name="CONVERSION_REMOVE_PERSONAL_DATA_NAME" xml:space="preserve">
+    <value>Remove Personal Data</value>
+  </data>
+  <data name="CONVERSION_WATERMARK_NAME" xml:space="preserve">
+    <value>Watermark</value>
+  </data>
+  <data name="TOTAL_ITEM_COUNT" xml:space="preserve">
+    <value>({0} items)</value>
+  </data>
+  <data name="INFO_APPLICATION_CLOSE" xml:space="preserve">
+    <value>Are you sure you want to close SafeShare?</value>
+  </data>
+  <data name="TOTAL_ITEM_COUNT1" xml:space="preserve">
+    <value>({0} item)</value>
+  </data>
+  <data name="FILES_TEXT" xml:space="preserve">
+    <value>files</value>
+  </data>
+  <data name="FILE_TEXT" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="D2P_SUMMARY_PDFS_TEXT" xml:space="preserve">
+    <value>Enable to convert {0} {1} to PDFs.</value>
+  </data>
+  <data name="SIZE_REDUCTION_TEXT" xml:space="preserve">
+    <value>({0}% reduction)</value>
+  </data>
+  <data name="CLOUDSERVICE_DISABLED_INFO" xml:space="preserve">
+    <value>Your administrator has restricted the use of cloud services.</value>
+  </data>
+  <data name="WATERMARK_CONTENT" xml:space="preserve">
+    <value>Confidential, do not copy</value>
+  </data>
+  <data name="WARNING_ACCESS_DENY" xml:space="preserve">
+    <value>Access is denied.</value>
+  </data>
+  <data name="WARNING_FILE_IN_USE" xml:space="preserve">
+    <value>Operation failed. The file "{0}" is in use. Please try again later.</value>
+  </data>
+  <data name="WARNING_PATH_TOO_LONG" xml:space="preserve">
+    <value>Operation failed. The specified path, file name, or both are too long.</value>
+  </data>
+  <data name="TEXT_SYSTEM_SETTINGS" xml:space="preserve">
+    <value>System Settings</value>
+  </data>
+  <data name="TEXT_USERS_OWN_PROGRAM" xml:space="preserve">
+    <value>User's Own Program</value>
+  </data>
+  <data name="TEXT_ZIPSHARE_EMPTY_ACCOUNT" xml:space="preserve">
+    <value>Create an account for free or log in</value>
+  </data>
+  <data name="PROMOTIONAL_TEXT1" xml:space="preserve">
+    <value>WinZip: over 1 billion downloads.</value>
+  </data>
+  <data name="PROMOTIONAL_TEXT2" xml:space="preserve">
+    <value>Trusted by Governments and Enterprises worldwide.</value>
+  </data>
+  <data name="PROMOTIONAL_TEXT3" xml:space="preserve">
+    <value>Trusted by Fortune 500 companies worldwide.</value>
+  </data>
+  <data name="PROMOTIONAL_TEXT4" xml:space="preserve">
+    <value>Trusted by over 100 thousand companies worldwide.</value>
+  </data>
+  <data name="PROMOTIONAL_TEXT5" xml:space="preserve">
+    <value>WinZip: managing important files for over 32 years.</value>
+  </data>
+  <data name="PROMOTIONAL_TEXT6" xml:space="preserve">
+    <value>Secure file sharing made simple.</value>
+  </data>
+  <data name="WARNING_DISCARD_CHANGES" xml:space="preserve">
+    <value>Do you want to discard the changes you have made?</value>
+  </data>
+  <data name="SUBMIT_BUTTON_TITLE" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SKIP_BUTTON_TITLE" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="FILE_ACCESS_DENIED" xml:space="preserve">
+    <value>You are trying to create a new Zip file on a disk that is read-only: "{0}".</value>
+  </data>
+  <data name="OPEN_PICKER_FILTERS" xml:space="preserve">
+    <value>All Files|*.*|Office Files|*.doc*;*.dot*;*.wp*;*.rtf;*.pdf;*.xps;*.txt;*.od*;*.xls*;*.qpw;*.wb3;*.xlr;*.ppt*;*.pps*;*.pub;*.shw|Documents|*.doc*;*.dot*;*.wp*;*.rtf;*.pdf;*.xps;*.txt;*.odt|Spreadsheets|*.xls*;*.qpw;*.wb3;*.xlr;*.ods|Presentations|*.ppt*;*.pps*;*.pub;*.wpg;*.shw;*.odp|Pictures|*.jpg;*.jpeg;*.bmp;*.png;*.gif;*.dib;*.tif*;*.psd,*.psp;*.dng|Videos|*.mpg;*.mpeg;*.wmv;*.avi;*.mp4;*.mov*;*.qt;*.flv;*.divx;*.m4v;*.asf;*.3g*|Music|*.mp3;*.mp2;*.wav;*.wma;*.m4*;*.aac,*.rm*,*.ra*;*.aif*;*.ogg|Websites (*.htm*;*.xml;*.css;*.cgi;*.swf;*.fla;*.shtm*;*.cfm*;*.js;*.php;*.pl;*.asp*;*.sql;...)|*.htm*;*.mht;*.xml;*.xhtml;*.css;*.cgi;*.swf;*.fla;*.shtm*;*.cfm*;*.bat;*.js;*.ps1;*.vbs;*.php;*.pl;*.asp*;*.sql;*.json;*.jpg;*.jpeg;*.bmp;*.png;*.gif;*.dib;*.tif*;*.psd,*.psp;*.mpg;*.mpeg;*.wmv;*.avi;*.mp4;*.mov*;*.qt;*.flv;*.divx;*.m4v;*.asf;*.3g*;*.mp3;*.wav;*.wma;*.m4*;*.aac,*.rm*,*.ra*;*.aif*;*.ogg;*.rtf;*.doc*;*.wp*;*.txt;*.pdf;*.xps</value>
+  </data>
+  <data name="PDF_FILTER" xml:space="preserve">
+    <value>PDF files|*.pdf</value>
+  </data>
+  <data name="SAVE_PICKER_FILTERS" xml:space="preserve">
+    <value>PDF files|*.pdf|Document|*.doc;*.docx|Images|*.bmp;*.jpg;*.png;*.tif|Zipx files|*.zipx|Zip files|*.zip</value>
+  </data>
+  <data name="WATERMARK_FILTERS" xml:space="preserve">
+    <value>Image Files|*.bmp;*.jpg;*.png;*.tif</value>
+  </data>
+  <data name="ZIP_FILTERS" xml:space="preserve">
+    <value>Zipx files|*.zipx|Zip files|*.zip</value>
+  </data>
+  <data name="TOTAL_UNZIP_SIZE" xml:space="preserve">
+    <value>Total unzipped size: {0} {1}</value>
+  </data>
+  <data name="WARNING_RESTRICTED_FEATURE" xml:space="preserve">
+    <value>Your administrator has restricted the use of this feature.</value>
+  </data>
+  <data name="NORMAL_EXPERIENCE_STATE_FAILED_TEXT" xml:space="preserve">
+    <value>Something went wrong.</value>
+  </data>
+  <data name="NORMAL_EXPERIENCE_STATE_SUCCESS_TEXT" xml:space="preserve">
+    <value>You're all set.</value>
+  </data>
+  <data name="NORMAL_EXPERIENCE_STATE_TEXT" xml:space="preserve">
+    <value>One moment please.</value>
+  </data>
+  <data name="SURVEY_BACK_BUTTON_TITLE" xml:space="preserve">
+    <value>&lt; Back</value>
+  </data>
+  <data name="SURVEY_SKIP_BUTTON_TITLE" xml:space="preserve">
+    <value>Skip survey &gt;</value>
+  </data>
+  <data name="BUY_NOW_BUTTON_TITLE" xml:space="preserve">
+    <value>Buy now</value>
+  </data>
+  <data name="DISMISS_BUTTON_TITLE" xml:space="preserve">
+    <value>Dismiss</value>
+  </data>
+  <data name="SUBSCRIBE_SUCESS" xml:space="preserve">
+    <value>Thank you for subscribing!</value>
+  </data>
+  <data name="TRIAL_EXPRIED_CONTENT" xml:space="preserve">
+    <value>has expired</value>
+  </data>
+  <data name="TRIAL_EXPRIED_TITLE" xml:space="preserve">
+    <value>Your WinZip trial has expired.</value>
+  </data>
+  <data name="TRIAL_REMAIN_DAYS" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="TRIAL_REMAIN_TITLE" xml:space="preserve">
+    <value>Days remaining in your free trial:</value>
+  </data>
+  <data name="SURVEY_DEFAULT_OP1" xml:space="preserve">
+    <value>Email setup</value>
+  </data>
+  <data name="SURVEY_DEFAULT_OP2" xml:space="preserve">
+    <value>Cloud setup</value>
+  </data>
+  <data name="SURVEY_DEFAULT_OP3" xml:space="preserve">
+    <value>Encryption setup &amp; Sharing</value>
+  </data>
+  <data name="SURVEY_DEFAULT_OP4" xml:space="preserve">
+    <value>File Conversions</value>
+  </data>
+  <data name="SURVEY_DEFAULT_OP_OTHER" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="SURVEY_DEFAULT_REVIEW_HEADER" xml:space="preserve">
+    <value>How was your experience?</value>
+  </data>
+  <data name="SURVEY_DEFAULT_SURVEY_HEADER" xml:space="preserve">
+    <value>What can we improve?</value>
+  </data>
+  <data name="DONE_BUTTON_TITLE" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\en-US\email.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="email_e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\en-US\email-e.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="GRACE_EXPRIED_TITLE" xml:space="preserve">
+    <value>Your grace period has expired.</value>
+  </data>
+  <data name="GRACE_REMAIN_TITLE" xml:space="preserve">
+    <value>Days remaining in your grace period:</value>
+  </data>
+  <data name="LOGSIGN_SUCESS" xml:space="preserve">
+    <value>You have successfully logged in as:</value>
+  </data>
+  <data name="LOG_SIGN_BUTTON_TITLE" xml:space="preserve">
+    <value>Log in or sign up</value>
+  </data>
+</root>

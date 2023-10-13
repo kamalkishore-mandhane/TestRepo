@@ -1,0 +1,42 @@
+﻿<UserControl x:Uid="UserControl_1" x:Class="SafeShare.WPFUI.Controls.FileNameTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SafeShare.WPFUI.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/ColorTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/SharedStyle.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/SharedGeometry.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Uid="Grid_1">
+        <TextBox x:Uid="TextBox_1"
+                 AutomationProperties.Name="TextBox"
+                 x:Name="TextBox"
+                 Text=""
+                 Height="30"
+                 Style="{StaticResource FilePathTextBox}"
+                 TextChanged="TextBox_TextChanged"
+                 PreviewTextInput="TextBox_PreviewTextInput" />
+
+        <Popup  x:Uid="PopFileNameTextBox" x:Name="PopFileNameTextBox" Margin="20,0,0,0" Height="50"
+                PlacementTarget="{Binding ElementName=Text_box}"
+                Placement="Bottom" AllowsTransparency="True" StaysOpen="False">
+            <Label x:Uid="Label_1"
+                   x:Name="LabelInfo" Style="{StaticResource BalloonTipStyle}" VerticalAlignment="Top">
+            </Label>
+        </Popup>
+    </Grid>
+</UserControl>

@@ -1,0 +1,1047 @@
+﻿<ResourceDictionary x:Uid="ResourceDictionary_1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:SafeShare.WPFUI.Controls"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <FontFamily x:Uid="FontFamily_1" x:Key="Shared.FontFamily.SegoeUI">Segoe UI</FontFamily>
+    <FontWeight x:Uid="FontWeight_1" x:Key="Shared.FontWeight.Light">Light</FontWeight>
+    <FontWeight x:Uid="FontWeight_2" x:Key="Shared.FontWeight.Normal">Normal</FontWeight>
+    <FontWeight x:Uid="FontWeight_3" x:Key="Shared.FontWeight.SemiBold">SemiBold</FontWeight>
+    <FontWeight x:Uid="FontWeight_4" x:Key="Shared.FontWeight.SemiLight">351</FontWeight>
+    <FontWeight x:Uid="FontWeight_5" x:Key="Shared.FontWeight.Bold">Bold</FontWeight>
+
+    <sys:Double x:Uid="sys:Double_1" x:Key="Shared.FontSize.8px">8</sys:Double>
+    <sys:Double x:Uid="sys:Double_10" x:Key="Shared.FontSize.9px">9</sys:Double>
+    <sys:Double x:Uid="sys:Double_2" x:Key="Shared.FontSize.10px">10</sys:Double>
+    <sys:Double x:Uid="sys:Double_3" x:Key="Shared.FontSize.11px">11</sys:Double>
+    <sys:Double x:Uid="sys:Double_4" x:Key="Shared.FontSize.12px">12</sys:Double>
+    <sys:Double x:Uid="sys:Double_5" x:Key="Shared.FontSize.13px">13</sys:Double>
+    <sys:Double x:Uid="sys:Double_6" x:Key="Shared.FontSize.14px">14</sys:Double>
+    <sys:Double x:Uid="sys:Double_7" x:Key="Shared.FontSize.15px">15</sys:Double>
+    <sys:Double x:Uid="sys:Double_8" x:Key="Shared.FontSize.16px">16</sys:Double>
+    <sys:Double x:Uid="sys:Double_9" x:Key="Shared.FontSize.17px">17</sys:Double>
+
+    <Style x:Uid="Style_1" x:Key="TextToolTip" TargetType="{x:Type ToolTip}">
+        <Setter x:Uid="Setter_1" Property="OverridesDefaultStyle" Value="true" />
+        <Setter x:Uid="Setter_2" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_3" Property="HasDropShadow" Value="True" />
+        <Setter x:Uid="Setter_4" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type ToolTip}">
+                    <StackPanel x:Uid="StackPanel_1">
+                        <Border x:Uid="Border_1" CornerRadius="0"
+                            SnapsToDevicePixels="True"
+                            BorderThickness="1"
+                            Margin="2"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            BorderBrush="{DynamicResource Brush.Tooltip.Border}"
+                            Background="{DynamicResource Brush.Tooltip.Background}">
+                            <ContentPresenter x:Uid="ContentPresenter_1" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_2" x:Key="ToolTipTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_6" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_7" Property="Foreground" Value="{DynamicResource Brush.Tooltip.Text}" />
+        <Setter x:Uid="Setter_8" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}" />
+        <Setter x:Uid="Setter_9" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}" />
+    </Style>
+
+    <Style x:Uid="Style_42" x:Key="MainTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_203" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_204" Property="FontSize" Value="{StaticResource Shared.FontSize.15px}" />
+        <Setter x:Uid="Setter_205" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}" />
+        <Setter x:Uid="Setter_206" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_3" x:Key="TitleTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_10" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_11" Property="FontSize" Value="{StaticResource Shared.FontSize.14px}" />
+        <Setter x:Uid="Setter_12" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}" />
+        <Setter x:Uid="Setter_13" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_4" x:Key="SubTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_14" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_15" Property="FontSize" Value="{StaticResource Shared.FontSize.11px}" />
+        <Setter x:Uid="Setter_16" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}" />
+        <Setter x:Uid="Setter_17" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_5" x:Key="BlackContentTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_18" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_19" Property="FontSize" Value="{StaticResource Shared.FontSize.13px}" />
+        <Setter x:Uid="Setter_20" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}" />
+        <Setter x:Uid="Setter_21" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_6" x:Key="GrayContentTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_22" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_23" Property="FontSize" Value="{StaticResource Shared.FontSize.11px}" />
+        <Setter x:Uid="Setter_24" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}" />
+        <Setter x:Uid="Setter_25" Property="Foreground" Value="{DynamicResource Brush.Text.Gray.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_40" x:Key="SeeAllTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_191" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_192" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}" />
+        <Setter x:Uid="Setter_193" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}" />
+        <Setter x:Uid="Setter_194" Property="Foreground" Value="{DynamicResource Brush.Text.Gray.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_32" x:Key="RedContentTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_152" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_153" Property="FontSize" Value="{StaticResource Shared.FontSize.11px}" />
+        <Setter x:Uid="Setter_154" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}" />
+        <Setter x:Uid="Setter_155" Property="Foreground" Value="{DynamicResource Brush.Text.Red.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_31" x:Key="NormalBlackContentTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_147" Property="FontSize" Value="{StaticResource Shared.FontSize.13px}" />
+        <Setter x:Uid="Setter_148" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}" />
+        <Setter x:Uid="Setter_149" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+        <Setter x:Uid="Setter_150" Property="SnapsToDevicePixels" Value="True" />
+        <Style.Triggers>
+            <Trigger x:Uid="Trigger_24" Property="IsEnabled" Value="False">
+                <Setter x:Uid="Setter_151" Property="Foreground" Value="{DynamicResource Brush.Text.Gray.Foreground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Uid="Style_7" x:Key="RoundCornerBlackButtonTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_26" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_27" Property="FontSize" Value="{StaticResource Shared.FontSize.13px}" />
+        <Setter x:Uid="Setter_28" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}" />
+        <Setter x:Uid="Setter_29" Property="Foreground" Value="{DynamicResource Brush.Text.White.Foreground}" />
+    </Style>
+
+    <Style x:Uid="Style_8" x:Key="ManageServiceListViewItemContainerStyle" TargetType="{x:Type ListViewItem}">
+        <Setter x:Uid="Setter_30" Property="Margin" Value="15,4" />
+        <Setter x:Uid="Setter_31" Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter x:Uid="Setter_32" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_2" TargetType="{x:Type ListViewItem}">
+                    <Border x:Uid="ItemContainerBorder" x:Name="ItemContainerBorder"
+                            MinHeight="45"
+                            Padding="10,0"
+                            BorderBrush="{DynamicResource  Brush.Window.Gray.Border}"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="True"
+                            Background="{DynamicResource Brush.Window.White.Background}">
+                        <ContentPresenter x:Uid="ContentPresenter_2" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_33" Property="Background" Value="{DynamicResource Brush.ListView.Item.Hover}" TargetName="ItemContainerBorder" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_2" Property="IsSelected" Value="True">
+                            <Setter x:Uid="Setter_34" Property="BorderBrush" Value="{DynamicResource Brush.ListView.Item.Selected.Blue}" TargetName="ItemContainerBorder" />
+                        </Trigger>
+
+                        <EventTrigger x:Uid="EventTrigger_1" RoutedEvent="Loaded">
+                            <BeginStoryboard x:Uid="BeginStoryboard_1">
+                                <Storyboard x:Uid="Storyboard_1">
+                                    <DoubleAnimation x:Uid="DoubleAnimation_1" Duration="0:0:0.2" Storyboard.TargetProperty="Opacity" From="0.3" To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_9" x:Key="PageWindowBorder" TargetType="{x:Type Border}">
+        <Setter x:Uid="Setter_202" Property="Opacity" Value="0.9" />
+        <Setter x:Uid="Setter_35" Property="CornerRadius" Value="9" />
+        <Setter x:Uid="Setter_36" Property="BorderThickness" Value="1" />
+        <Setter x:Uid="Setter_37" Property="BorderBrush" Value="{DynamicResource Brush.Window.Gray.Border}" />
+        <Setter x:Uid="Setter_38" Property="Background" Value="{DynamicResource Brush.Window.White.Background}" />
+        <Setter x:Uid="Setter_39" Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+    <ControlTemplate x:Uid="ControlTemplate_28" x:Key="BlackRadioButtonControlTemplate" TargetType="{x:Type RadioButton}">
+        <Border x:Uid="Border_15" SnapsToDevicePixels="True">
+            <Grid x:Uid="Grid_23">
+                <DockPanel x:Uid="DockPanel_1">
+                    <Rectangle x:Uid="R_Ico" x:Name="R_Ico" Margin="3,0,0,0"
+                               Width="20" Height="20"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" Fill="{StaticResource RadioButtonInaDrawBrush}" />
+                    <Border x:Uid="Border" x:Name="Border" SnapsToDevicePixels="True"
+                            Margin="0,0,5,0"
+                            Background="Transparent" BorderBrush="Transparent">
+                        <ContentPresenter x:Uid="ContentPresenter_7" Margin="0,0,0,0" />
+                    </Border>
+                </DockPanel>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger x:Uid="Trigger_32" Property="IsChecked" Value="True">
+                <Setter x:Uid="Setter_184" Property="Fill" Value="{StaticResource RadioButtonDrawBrush}" TargetName="R_Ico" />
+            </Trigger>
+            <Trigger x:Uid="Trigger_33" Property="IsEnabled" Value="False">
+                <Setter x:Uid="Setter_185" Property="Fill" Value="{StaticResource RadioButtonDisableDrawBrush}" TargetName="R_Ico" />
+            </Trigger>
+            <MultiTrigger x:Uid="MultiTrigger_3">
+                <MultiTrigger.Conditions>
+                    <Condition x:Uid="Condition_5" Property="IsMouseOver" Value="True" />
+                    <Condition x:Uid="Condition_6" Property="IsChecked" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter x:Uid="Setter_207" Property="Fill" Value="{StaticResource RadioButtonHoverDrawBrush}" TargetName="R_Ico" />
+            </MultiTrigger>
+            <MultiTrigger x:Uid="MultiTrigger_4">
+                <MultiTrigger.Conditions>
+                    <Condition x:Uid="Condition_7" Property="IsMouseOver" Value="True" />
+                    <Condition x:Uid="Condition_8" Property="IsChecked" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter x:Uid="Setter_208" Property="Fill" Value="{StaticResource RadioButtonInaHoverDrawBrush}" TargetName="R_Ico" />
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Uid="Style_39" x:Key="BlackRadioButtonStyle" TargetType="{x:Type RadioButton}">
+        <Setter x:Uid="Setter_187" Property="HorizontalAlignment" Value="Left" />
+        <Setter x:Uid="Setter_188" Property="Template" Value="{StaticResource BlackRadioButtonControlTemplate}" />
+    </Style>
+
+    <ControlTemplate x:Uid="ControlTemplate_4" x:Key="ManageServiceListViewButtonTemplate" TargetType="{x:Type Button}">
+        <Border x:Uid="RoundedBorder" x:Name="RoundedBorder"
+                Background="Transparent"
+                BorderBrush="{DynamicResource Brush.ListView.Item.Button.Hover}"
+                BorderThickness="0"
+                CornerRadius="5">
+            <StackPanel x:Uid="StackPanel_2" Orientation="Horizontal" Margin="2,5">
+                <TextBlock x:Uid="TextBlock_1" Grid.Column="3"
+                           Margin="5,0"
+                           MaxWidth="145"
+                           TextWrapping="Wrap"
+                           TextAlignment="Right"
+                           TextTrimming="CharacterEllipsis"
+                           ToolTip="{Binding SelectedAccount.DisplayName}"
+                           Text="{Binding SelectedAccount.DisplayName}"
+                           VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+                <Path x:Uid="ExpandededArrow" x:Name="ExpandededArrow"
+                      Width="8"
+                      Height="8"
+                      Stretch="Uniform"
+                      SnapsToDevicePixels="True"
+                      StrokeThickness="1"
+                      Stroke="{DynamicResource Brush.Text.Gray.Foreground}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Data="M 0 4 L 4 0 L 0 -4" />
+            </StackPanel>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger x:Uid="Trigger_5" Property="IsMouseOver" Value="True">
+                <Setter x:Uid="Setter_43" TargetName="RoundedBorder" Property="BorderThickness" Value="1" />
+            </Trigger>
+            <Trigger x:Uid="Trigger_37" Property="IsPressed" Value="True">
+                <Setter x:Uid="Setter_195" TargetName="RoundedBorder" Property="Background" Value="{DynamicResource Brush.White.Button.Backgroung}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <DataTemplate x:Uid="DataTemplate_1" x:Key="ManageServiceListViewItemTemplate">
+        <Grid x:Uid="Grid_1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*" />
+                <ColumnDefinition x:Uid="ColumnDefinition_4" Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <RadioButton x:Uid="RadioButton_1" Grid.Column="0"
+                         AutomationProperties.Name="{Binding DisplayName}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="5,0,0,0"
+                         GroupName="ServiceRadioButton"
+                         FocusVisualStyle="{x:Null}"
+                         IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}"
+                         Template="{StaticResource BlackRadioButtonControlTemplate}">
+                <StackPanel x:Uid="StackPanel_6" Orientation="Horizontal">
+                    <Image x:Uid="Image_1"
+                           Source="{Binding Icon}"
+                           Height="22" Width="22"
+                           Margin="14,0,6,0"
+                           VerticalAlignment="Center" />
+                    <TextBlock x:Uid="TextBlock_2"
+                               MaxWidth="122"
+                               VerticalAlignment="Center"
+                               Text="{Binding DisplayName}"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource BlackContentTextBlockStyle}" />
+                </StackPanel>
+            </RadioButton>
+
+            <Button x:Uid="Button_1" Grid.Column="1"
+                    AutomationProperties.Name="{Binding SelectedAccount.DisplayName}"
+                    VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                    Template="{StaticResource ManageServiceListViewButtonTemplate}"
+                    Command="{Binding DataContext.ManageAccounts, RelativeSource={RelativeSource AncestorType=ListView}}"
+                    CommandParameter="{Binding}" />
+        </Grid>
+    </DataTemplate>
+
+    <ControlTemplate x:Uid="VerticalScrollBarTemplate" x:Key="VerticalScrollBarTemplate"
+                             TargetType="{x:Type ScrollBar}"
+                             x:Name="VerticalScrollBarTemplate">
+        <Grid x:Uid="CustomScrollBarGrid" x:Name="CustomScrollBarGrid" Width="8" Focusable="False">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_1" Height="Auto" />
+                <RowDefinition x:Uid="RowDefinition_2" Height="*" />
+                <RowDefinition x:Uid="RowDefinition_3" Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border x:Uid="TrackBorder" x:Name="TrackBorder"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Grid.Row="1">
+                <Track x:Uid="PART_Track" x:Name="PART_Track" Grid.Row="1"
+                           Width="6"
+                           IsDirectionReversed="True">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton x:Uid="RepeatButton_1" BorderThickness="0"
+                                      Background="Transparent"
+                                      Command="ScrollBar.PageUpCommand" />
+                    </Track.DecreaseRepeatButton>
+
+                    <Track.Thumb>
+                        <Thumb x:Uid="TrackThumb" x:Name="TrackThumb"
+                               HorizontalAlignment="Right"
+                               Width="2">
+                            <Thumb.Template>
+                                <ControlTemplate x:Uid="ControlTemplate_5" TargetType="{x:Type Thumb}">
+                                    <Border x:Uid="Border_2" CornerRadius="4" Background="{DynamicResource Brush.ScrollBar.Background}" />
+                                </ControlTemplate>
+                            </Thumb.Template>
+                        </Thumb>
+                    </Track.Thumb>
+
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton x:Uid="RepeatButton_2" BorderThickness="0"
+                                      Background="Transparent"
+                                      Command="ScrollBar.PageDownCommand" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Border>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <EventTrigger x:Uid="EventTrigger_2" RoutedEvent="MouseEnter">
+                <BeginStoryboard x:Uid="BeginStoryboard_2">
+                    <Storyboard x:Uid="Storyboard_2">
+                        <DoubleAnimation x:Uid="DoubleAnimation_2" Duration="0:0:0.1" Storyboard.TargetName="TrackThumb" Storyboard.TargetProperty="Width" To="6" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger x:Uid="EventTrigger_3" RoutedEvent="MouseLeave">
+                <BeginStoryboard x:Uid="BeginStoryboard_3">
+                    <Storyboard x:Uid="Storyboard_3">
+                        <DoubleAnimation x:Uid="DoubleAnimation_3" Duration="0:0:0.1" Storyboard.TargetName="TrackThumb" Storyboard.TargetProperty="Width" To="2" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Uid="ControlTemplate_6" x:Key="ManageServiceListViewTemplate" TargetType="{x:Type ListView}">
+        <ScrollViewer x:Uid="ScrollViewer_1" VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <ScrollViewer.Template>
+                <ControlTemplate x:Uid="ControlTemplate_7" TargetType="{x:Type ScrollViewer}">
+                    <Grid x:Uid="Grid_2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="ColumnDefinition_5" Width="*" />
+                            <ColumnDefinition x:Uid="ColumnDefinition_6" Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ScrollContentPresenter x:Uid="ScrollContentPresenter_1" Grid.Column="0" Grid.ColumnSpan="2" />
+                        <ScrollBar x:Uid="PART_VerticalScrollBar" Grid.Column="1"
+                                   x:Name="PART_VerticalScrollBar"
+                                   Margin="0,4"
+                                   Value="{TemplateBinding VerticalOffset}"
+                                   Maximum="{TemplateBinding ScrollableHeight}"
+                                   ViewportSize="{TemplateBinding ViewportHeight}"
+                                   Template="{StaticResource VerticalScrollBarTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </ScrollViewer.Template>
+            <ItemsPresenter x:Uid="ItemsPresenter_1" />
+        </ScrollViewer>
+    </ControlTemplate>
+
+    <Style x:Uid="Style_14" x:Key="SeeAllButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_196" Property="AutomationProperties.Name" Value="See all" />
+        <Setter x:Uid="Setter_54" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_8" TargetType="{x:Type Button}">
+                    <TextBlock x:Uid="TextBlock_3" Text="See All"
+                               Margin="3"
+                               Style="{StaticResource SeeAllTextBlockStyle}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_43" x:Key="ButtonFocusVisual">
+        <Setter x:Uid="Setter_211" Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_30">
+                    <Rectangle x:Uid="Rectangle_1" StrokeThickness="1" StrokeDashArray="1.5 1.5" Margin="2" Stroke="{DynamicResource Brush.ButtonFocusVisual.Focus.Border}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_15" x:Key="RoundCornerBlackButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_212" Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter x:Uid="Setter_55" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_56" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_9" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_3">
+                        <Border x:Uid="ButtonBorder" Name="ButtonBorder" CornerRadius="4" BorderThickness="1" SnapsToDevicePixels="True"
+                                BorderBrush="{DynamicResource Brush.Black.Button.Border}"
+                                Background="{DynamicResource Brush.Black.Button.Background}">
+                        </Border>
+                        <TextBlock x:Uid="TextBlock_4" HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   SnapsToDevicePixels="True"
+                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                   Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource RoundCornerBlackButtonTextStyle}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_6" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_57" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.Black.Button.Hover.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_7" Property="IsPressed" Value="True">
+                            <Setter x:Uid="Setter_58" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.Black.Button.Pressed.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_8" Property="IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_59" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.Black.Button.Disabled.Background}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_36" x:Key="RoundCornerGrayButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_169" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_170" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_26" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_21">
+                        <Border x:Uid="Border_13" Name="ButtonBorder" CornerRadius="4" BorderThickness="1" SnapsToDevicePixels="True"
+                                BorderBrush="{DynamicResource Brush.Gray.Button.Border}"
+                                Background="{DynamicResource Brush.Gray.Button.Background}">
+                        </Border>
+                        <TextBlock x:Uid="TextBlock_6" HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   SnapsToDevicePixels="True"
+                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                   Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource RoundCornerBlackButtonTextStyle}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_27" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_171" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.Gray.Button.Hover.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_28" Property="IsPressed" Value="True">
+                            <Setter x:Uid="Setter_172" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.Gray.Button.Pressed.Background}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <controls:EnabledToOpacityConverter x:Uid="controls:EnabledToOpacityConverter_1" x:Key="enabled2opacity" />
+
+    <Style x:Uid="Style_16" x:Key="ImageButtonStyle" TargetType="{x:Type controls:ImageButton}">
+        <Setter x:Uid="Setter_60" Property="BorderBrush" Value="Transparent" />
+        <Setter x:Uid="Setter_61" Property="Background" Value="Transparent" />
+        <Setter x:Uid="Setter_62" Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter x:Uid="Setter_63" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_10" TargetType="{x:Type controls:ImageButton}">
+                    <Border x:Uid="Bd" CornerRadius="0"
+                            SnapsToDevicePixels="True"
+                            x:Name="Bd"
+                            BorderThickness="0"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid x:Uid="Grid_4">
+                            <Image x:Uid="Image_2" x:Name="Image_1"
+                                   Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:ImageButton}}, ConverterParameter='8'}"
+                                   Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:ImageButton}}, ConverterParameter='8'}"
+                                   RenderOptions.BitmapScalingMode="Fant" Source="{TemplateBinding ImageSource}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="True"
+                                   Opacity="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:ImageButton}}, Converter={StaticResource enabled2opacity}}" />
+                            <Grid x:Uid="fadGrid" Background="Transparent" Opacity="0" Name="fadGrid" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_19" x:Key="BackButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_197" Property="AutomationProperties.Name" Value="Back" />
+        <Setter x:Uid="Setter_68" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_12" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_7">
+                        <StackPanel x:Uid="StackPanel_3" Orientation="Horizontal">
+                            <Grid x:Uid="Grid_8" Margin="1,0,0,0" Width="24" Height="24">
+                                <Rectangle  x:Uid="Rectangle_4" x:Name="R_Ico"
+                                            Width="12" Height="12"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" Fill="{StaticResource BackButtonDrawingBrush}" />
+                            </Grid>
+                            <TextBlock x:Uid="TextBlock_5" VerticalAlignment="Center" Margin="5,0,5,0" Text="Back" Style="{StaticResource TitleTextBlockStyle}" />
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_9" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_69" Property="Fill" Value="{StaticResource BackButtonHoverDrawingBrush}" TargetName="R_Ico" />
+                            <Setter x:Uid="Setter_70" Property="Width" Value="23" TargetName="R_Ico" />
+                            <Setter x:Uid="Setter_71" Property="Height" Value="23" TargetName="R_Ico" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_20" x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_198" Property="AutomationProperties.Name" Value="Close" />
+        <Setter x:Uid="Setter_72" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_13" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_9" Width="24" Height="24">
+                        <Rectangle  x:Uid="Rectangle_2" x:Name="R_Ico" Width="9" Height="9"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Fill="{DynamicResource AppCloseButtonDrawingBrush}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_10" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_73" Property="Fill" Value="{StaticResource AppCloseHoverButtonDrawingBrush}" TargetName="R_Ico" />
+                            <Setter x:Uid="Setter_74" Property="Width" Value="22" TargetName="R_Ico" />
+                            <Setter x:Uid="Setter_75" Property="Height" Value="22" TargetName="R_Ico" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_21" x:Key="ContentBorderStyle" TargetType="{x:Type Border}">
+        <Setter x:Uid="Setter_76" Property="BorderBrush" Value="{DynamicResource Brush.Window.Gray.Border}" />
+        <Setter x:Uid="Setter_77" Property="BorderThickness" Value="1" />
+        <Setter x:Uid="Setter_78" Property="CornerRadius" Value="5" />
+        <Setter x:Uid="Setter_79" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_80" Property="Background" Value="{DynamicResource Brush.Window.Gray.LightBackground}" />
+    </Style>
+
+    <Style x:Uid="Style_22" x:Key="RoundCheckboxStyle" TargetType="{x:Type CheckBox}">
+        <Setter x:Uid="Setter_214" Property="Height" Value="26"/>
+        <Setter x:Uid="Setter_81" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_82" Property="OverridesDefaultStyle" Value="False" />
+        <Setter x:Uid="Setter_83" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_14" TargetType="CheckBox">
+                    <Grid x:Uid="Grid_10" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="ColumnDefinition_7" Width="Auto" />
+                            <ColumnDefinition x:Uid="ColumnDefinition_8" Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Uid="Grid_11" Grid.Column="0" Margin="5,0,0,0">
+                            <Rectangle  x:Uid="Rectangle_3" x:Name="R_Ico" Margin="0,0,0,0" Width="18" Height="18"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" Fill="{StaticResource CheckBoxInaDrawingBrush}" />
+                        </Grid>
+
+                        <TextBlock x:Uid="Text_content" x:Name="Text_content"
+                                   Grid.Column="1"
+                                   Text="{TemplateBinding Content}"
+                                   Style="{StaticResource BlackContentTextBlockStyle}"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   Margin="5,0,0,0" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_11" Property="IsChecked" Value="True">
+                            <Setter x:Uid="Setter_84" Property="Fill" Value="{StaticResource CheckBoxDrawingBrush}" TargetName="R_Ico" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_36" Property="IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_190" Property="Foreground" Value="{DynamicResource Brush.Text.Disable}" TargetName="Text_content" />
+                        </Trigger>
+                        <MultiTrigger x:Uid="MultiTrigger_5">
+                            <MultiTrigger.Conditions>
+                                <Condition x:Uid="Condition_9" Property="IsMouseOver" Value="True" />
+                                <Condition x:Uid="Condition_10" Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter x:Uid="Setter_218" Property="Fill" Value="{StaticResource CheckBoxHoverDrawingBrush}" TargetName="R_Ico" />
+                        </MultiTrigger>
+                        <MultiTrigger x:Uid="MultiTrigger_6">
+                            <MultiTrigger.Conditions>
+                                <Condition x:Uid="Condition_11" Property="IsMouseOver" Value="True" />
+                                <Condition x:Uid="Condition_12" Property="IsChecked" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter x:Uid="Setter_219" Property="Fill" Value="{StaticResource CheckBoxInaHoverDrawingBrush}" TargetName="R_Ico" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_23" x:Key="StarToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter x:Uid="Setter_215" Property="Width" Value="42"/>
+        <Setter x:Uid="Setter_216" Property="Height" Value="42"/>
+        <Setter x:Uid="Setter_86" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_87" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_15" TargetType="{x:Type ToggleButton}">
+                    <Grid x:Uid="Grid_12" Background="Transparent">
+                        <Path x:Uid="starPath" Name="starPath"
+                              StrokeThickness="2"
+                              Fill="{DynamicResource Brush.StarButton.Unfilled.Background}"
+                              Stretch="Uniform"
+                              Width="35"
+                              Height="35"
+                              Stroke="{DynamicResource Brush.Icon.BasicColor}"
+                              Data="F1 M 5.88934,19.004M 42.212,49.3333L 26.724,40.928C 26.3267,40.7107 25.8507,40.7107 25.452,40.928L 9.96534,49.3333L 13.1733,32.0067C 13.256,31.56 13.1093,31.1067 12.7787,30.7947L 2.38419e-006,18.664L 17.4707,16.3613C 17.92,16.3013 18.3053,16.0227 18.5,15.6133L 26.088,-0.290672L 33.6773,15.6133C 33.872,16.0213 34.2573,16.3013 34.7067,16.3613L 52.1773,18.664L 39.3973,30.796C 39.0693,31.1067 38.9213,31.56 39.004,32.0067L 42.212,49.3333 Z " />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_13" Property="IsChecked" Value="True">
+                            <Setter x:Uid="Setter_88" TargetName="starPath" Property="Fill" Value="{DynamicResource Brush.StarButton.Filled.Background}" />
+                            <Setter x:Uid="Setter_89" TargetName="starPath" Property="Stroke" Value="{DynamicResource Brush.StarButton.Filled.Border}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_24" x:Key="SettingButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_90" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_16" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_13">
+                        <Border x:Uid="Border_4" x:Name="RoundedBorder"
+                                Width="20" Height="27"
+                                CornerRadius="5"
+                                BorderThickness="0"
+                                BorderBrush="{DynamicResource Brush.ListView.Item.Button.Hover}"
+                                Background="Transparent">
+                            <Path x:Uid="Path_1" x:Name="ExpandededArrow"
+                                  Width="8"
+                                  Height="8"
+                                  Stretch="Uniform"
+                                  SnapsToDevicePixels="True"
+                                  StrokeThickness="1"
+                                  Stroke="{DynamicResource Brush.Text.Gray.Foreground}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 4 L 4 0 L 0 -4" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_38" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_199" TargetName="RoundedBorder" Property="BorderThickness" Value="1" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_39" Property="IsPressed" Value="True">
+                            <Setter x:Uid="Setter_200" TargetName="RoundedBorder" Property="Background" Value="{DynamicResource Brush.White.Button.Backgroung}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_46" x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter x:Uid="Setter_220" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_31" TargetType="{x:Type TextBox}">
+                    <Border x:Uid="border" x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Grid x:Uid="Grid_26" >
+                            <ScrollViewer x:Uid="PART_ContentHost" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_43" Property="IsEnabled" Value="false">
+                            <Setter x:Uid="Setter_221" TargetName="border" Property="BorderBrush" Value="{DynamicResource Brush.TextBox.Disabled.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_44" Property="IsMouseOver" Value="true">
+                            <Setter x:Uid="Setter_222" Property="BorderBrush" TargetName="border" Value="{DynamicResource Brush.TextBox.Hover.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_3" Property="IsKeyboardFocused" Value="true">
+                            <Setter x:Uid="Setter_223" Property="BorderBrush" TargetName="border" Value="{DynamicResource Brush.TextBox.Hover.Background}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_25" x:Key="FilePathTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+        <Setter x:Uid="Setter_91" Property="BorderBrush" Value="{DynamicResource Brush.FilePathTextBox.Border}" />
+        <Setter x:Uid="Setter_217" Property="Foreground" Value="{DynamicResource Brush.FilePathTextBox.Gray.Foreground}"/>
+        <Setter x:Uid="Setter_224" Property="Background" Value="{DynamicResource Brush.FilePathTextBox.Background}"/>
+        <Setter x:Uid="Setter_92" Property="Padding" Value="5,0" />
+        <Setter x:Uid="Setter_93" Property="BorderThickness" Value="0.3,0.3,0.3,2" />
+        <Setter x:Uid="Setter_94" Property="KeyboardNavigation.TabNavigation" Value="None" />
+        <Setter x:Uid="Setter_95" Property="HorizontalContentAlignment" Value="Left" />
+        <Setter x:Uid="Setter_96" Property="VerticalContentAlignment" Value="Center" />
+        <Setter x:Uid="Setter_97" Property="AllowDrop" Value="true" />
+    </Style>
+
+    <Style x:Uid="Style_10" x:Key="GrayBorderFilePathTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource FilePathTextBox}">
+        <Setter x:Uid="Setter_44" Property="BorderBrush" Value="{DynamicResource Brush.GrayBorder.TextBox.Border}" />
+    </Style>
+
+    <Style x:Uid="Style_26" x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+        <Setter x:Uid="Setter_103" Property="Padding" Value="2" />
+        <Setter x:Uid="Setter_104" Property="HorizontalContentAlignment" Value="Center" />
+        <Setter x:Uid="Setter_105" Property="VerticalContentAlignment" Value="Center" />
+        <Setter x:Uid="Setter_106" Property="Background" Value="{DynamicResource Brush.Window.Gray.LightBackground}" />
+        <Setter x:Uid="Setter_107" Property="BorderBrush" Value="{DynamicResource Brush.Window.Gray.Border}" />
+        <Setter x:Uid="Setter_108" Property="BorderThickness" Value="1" />
+        <Setter x:Uid="Setter_110" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_18" TargetType="{x:Type TabControl}">
+                    <Grid x:Uid="templateRoot" x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="ColumnDefinition0" x:Name="ColumnDefinition0" />
+                            <ColumnDefinition x:Uid="ColumnDefinition1" x:Name="ColumnDefinition1" Width="0" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Uid="RowDefinition0" x:Name="RowDefinition0" Height="Auto" />
+                            <RowDefinition x:Uid="RowDefinition1" x:Name="RowDefinition1" Height="*" />
+                        </Grid.RowDefinitions>
+                        <TabPanel x:Uid="headerPanel" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
+                        <Border x:Uid="contentPanel" x:Name="contentPanel" CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
+                                Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1"
+                                KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.TabIndex="2">
+                            <ContentPresenter x:Uid="PART_SelectedContentHost" x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}"
+                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_17" Property="TabStripPlacement" Value="Bottom">
+                            <Setter x:Uid="Setter_111" Property="Grid.Row" TargetName="headerPanel" Value="1" />
+                            <Setter x:Uid="Setter_112" Property="Grid.Row" TargetName="contentPanel" Value="0" />
+                            <Setter x:Uid="Setter_113" Property="Height" TargetName="RowDefinition0" Value="*" />
+                            <Setter x:Uid="Setter_114" Property="Height" TargetName="RowDefinition1" Value="Auto" />
+                            <Setter x:Uid="Setter_115" Property="Margin" TargetName="headerPanel" Value="2,0,2,2" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_18" Property="TabStripPlacement" Value="Left">
+                            <Setter x:Uid="Setter_116" Property="Grid.Row" TargetName="headerPanel" Value="0" />
+                            <Setter x:Uid="Setter_117" Property="Grid.Row" TargetName="contentPanel" Value="0" />
+                            <Setter x:Uid="Setter_118" Property="Grid.Column" TargetName="headerPanel" Value="0" />
+                            <Setter x:Uid="Setter_119" Property="Grid.Column" TargetName="contentPanel" Value="1" />
+                            <Setter x:Uid="Setter_120" Property="Width" TargetName="ColumnDefinition0" Value="Auto" />
+                            <Setter x:Uid="Setter_121" Property="Width" TargetName="ColumnDefinition1" Value="*" />
+                            <Setter x:Uid="Setter_122" Property="Height" TargetName="RowDefinition0" Value="*" />
+                            <Setter x:Uid="Setter_123" Property="Height" TargetName="RowDefinition1" Value="0" />
+                            <Setter x:Uid="Setter_124" Property="Margin" TargetName="headerPanel" Value="2,2,0,2" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_19" Property="TabStripPlacement" Value="Right">
+                            <Setter x:Uid="Setter_125" Property="Grid.Row" TargetName="headerPanel" Value="0" />
+                            <Setter x:Uid="Setter_126" Property="Grid.Row" TargetName="contentPanel" Value="0" />
+                            <Setter x:Uid="Setter_127" Property="Grid.Column" TargetName="headerPanel" Value="1" />
+                            <Setter x:Uid="Setter_128" Property="Grid.Column" TargetName="contentPanel" Value="0" />
+                            <Setter x:Uid="Setter_129" Property="Width" TargetName="ColumnDefinition0" Value="*" />
+                            <Setter x:Uid="Setter_130" Property="Width" TargetName="ColumnDefinition1" Value="Auto" />
+                            <Setter x:Uid="Setter_131" Property="Height" TargetName="RowDefinition0" Value="*" />
+                            <Setter x:Uid="Setter_132" Property="Height" TargetName="RowDefinition1" Value="0" />
+                            <Setter x:Uid="Setter_133" Property="Margin" TargetName="headerPanel" Value="0,2,2,2" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_20" Property="IsEnabled" Value="false">
+                            <Setter x:Uid="Setter_134" Property="TextElement.Foreground" TargetName="templateRoot" Value="{DynamicResource Brush.Text.Disable}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_27" x:Key="ConvertOptTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_135" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}" />
+        <Setter x:Uid="Setter_136" Property="SnapsToDevicePixels" Value="True" />
+        <Style.Triggers>
+            <Trigger x:Uid="Trigger_21" Property="IsEnabled" Value="False">
+                <Setter x:Uid="Setter_137" Property="Opacity" Value="0.2" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Uid="Style_28" x:Key="TextBoxBorerStyle" TargetType="{x:Type Border}">
+        <Style.Triggers>
+            <Trigger x:Uid="Trigger_22" Property="IsMouseOver" Value="True">
+                <Setter x:Uid="Setter_138" Property="BorderBrush" Value="{DynamicResource Brush.TextBox.Hover.Background}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Uid="Style_29" x:Key="ProcessBarStyle" TargetType="{x:Type ProgressBar}">
+        <Setter x:Uid="Setter_139" Property="IsIndeterminate" Value="False" />
+        <Setter x:Uid="Setter_140" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_19" TargetType="{x:Type ProgressBar}">
+                    <Grid x:Uid="Grid_15" MinHeight="4">
+                        <Border x:Uid="Border_5" x:Name="PART_Track"
+                                SnapsToDevicePixels="True"
+                                Background="Transparent"
+                                BorderBrush="{x:Null}" BorderThickness="0" />
+                        <Border x:Uid="PART_Indicator" x:Name="PART_Indicator"
+                                SnapsToDevicePixels="True"
+                                Background="{DynamicResource Brush.Icon.BasicColor}"
+                                BorderBrush="{x:Null}" BorderThickness="0"
+                                HorizontalAlignment="Left" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Uid="ControlTemplate_20" x:Key="ComboBoxToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+        <Grid x:Uid="Grid_25">
+            <Border x:Uid="Border_17" Background="{DynamicResource Brush.ComboBox.Toggle.Foreground}" Opacity="0"/>
+            <Path x:Uid="Path_2" Fill="{DynamicResource Brush.ComboBox.Toggle.Foreground}"
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Margin="0,0,10,0"
+                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Uid="ControlTemplate_21" x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+        <Border x:Uid="Border_7" x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+    </ControlTemplate>
+
+    <Style x:Uid="Style_30" x:Key="BlackBorderComboBoxStyle" TargetType="{x:Type ComboBox}">
+        <Setter x:Uid="Setter_141" Property="OverridesDefaultStyle" Value="True" />
+        <Setter x:Uid="Setter_142" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_143" Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter x:Uid="Setter_144" Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter x:Uid="Setter_145" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_22" TargetType="{x:Type ComboBox}">
+                    <Border x:Uid="Border_8" BorderThickness="0.3,0.3,0.3,2"
+                                    CornerRadius="3"
+                                    Margin="1"
+                                    Background="{DynamicResource Brush.ComboBox.Background}"
+                                    BorderBrush="{DynamicResource Brush.ComboBox.Border}">
+                        <Grid x:Uid="Grid_16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Uid="ColumnDefinition_9" Width="*" />
+                                <ColumnDefinition x:Uid="ColumnDefinition_10" Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <ToggleButton x:Uid="ToggleButton_1" Grid.Column="0" Grid.ColumnSpan="2"
+                                          Template="{StaticResource ComboBoxToggleButtonTemplate}"
+                                          IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                          ClickMode="Press"
+                                          IsTabStop="False" />
+
+                            <ContentPresenter x:Uid="ContentPresenter_3" Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="3,3,0,3"
+                                              IsHitTestVisible="False"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left" />
+
+                            <Popup x:Uid="Popup_1" Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   PopupAnimation="Slide"
+                                   AllowsTransparency="True">
+
+                                <Border x:Uid="Border_9" Background="{DynamicResource Brush.ComboBox.Background}"
+                                        BorderThickness="1"
+                                        BorderBrush="{DynamicResource Brush.ComboBox.Gray.Border}"
+                                        Width="{TemplateBinding ActualWidth}">
+                                    <ScrollViewer x:Uid="ScrollViewer_2">
+                                        <StackPanel x:Uid="StackPanel_5" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_34" Property="IsEnabled" Value="false">
+                            <Setter x:Uid="Setter_189" Property="Opacity" Value="0.2" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_35" TargetType="{x:Type Label}" x:Key="BalloonTipStyle">
+        <Setter x:Uid="Setter_146" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_23" TargetType="{x:Type Label}">
+                    <Grid x:Uid="Grid_17">
+                        <Border x:Uid="Border_10" CornerRadius="4" BorderBrush="{DynamicResource Brush.BalloonTip.Border}" BorderThickness="1" VerticalAlignment="Top" Margin="0,12,0,0" Background="{DynamicResource Brush.BalloonTip.Background}" HorizontalAlignment="Left" Padding="5">
+                            <ContentPresenter x:Uid="ContentPresenter_4" />
+                        </Border>
+                        <Canvas x:Uid="Canvas_1" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" Background="Transparent">
+                            <Path x:Uid="Path_3" Stroke="{DynamicResource Brush.BalloonTip.Border}" StrokeThickness="0.5" Fill="{DynamicResource Brush.BalloonTip.Background}">
+                                <Path.Data>
+                                    <PathGeometry x:Uid="PathGeometry_1" Figures="M 0,13 L 0,0 L 20,13" />
+                                </Path.Data>
+                            </Path>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_33" x:Key="BubbleTooltipLabelStyle" TargetType="{x:Type Label}">
+        <Setter x:Uid="Setter_168" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_25" TargetType="{x:Type Label}">
+                    <Grid x:Uid="Grid_19">
+                        <Border x:Uid="Border_12" CornerRadius="6" Height="35" Padding="10,0" BorderThickness="1"
+                                VerticalAlignment="Top" HorizontalAlignment="Center"
+                                BorderBrush="{DynamicResource Brush.Window.Gray.Border}"
+                                Background="{DynamicResource Brush.Window.Gray.LightBackground}">
+                            <ContentPresenter x:Uid="ContentPresenter_6" />
+                            <Border.Effect>
+                                <DropShadowEffect x:Uid="DropShadowEffect_2" ShadowDepth="2" Opacity="0.1" BlurRadius="5" />
+                            </Border.Effect>
+                        </Border>
+                        <Canvas x:Uid="Canvas_2" Margin="0,34,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Transparent">
+                            <Path x:Uid="Path_4" StrokeThickness="1" Stroke="{DynamicResource Brush.Window.Gray.Border}"
+                                  Fill="{DynamicResource Brush.Window.Gray.LightBackground}">
+                                <Path.Data>
+                                    <PathGeometry x:Uid="PathGeometry_2" Figures="M -10,0 L 0,10 L 10,0" />
+                                </Path.Data>
+                            </Path>
+                            <Canvas.Effect>
+                                <DropShadowEffect x:Uid="DropShadowEffect_3" ShadowDepth="4" Opacity="0.1" BlurRadius="4" />
+                            </Canvas.Effect>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_38" x:Key="DialogBorder" TargetType="{x:Type Border}">
+        <Setter x:Uid="Setter_180" Property="CornerRadius" Value="6" />
+        <Setter x:Uid="Setter_181" Property="BorderThickness" Value="1" />
+        <Setter x:Uid="Setter_182" Property="BorderBrush" Value="{DynamicResource Brush.Window.Gray.Border}" />
+        <Setter x:Uid="Setter_183" Property="Background" Value="{DynamicResource Brush.Window.White.Background}" />
+        <Setter x:Uid="Setter_173" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_174" Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect x:Uid="DropShadowEffect_4" ShadowDepth="5" Opacity="0.2" BlurRadius="10" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_37" x:Key="RoundCornerWhiteButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_175" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_176" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_27" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_22">
+                        <Border x:Uid="Border_14" Name="ButtonBorder" CornerRadius="4" BorderThickness="1" SnapsToDevicePixels="True"
+                                BorderBrush="{DynamicResource Brush.Black.Button.Border}"
+                                Background="{DynamicResource Brush.White.Button.Backgroung}">
+                        </Border>
+                        <TextBlock x:Uid="TextBlock_7" HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   SnapsToDevicePixels="True"
+                                   FontSize="{StaticResource Shared.FontSize.11px}"
+                                   FontWeight="{StaticResource Shared.FontWeight.Normal}"
+                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                   Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
+                                   TextAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_30" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_177" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.White.Button.Hover.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_31" Property="IsPressed" Value="True">
+                            <Setter x:Uid="Setter_178" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.White.Button.Pressed.Background}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_29" Property="IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_179" Property="Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.White.Button.Disabled.Background}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_41" x:Key="BubbleTooltipLabelHeightStyle" TargetType="{x:Type Label}">
+        <Setter x:Uid="Setter_201" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_29" TargetType="{x:Type Label}">
+                    <Grid x:Uid="Grid_24">
+                        <Border x:Uid="Border_16" CornerRadius="6" Height="76" Padding="10,0" BorderThickness="1"
+                                VerticalAlignment="Top" HorizontalAlignment="Center"
+                                BorderBrush="{DynamicResource Brush.Window.Gray.Border}"
+                                Background="{DynamicResource Brush.Window.Gray.LightBackground}">
+                            <ContentPresenter x:Uid="ContentPresenter_8" />
+                            <Border.Effect>
+                                <DropShadowEffect x:Uid="DropShadowEffect_5" ShadowDepth="2" Opacity="0.1" BlurRadius="5" />
+                            </Border.Effect>
+                        </Border>
+                        <Canvas x:Uid="Canvas_3" Margin="0,75,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="Transparent">
+                            <Path x:Uid="Path_5" StrokeThickness="1" Stroke="{DynamicResource Brush.Window.Gray.Border}"
+                                  Fill="{DynamicResource Brush.Window.Gray.LightBackground}">
+                                <Path.Data>
+                                    <PathGeometry x:Uid="PathGeometry_3" Figures="M -10,0 L 0,10 L 10,0" />
+                                </Path.Data>
+                            </Path>
+                            <Canvas.Effect>
+                                <DropShadowEffect x:Uid="DropShadowEffect_6" ShadowDepth="4" Opacity="0.1" BlurRadius="4" />
+                            </Canvas.Effect>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_44" x:Key="BlackContentTextBlockEnableChangeStyle" TargetType="TextBlock" BasedOn="{StaticResource BlackContentTextBlockStyle}">
+        <Style.Triggers>
+            <Trigger x:Uid="Trigger_42" Property="IsEnabled" Value="False">
+                <Setter x:Uid="Setter_213" Property="Foreground" Value="{DynamicResource Brush.Text.Disable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Uid="Style_45" x:Key="AnimationGridStyle" TargetType="Grid">
+        <Style.Triggers>
+            <EventTrigger x:Uid="EventTrigger_4" RoutedEvent="Loaded">
+                <BeginStoryboard x:Uid="BeginStoryboard_4">
+                    <Storyboard x:Uid="Storyboard_4">
+                        <ThicknessAnimation x:Uid="ThicknessAnimation_1" Duration="0:0:0.2" Storyboard.TargetProperty="Margin" From="100,0,-100,0" To="0,0,0,0"/>
+                        <DoubleAnimation x:Uid="DoubleAnimation_4" Duration="0:0:0.2" Storyboard.TargetProperty="Opacity" From="0" To="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

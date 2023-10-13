@@ -1,0 +1,379 @@
+﻿<controls:BaseWindow x:Uid="ImgUtilViewWindow" x:Class="ImgUtil.WPFUI.View.ImgUtilView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:controls="clr-namespace:ImgUtil.WPFUI.Controls"
+                     xmlns:utils="clr-namespace:ImgUtil.WPFUI.Utils"
+                     mc:Ignorable="d"
+                     Title="{Binding ImgUtilTitle}" 
+                     Height="830" Width="1100"
+                     MinWidth="518" MinHeight="510"
+                     ResizeMode="CanResize"
+                     Loaded="ImgUtilView_Loaded"
+                     Unloaded="ImgUtilView_UnLoaded"
+                     SourceInitialized="ImgUtilView_SourceInitialized"
+                     SizeChanged="ImgUtilViewWindow_SizeChanged"
+                     Closing="ImgUtilView_Closing"
+                     Closed="ImgUtilView_Closed"
+                     KeyDown="ImgUtilViewWindow_KeyDown"
+                     x:Name="ImgUtilViewWindow">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_8">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_9" >
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_10" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+                <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/FlatScrollViewerStyle.xaml"/>
+                <ResourceDictionary x:Uid="ResourceDictionary_7" Source="../Themes/FakeRibbonControlsStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <utils:BoolToVisibilityValueConverter x:Uid="utils:BoolToVisibilityValueConverter_1" x:Key="bool2Vis"/>
+            <utils:BoolToVisibilityValueConverter x:Uid="utils:BoolToVisibilityValueConverter_2" x:Key="bool2VisHidden" UseHiddenState="True"/>
+            <utils:InvertBoolToVisibilityConverter x:Uid="utils:InvertBoolToVisibilityConverter_1" x:Key="invertBool2Vis"/>
+
+            <Style x:Uid="Style_1" x:Key="ImageViewerGridStyle" TargetType="Grid">
+                <Setter x:Uid="Setter_116" Property="Background" Value="{DynamicResource Brush.PreviewPane.DarkBackground}"/>
+                <Style.Triggers>
+                    <DataTrigger x:Uid="DataTrigger_7" Binding="{Binding Path=DataContext.CurrentPreviewImage}" Value="{x:Null}">
+                        <Setter x:Uid="Setter_117" Property="Background" Value="{DynamicResource Brush.PreviewPane.WhiteBackground}"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="WindowGrid" x:Name="WindowGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_9" Height="auto"/>
+            <RowDefinition x:Uid="RowDefinition_10" Height="*"/>
+            <RowDefinition x:Uid="RowDefinition_11" Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TabControl x:Uid="FakeRibbonTabControl" x:Name="FakeRibbonTabControl" Grid.Row="0" Style="{StaticResource FakeRibbonTabStyle}" Height="130">
+            <TabItem x:Uid="TabItem_1" Header="Actions" Style="{StaticResource FakeRibbonTabItemStyle}">
+                <controls:FlatScrollViewer x:Uid="controls:FlatScrollViewer_3"
+                                           HorizontalScrollBarVisibility="Auto"
+                                           Template="{StaticResource ribbonPaneScrollViewTemplate}"
+                                           ScrollChanged="RibbonPaneScrollViewer_ScrollChanged"
+                                           x:Name="RibbonPaneScrollViewer">
+                    <controls:TouchScrollingStackPane x:Uid="controls:TouchScrollingStackPane_1">
+                        <Grid x:Uid="Grid_5" Height="100" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Uid="ColumnDefinition_7" Width="Auto"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_8" Width="Auto"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_9" Width="Auto"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_10" Width="Auto"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_11" Width="Auto"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_12" Width="Auto"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_13" Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Uid="RowDefinition_7" Height="*"/>
+                                <RowDefinition x:Uid="RowDefinition_8" Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel x:Uid="StackPanel_5" Orientation="Horizontal" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1">
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_1" Margin="11,3,11,0" 
+                                                            ButtonText="Image"
+                                                            AutomationProperties.Name="Image"
+                                                            GeometrySource="{StaticResource Geometry_ImportImage}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.ImportImageCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_1" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_20" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Replace the content of the current image displayed with the content of the imported image file."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_2" Margin="11,3,11,0" 
+                                                            ButtonText="Camera"
+                                                            AutomationProperties.Name="Camera"
+                                                            GeometrySource="{StaticResource Geometry_ImportCamera}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.ImportFromCameraCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_13" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_16" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Replace the content of the current image displayed with an image from a camera or smart phone."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_3" Margin="11,3,11,0" ButtonText="Scanner"
+                                                            AutomationProperties.Name="Scanner"
+                                                            GeometrySource="{StaticResource Geometry_ImportScanner}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.ImportFromScannerCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_16" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_19" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Replace the content of the current image displayed with a scanned image."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                            </StackPanel>
+
+                            <TextBlock x:Uid="TextBlock_21" Grid.Row="1" Grid.Column="0"
+                                       Margin="0,0,0,3"
+                                       Text="Import"
+                                       TextAlignment="Center"
+                                       TextWrapping="NoWrap"
+                                       FontSize="{StaticResource Shared.FontSize.12px}"
+                                       Foreground="{DynamicResource Brush.FakeRibbonGroupHeader.Text}"/>
+
+                            <Border x:Uid="Border_1" Grid.Row="0" Grid.RowSpan="2"
+                                    Grid.Column="1" Grid.ColumnSpan="1"
+                                    Width="3"
+                                    Margin="6,2,6,2"
+                                    BorderThickness="0"
+                                    SnapsToDevicePixels="True"
+                                    Background="{DynamicResource Brush.FakeRibbonTab.SeparatorBorder}"/>
+
+                            <ComboBox x:Uid="ViewZoomInOutComboBox" x:Name="ViewZoomInOutComboBox"
+                                      AutomationProperties.Name="Zoom In Out"
+                                      Grid.Row="0" Grid.Column="2"
+                                      Margin="0,8,0,0"
+                                      Width="172" Height="26"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Top"
+                                      SelectionChanged="ViewZoomInOutComboBox_SelectionChanged"
+                                      Style="{StaticResource ComboBoxFlatStyle}"/>
+
+                            <TextBlock x:Uid="TextBlock_22" Grid.Row="1" Grid.Column="2"
+                                       Margin="0,0,0,3"
+                                       Text="View"
+                                       TextAlignment="Center"
+                                       TextWrapping="NoWrap"
+                                       FontSize="{StaticResource Shared.FontSize.12px}"
+                                       Foreground="{DynamicResource Brush.FakeRibbonGroupHeader.Text}"/>
+
+                            <Border x:Uid="Border_2" Grid.Row="0" Grid.RowSpan="2"
+                                    Grid.Column="3"
+                                    Width="3"
+                                    Margin="6,2,6,2"
+                                    BorderThickness="0"
+                                    SnapsToDevicePixels="True"
+                                    Background="{DynamicResource Brush.FakeRibbonTab.SeparatorBorder}"/>
+
+                            <StackPanel x:Uid="StackPanel_6" Orientation="Horizontal" Grid.Row="0" Grid.Column="4">
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_13" Margin="1,3,1,0" ButtonText="Copy"
+                                                            AutomationProperties.Name="Copy"
+                                                            GeometrySource="{StaticResource Geometry_Copy}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.CopyCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_24" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_31" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Copy the current image to the Windows clipboard to paste into another applications."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton  x:Uid="controls:RibbonImageButton_4" Margin="1,3,1,0" ButtonText="Convert&#x0a;To"
+                                                             AutomationProperties.Name="Convert To"
+                                                             GeometrySource="{StaticResource Geometry_ConvertTo}"
+                                                             Command="{Binding Path=DataContext.RibbonCommands.ConvertToCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_14" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_17" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Convert the current image format into a different image format. Changing format can result in a smaller file size or a file that is easier to share with others."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_5" Margin="1,3,1,0" ButtonText="Crop"
+                                                            AutomationProperties.Name="Crop"
+                                                            GeometrySource="{StaticResource Geometry_Crop}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.CropCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_15" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_18" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Crop the image by removing unwanted areas along the edges of the image."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_6" Margin="1,3,1,0" ButtonText="Remove&#x0a;Personal Data"
+                                                            AutomationProperties.Name="Remove Personal Data"
+                                                            GeometrySource="{StaticResource Geometry_RemovePersonalData}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.RemovePersonalDataCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_17" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_23" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Removes personal information from the current image for increased security. Personal data (called meta-data) is often stored in the image file separately from the image itself."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_7" Margin="1,3,1,0" ButtonText="Resize&#x0a;Image"
+                                                            AutomationProperties.Name="Resize Image"
+                                                            GeometrySource="{StaticResource Geometry_ResizeImage}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.ResizeImageCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_18" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_24" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Increase or decrease the image size. Depending on the original image size and quality, this can affect the resulting image quality."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_8" Margin="1,3,1,0" ButtonText="Rotate&#x0a;Left"
+                                                            AutomationProperties.Name="Rotate Left"
+                                                            GeometrySource="{StaticResource Geometry_RotateLeft}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.RotateLeftCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_19" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_25" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Rotate the current image 90 degrees counter-clockwise."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_9" Margin="1,3,1,0" ButtonText="Rotate&#x0a;Right"
+                                                            AutomationProperties.Name="Rotate Right"
+                                                            GeometrySource="{StaticResource Geometry_RotateRight}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.RotateRightCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_20" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_26" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Rotate the current image 90 degrees clockwise."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_10" Margin="1,3,1,0" ButtonText="Watermark&#x0a;Image"
+                                                            AutomationProperties.Name="Watermark Image"
+                                                            GeometrySource="{StaticResource Geometry_Watermark}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.WatermarkImageCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_21" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_27" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Add a customized watermark to the current image to detect and reduce unauthorized use or sharing of the image."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_11" Margin="1,3,1,0" ButtonText="Add to&#x0a;Teams"
+                                                            AutomationProperties.Name="Add to Teams"
+                                                            Visibility="{Binding IsTeamsInstall, Converter={StaticResource bool2Vis}}"
+                                                            GeometrySource="{StaticResource Geometry_AddToTeamsBackground}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.AddToTeamsBackgroundCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_22" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_28" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Add the current image to the list of backgrounds that can be used during a Teams video call."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+
+                                <controls:RibbonImageButton x:Uid="controls:RibbonImageButton_12" Margin="1,3,1,0" ButtonText="Set Desktop&#x0a;Background"
+                                                            AutomationProperties.Name="Set Desktop Background"
+                                                            GeometrySource="{StaticResource Geometry_SetDesktopBackground}"
+                                                            Command="{Binding Path=DataContext.RibbonCommands.SetDesktopBackgroundCommand, ElementName=ImgUtilViewWindow}">
+                                    <controls:RibbonImageButton.ToolTip>
+                                        <ToolTip x:Uid="ToolTip_23" Style="{StaticResource ButtonToolTip}">
+                                            <TextBlock x:Uid="TextBlock_29" Style="{StaticResource ToolTipTextBlock}"
+                                                       Text="Change the computer's background image to the current open image."/>
+                                        </ToolTip>
+                                    </controls:RibbonImageButton.ToolTip>
+                                </controls:RibbonImageButton>
+                            </StackPanel>
+
+                            <TextBlock x:Uid="TextBlock_30" Grid.Row="1" Grid.Column="4"
+                                       Margin="0,0,0,3"
+                                       Text="Tools"
+                                       TextAlignment="Center"
+                                       TextWrapping="NoWrap"
+                                       FontSize="{StaticResource Shared.FontSize.12px}"
+                                       Foreground="{DynamicResource Brush.FakeRibbonGroupHeader.Text}"/>
+
+                            <Border x:Uid="Border_3" Grid.Row="0" Grid.RowSpan="2"
+                                    Grid.Column="5"
+                                    Width="3"
+                                    Margin="6,2,6,2"
+                                    BorderThickness="3,0,0,0"
+                                    SnapsToDevicePixels="True"
+                                    BorderBrush="{DynamicResource Brush.FakeRibbonTab.SeparatorBorder}"/>
+
+                        </Grid>
+                    </controls:TouchScrollingStackPane>
+                </controls:FlatScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <controls:StartupPane x:Uid="ImgStartupPane" x:Name="ImgStartupPane"
+                              Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                              Visibility="{Binding Path=IsCurrentImageFileExist, Converter={StaticResource invertBool2Vis}}"
+                              DefaultAlready="{Binding AlreadySetDefault}"
+                              RecentFilesList="{Binding RecentFileList.RecentListData}"
+                              SelectRecentFile="{Binding SelectFileInRecentList, Mode=TwoWay}"
+                              DragEnter="ImgStartupPane_Drag"
+                              DragOver="ImgStartupPane_Drag"
+                              DragLeave="ImgStartupPane_Drag"
+                              Drop="ImgStartupPane_Drop"
+                              RecentFileOpen="ImgStartupPane_OpenFile"
+                              ChooseFile="ImgStartupPane_ChooseFile"
+                              SetAsDefault="ImgStartupPane_SetAsDefault"/>
+        
+        <controls:FlatScrollViewer x:Uid="PreviewScrollViewer" x:Name="PreviewScrollViewer" Grid.Row="1"
+                                   AllowDrop="True"
+                                   Visibility="{Binding Path=IsCurrentImageFileExist, Converter={StaticResource bool2VisHidden}}"
+                                   VerticalScrollBarVisibility="Auto"
+                                   HorizontalScrollBarVisibility="Auto"
+                                   DragEnter="PreviewScrollViewer_Drag"
+                                   DragOver="PreviewScrollViewer_Drag"
+                                   DragLeave="PreviewScrollViewer_Drag"
+                                   Drop="PreviewScrollViewer_Drop"
+                                   ScrollChanged="PreviewScrollViewer_ScrollChanged"
+                                   PreviewMouseWheel="PreviewScrollViewer_PreviewMouseWheel"
+                                   Background="{DynamicResource Brush.PreviewPane.DarkBackground}" 
+                                   Template="{StaticResource scrollViewTemplate}">
+            <Border x:Uid="Border_4" x:Name="ImageBorder"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="auto" Height="auto"
+                    Margin="5"
+                    BorderThickness="0"
+                    RenderTransformOrigin="1,1">
+
+                <Image x:Uid="PreviewImage" x:Name="PreviewImage"
+                       MouseEnter="PreviewImage_MouseEnter"
+                       MouseMove="PreviewImage_MouseMove"
+                       MouseLeave="PreviewImage_MouseLeave"
+                       MouseLeftButtonDown="PreviewImage_MouseLeftButtonDown"
+                       MouseLeftButtonUp="PreviewImage_MouseLeftButtonUp"
+                       Source="{Binding ElementName=ImgUtilViewWindow, Path=DataContext.CurrentPreviewImage}"
+                       Visibility="{Binding ElementName=ImgUtilViewWindow, Path=DataContext.CurrentPreviewImage, Converter={StaticResource ContentToVisibilityConverter}}"
+                       Stretch="Uniform">
+                    <Image.LayoutTransform>
+                        <TransformGroup x:Uid="TransformGroup_1">
+                            <ScaleTransform x:Uid="scaleTransform" x:Name="scaleTransform"/>
+                        </TransformGroup>
+                    </Image.LayoutTransform>
+                </Image>
+
+            </Border>
+        </controls:FlatScrollViewer>
+
+        <Grid x:Uid="loadingGrid" x:Name="loadingGrid" Visibility="Hidden" Grid.Row="0" Grid.RowSpan="2"
+              Width="{Binding Path=ActualWidth, ElementName=WindowGrid}"
+              Height="{Binding Path=ActualHeight, ElementName=WindowGrid}">
+            <Image x:Uid="loadingImage" x:Name="loadingImage" 
+                   Width="150" Height="150" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   RenderOptions.BitmapScalingMode="Fant"/>
+        </Grid>
+
+        <Frame x:Uid="NagBannerFrame" x:Name="NagBannerFrame"
+               Grid.Row="2"
+               IsTabStop="False"
+               TabIndex="1000"
+               Height="40"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</controls:BaseWindow>

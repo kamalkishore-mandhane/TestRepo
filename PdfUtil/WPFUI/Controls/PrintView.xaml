@@ -1,0 +1,115 @@
+﻿<local:BaseWindow x:Uid="printView" x:Class="PdfUtil.WPFUI.Controls.PrintView"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:PdfUtil.WPFUI.Controls"
+                  mc:Ignorable="d"
+                  ShowInTaskbar="False"
+                  Background="{DynamicResource Brush.ComboBox.Background.Normal}"
+                  SizeToContent="Height"
+                  SnapsToDevicePixels="True"
+                  Width="376"
+                  ResizeMode="NoResize"
+                  Focusable="True"
+                  x:Name="printView"
+                  Title="Print"
+                  FontFamily="{DynamicResource Shared.FontFamily.SegoeUI}"
+                  FontSize="{DynamicResource Shared.FontSize.12px}"
+                  PreviewKeyDown="printView_PreviewKeyDown"
+                  Loaded="printView_Loaded"
+                  Unloaded="printView_UnLoaded">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_3">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_4">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:EnumToBoolConverter x:Uid="local:EnumToBoolConverter_1" x:Key="enum2Bool"/>
+            <local:BoolToVisibilityValueConverter x:Uid="local:BoolToVisibilityValueConverter_1" x:Key="bool2Vis"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_1">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Uid="TextBlock_1" Text="Please select the pages to be printed."
+                   Grid.Row="0"
+                   Margin="15,15,15,10"
+                   FontSize="{DynamicResource Shared.FontSize.19px}"
+                   FontWeight="{StaticResource Shared.FontWeight.Normal}"
+                   FontFamily="{DynamicResource Shared.FontFamily.SegoeUI}"/>
+        <StackPanel x:Uid="StackPanel_1" Orientation="Vertical" Grid.Row="1" Margin="15,10,10,10">
+            <RadioButton x:Uid="currentPageRadioBtn" 
+                         Content="{Binding CurPageRadioBtnContent, ElementName=printView}"
+                         x:Name="currentPageRadioBtn"
+                         Margin="0,3"
+                         BorderBrush="Transparent"
+                         IsChecked="{Binding CurPageSelection, ElementName=printView, Converter={StaticResource enum2Bool}, ConverterParameter=CurrentPage, Mode=TwoWay}"
+                         Style="{DynamicResource FlatRadioButtonStyle}" GotFocus="currentPageRadioBtn_GotFocus"/>
+            <RadioButton x:Uid="AddToZipBtn"
+                         Content="{Binding SelectedPageRadioBtnContent, ElementName=printView}"
+                         Margin="0,3"
+                         BorderBrush="Transparent"
+                         x:Name="selectedPageRadioBtn"
+                         Visibility="{Binding IsSelectedPageRadioBtnVisible, ElementName=printView, Converter={StaticResource bool2Vis}}"
+                         IsChecked="{Binding CurPageSelection, ElementName=printView, Converter={StaticResource enum2Bool}, ConverterParameter=SelectedPages, Mode=TwoWay}"
+                         Style="{DynamicResource FlatRadioButtonStyle}" GotFocus="selectedPageRadioBtn_GotFocus"/>
+            <RadioButton x:Uid="allPagesRadioBtn"
+                         Margin="0,3"
+                         BorderBrush="Transparent"
+                         Content="{Binding AllPagesRadioBtnContent, ElementName=printView}"
+                         x:Name="allPagesRadioBtn"
+                         IsChecked="{Binding CurPageSelection, ElementName=printView, Converter={StaticResource enum2Bool}, ConverterParameter=AllPages, Mode=TwoWay}"
+                         Style="{DynamicResource FlatRadioButtonStyle}" GotFocus="allPagesRadioBtn_GotFocus"/>
+            <RadioButton x:Uid="pageRangeRadioBtn"
+                         AutomationProperties.Name="Page Range"
+                         Margin="0,3"
+                         BorderBrush="Transparent"
+                         x:Name="pageRangeRadioBtn"
+                         IsChecked="{Binding CurPageSelection, ElementName=printView, Converter={StaticResource enum2Bool}, ConverterParameter=PageRange, Mode=TwoWay}"
+                         Style="{DynamicResource FlatRadioButtonStyle}" GotFocus="pageRangeRadioBtn_GotFocus">
+                <StackPanel x:Uid="StackPanel_2" Orientation="Horizontal">
+                    <TextBlock x:Uid="TextBlock_2" 
+                               VerticalAlignment="Center"
+                               Text="Page range from"/>
+                    <TextBox x:Uid="PageRangeFromTextBox" x:Name="PageRangeFromTextBox"
+                             Width="50"
+                             Margin="3,0"
+                             IsEnabled="{Binding CurPageSelection, ElementName=printView, Converter={StaticResource enum2Bool}, ConverterParameter=PageRange, Mode=OneWay}"
+                             VerticalAlignment="Center"
+                             Height="20"
+                             TextChanged="PageRangeFromTextBox_TextChanged"
+                             PreviewTextInput="PageRangeFromTextBox_PreviewTextInput"/>
+                    <TextBlock x:Uid="TextBlock_3" Text="to"/>
+                    <TextBox x:Uid="PageRangeToTextBox" x:Name="PageRangeToTextBox"
+                             Width="50"
+                             Margin="3,0"
+                             VerticalAlignment="Center"
+                             Height="20"
+                             IsEnabled="{Binding CurPageSelection, ElementName=printView, Converter={StaticResource enum2Bool}, ConverterParameter=PageRange, Mode=OneWay}"
+                             TextChanged="PageRangeToTextBox_TextChanged"
+                             PreviewTextInput="PageRangeToTextBox_PreviewTextInput"/>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+        <Button
+            x:Uid="Button_1" Width="80"
+            Height="28"
+            HorizontalAlignment="Right"
+            Margin="0,0,10,10"
+            Grid.Row="2"
+            IsDefault="True"
+            Style="{StaticResource FlatBlueButtonStyle}"
+            Click="Button_Click"
+            Content="OK"/>
+    </Grid>
+</local:BaseWindow>

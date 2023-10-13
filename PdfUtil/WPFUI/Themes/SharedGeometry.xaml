@@ -1,0 +1,143 @@
+﻿<ResourceDictionary x:Uid="ResourceDictionary_1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingBrush x:Uid="DrawingBrush_1" x:Key="SignatureDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_1">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_1" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="M 30.9715,26.016L 30.9715,26.016 Z M 43.4288,4.44 Z M 39.1128,1.94933 Z M 26.3901,26.012L 25.7955,29.9533L 28.9115,27.468M 24.7288,24.1187C 24.5888,23.5813 24.6395,23.0213 24.9181,22.54L 37.3901,0.935997C 38.0181,-0.150673 39.5595,-0.433334 40.8355,0.302662L 43.9928,2.12533C 45.2688,2.86133 45.7928,4.33866 45.1661,5.42533L 32.6941,27.028C 32.4035,27.5293 31.9195,27.86 31.3568,27.9973C 31.2821,28.1067 31.1915,28.208 31.0808,28.296L 25.7141,32.5773C 24.7661,33.3333 23.3835,32.5347 23.5648,31.336L 24.5888,24.5467C 24.6115,24.392 24.6608,24.248 24.7288,24.1187 Z M 26.6755,23.6507L 26.6541,23.5333L 39.1195,1.94267L 39.2315,1.904C 39.3688,1.87733 39.5928,1.89466 39.8355,2.03466L 42.9928,3.85733C 43.2355,3.99733 43.3621,4.18266 43.4075,4.31466L 43.4301,4.432L 30.9648,26.0213L 30.8528,26.0613L 30.8515,26.0613L 26.6755,23.6507 Z M 26.6568,23.524 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_2" Geometry="M 13.0333,13.5153C 18.912,11.4487 29.44,8.554 24.5187,13.5153C 18.3667,19.7167 1,24.3913 9.828,27.418">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_1" Thickness="2" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing x:Uid="GeometryDrawing_3" Geometry="M 13.3895,28.9417C 14.6108,29.6044 17.8481,30.9777 21.0295,31.1697">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_2" Thickness="2" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_2" x:Key="UndoIconDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_2">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_4" Geometry="F1 M 2.82973,9.636C 2.16307,8.48 1.89507,7.136 2.06973,5.812C 2.24307,4.488 2.84973,3.26 3.79373,2.316C 4.73773,1.372 5.96573,0.765332 7.28973,0.592C 8.61373,0.417333 9.95773,0.685333 11.1137,1.352C 12.2684,2.02 13.1724,3.04933 13.6844,4.28267C 14.1937,5.516 14.2844,6.884 13.9377,8.172C 13.5924,9.46267 12.8311,10.6027 11.7724,11.4147C 10.7137,12.2267 9.41507,12.6667 8.0804,12.6667">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_3" Thickness="1.33333" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing x:Uid="GeometryDrawing_5" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="F1 M 3.652,11.4941L 4.388,6.8528L 1.58946e-007,8.5368L 3.652,11.4941 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_3" x:Key="RedoIconDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_3">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_6" Geometry="F1 M 12.12,9.636C 12.788,8.48 13.0547,7.136 12.88,5.812C 12.7053,4.488 12.1,3.26 11.156,2.316C 10.212,1.372 8.98267,0.765332 7.66,0.592C 6.33733,0.417333 4.99333,0.685333 3.83733,1.352C 2.68,2.02 1.77733,3.04933 1.26667,4.28267C 0.756001,5.516 0.666667,6.884 1.01067,8.172C 1.35733,9.46267 2.11867,10.6027 3.17733,11.4147C 4.236,12.2267 5.53467,12.6667 6.86933,12.6667">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_4" Thickness="1.33333" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing x:Uid="GeometryDrawing_7" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="F1 M 11.2971,11.4941L 10.5624,6.8528L 14.9504,8.5368L 11.2971,11.4941 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_4" x:Key="MarkXDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_4">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_8" Geometry="F1 M 3.74116,3.30489C 4.99049,5.61422 8.29982,10.9742 11.5532,13.9316">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_5" Thickness="1.33333" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing x:Uid="GeometryDrawing_9" Geometry="F1 M 3.13689,14.0224C 4.21822,11.405 6.98489,5.88636 12.1182,3.53169">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_6" Thickness="1.33333" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_5" x:Key="MarkYDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_5">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_10" Geometry="F1 M 2.28567,6.63867C 2.863,7.796 4.22967,10.3213 5.07767,11.1667C 6.00833,8.70133 8.67233,3.36133 11.8723,1.73067">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_7" Thickness="1.33333" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_6" x:Key="TrashSignDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_6">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_11" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="F1 M 6.4,12.8L 4.8,12.8L 4.8,5.60133L 6.4,5.60133M 9.6,12.8L 8,12.8L 8,5.60133L 9.6,5.60133M 4.8,2.4L 9.6,2.4L 9.6,1.6L 4.8,1.6M 3.2,14.4L 11.2,14.4L 11.2,4L 3.2,4M 11.2,16L 3.2,16C 2.776,16 2.368,15.832 2.068,15.5307C 1.76933,15.232 1.6,14.824 1.6,14.4L 1.6,4L 0,4L 0,2.4L 3.2,2.4L 3.2,1.6C 3.2,1.176 3.368,0.769336 3.668,0.469335C 3.96933,0.168002 4.376,0 4.8,0L 9.6,0C 10.0253,0 10.4307,0.168002 10.732,0.469335C 11.0307,0.769336 11.2,1.176 11.2,1.6L 11.2,2.4L 14.4,2.4L 14.4,4L 12.8,4L 12.8,14.4C 12.8,14.824 12.632,15.232 12.3307,15.5307C 12.0307,15.832 11.624,16 11.2,16 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_7" x:Key="AddSignDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_7">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_12" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="F1 M 11.524,7.85733L 7.85733,7.85733L 7.85733,11.524L 6.80933,11.524L 6.80933,7.85733L 3.14267,7.85733L 3.14267,6.80933L 6.80933,6.80933L 6.80933,3.14267L 7.85733,3.14267L 7.85733,6.80933L 11.524,6.80933M 7.33333,0C 5.396,0.0240002 3.54533,0.802666 2.17467,2.17333C 0.803999,3.544 0.0239995,5.396 -5.5631e-007,7.33333C 0.0239995,9.27067 0.803999,11.1227 2.17467,12.4933C 3.54533,13.8627 5.396,14.6427 7.33333,14.6667C 9.272,14.6427 11.1227,13.8627 12.4947,12.4933C 13.864,11.1227 14.644,9.27067 14.6667,7.33333C 14.644,5.396 13.864,3.544 12.4947,2.17333C 11.1227,0.802666 9.272,0.0240002 7.33333,0 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_8" x:Key="TrialIconDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_8">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_13" Brush="#FFFFFFFF" Geometry="F1 M 11.3309,17.5826C 9.96954,17.5826 8.86534,16.5253 8.86534,15.2218C 8.86534,15.035 8.89368,14.8553 8.93688,14.6815L 4.24807,10.1912L 5.99684,8.51666L 10.6431,12.9656C 10.8632,12.9042 11.0906,12.861 11.3309,12.861C 12.6929,12.861 13.7964,13.9183 13.7964,15.2218C 13.7964,16.5253 12.6929,17.5826 11.3309,17.5826 Z M 12.5519,4.78308L 12.5519,2.28131L 14.8446,2.28131L 14.8446,-6.10352e-005L 7.81715,-6.10352e-005L 7.81715,2.28131L 10.1099,2.28131L 10.1099,4.78827C 7.97509,5.00995 6.01844,5.79712 4.40601,6.99335L 2.13483,4.81866L 0.386066,6.49316L 2.61944,8.63232C 0.984737,10.513 1.478e-007,12.9294 1.478e-007,15.5682C 1.478e-007,21.5599 5.07285,26.418 11.3309,26.418C 17.5889,26.418 22.6618,21.5599 22.6618,15.5682C 22.6618,9.97076 18.2348,5.3667 12.5519,4.78308 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_10" x:Key="CommentTitleDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_10">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_15" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="F1 M 5.33333,8.1044L 29.7667,8.1044L 29.7667,10.1564L 5.33333,10.1564L 5.33333,8.1044 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_16" Brush="{DynamicResource Brush.Icon.BasicColor}" Geometry="F1 M 5.33333,14.5871L 22.4813,14.5871L 22.4813,16.6391L 5.33333,16.6391L 5.33333,14.5871 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_17" Geometry="F1 M 17.2227,25.7253L 33.5427,25.7253C 33.6147,25.7253 33.6747,25.6667 33.6747,25.5947L 33.6747,1.292C 33.6747,1.22 33.6147,1.16133 33.5427,1.16133L 1.13067,1.16133C 1.05867,1.16133 1,1.22 1,1.292L 1,25.5947C 1,25.6667 1.05867,25.7253 1.13067,25.7253L 10.5507,25.7253L 10.5507,32.3333L 17.2227,25.7253 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_8" Thickness="2" LineJoin="Round" Brush="{DynamicResource Brush.Icon.BasicColor}"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_9" x:Key="CommentTitleWhiteDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_9">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_14" Brush="{DynamicResource Brush.Comment.Background.White}" Geometry="M 15.4493,11.0027L 4.37333,11.0027L 4.37333,12.328L 15.4493,12.328M 4.37333,6.816L 20.1547,6.816L 20.1547,8.14133L 4.37333,8.14133M 2.9,1.77733C 2.164,1.77733 1.56666,2.37467 1.56666,3.11067L 1.56666,17.0893C 1.56666,17.8253 2.164,18.4227 2.9,18.4227L 7.508,18.4227L 7.508,23.448L 12.5333,18.4227L 21.8,18.4227C 22.5373,18.4227 23.1333,17.8253 23.1333,17.0893L 23.1333,3.11067C 23.1333,2.37467 22.5373,1.77733 21.8,1.77733L 2.9,1.77733 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+</ResourceDictionary>

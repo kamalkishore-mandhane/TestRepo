@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+  <!--Common path to WinZipRoot\Common-->
+    <WZCommonPath>$(MSBuildThisFileDirectory)..\..\Common\</WZCommonPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppxRegexString>^\s*#define\s+WZ_APPX\s*$</AppxRegexString>
+    <AppxHeaderFile Condition="Exists('$(WZCommonPath)ReleaseType.h')">$([System.IO.File]::ReadAllText(`$(WZCommonPath)ReleaseType.h`))</AppxHeaderFile>
+
+    <!---Set the WZ_APPX flag to True when there is a #define WZ_APPX in the common\ReleaseType.h file-->
+    <WZ_APPX>False</WZ_APPX>
+    <WZ_APPX Condition="'$([System.Text.RegularExpressions.Regex]::IsMatch($(AppxHeaderFile),
+                    $(AppxRegexString),
+                    System.Text.RegularExpressions.RegexOptions.Multiline))'=='True'">True</WZ_APPX>
+
+    <!---Set the WZ_SUBS_REL flag to True when there is a #define WZ_SUBS_REL in common\ReleaseType.h -->
+    <SubsRegexString>^\s*#define\s+WZ_SUBS_REL\s*$</SubsRegexString>
+    <WZ_SUBS_REL>False</WZ_SUBS_REL>
+    <WZ_SUBS_REL Condition="'$([System.Text.RegularExpressions.Regex]::IsMatch($(AppxHeaderFile),
+                    $(SubsRegexString),
+                    System.Text.RegularExpressions.RegexOptions.Multiline))'=='True'">True</WZ_SUBS_REL>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(WZ_APPX)' == 'True'">
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <DefineConstants>$(DefineConstants);WZ_APPX</DefineConstants>
+  </PropertyGroup>
+</Project>

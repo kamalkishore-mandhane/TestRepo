@@ -1,0 +1,538 @@
+﻿<controls:BaseWindow x:Uid="WatermarkSettingsView" x:Class="PdfUtil.WPFUI.View.WatermarkSettingView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:controls="clr-namespace:PdfUtil.WPFUI.Controls"
+                     mc:Ignorable="d"
+                     Title="Watermark Settings"
+                     Height="505" Width="698"
+                     ResizeMode="NoResize"
+                     ShowInTaskbar="False"
+                     SnapsToDevicePixels="True"
+                     Loaded="WatermarkSettingsView_Loaded"
+                     Unloaded="WatermarkSettingsView_UnLoaded"
+                     KeyDown="WatermarkSettingsViewWindow_KeyDown"
+                     x:Name="WatermarkSettingsView">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Uid="BooleanToVisibilityConverter_1" x:Key="BoolToVisibility"/>
+            <controls:BoolToVisibilityValueConverter x:Uid="controls:BoolToVisibilityValueConverter_1" x:Key="BoolToVisibilityHidden" UseHiddenState="True"/>
+
+            <Style x:Uid="Style_1" x:Key="TextBlockStyle.SegoeUI.Normal.16px" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_1" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_2" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+                <Setter x:Uid="Setter_3" Property="FontSize" Value="{StaticResource Shared.FontSize.16px}"/>
+            </Style>
+
+            <Style x:Uid="Style_15" x:Key="TextBlockStyle.SegoeUI.Bold.15px" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_44" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_45" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Bold}"/>
+                <Setter x:Uid="Setter_46" Property="FontSize" Value="{StaticResource Shared.FontSize.15px}"/>
+            </Style>
+
+            <Style x:Uid="Style_16" x:Key="TextBlockStyle.SegoeUI.Bold.12px" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_47" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_48" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Bold}"/>
+                <Setter x:Uid="Setter_49" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}"/>
+            </Style>
+
+            <Style x:Uid="SecondaryTextBlockStyle" x:Key="SecondaryTextBlockStyle" BasedOn="{StaticResource TextBlockStyle.SegoeUI.Normal.16px}" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="SecondaryTextBlockStyle.HorizontalAlignment" Property="HorizontalAlignment" Value="Center"/>
+                <Setter x:Uid="SecondaryTextBlockStyle.TextTrimming" Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter x:Uid="SecondaryTextBlockStyle.Foreground" Property="Foreground" Value="{DynamicResource Brush.Text.Foreground}"/>
+            </Style>
+
+            <Style x:Uid="PrimaryTextBlockStyle" x:Key="PrimaryTextBlockStyle" BasedOn="{StaticResource TextBlockStyle.SegoeUI.Bold.12px}" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="PrimaryTextBlockStyle.HorizontalAlignment" Property="HorizontalAlignment" Value="Center"/>
+                <Setter x:Uid="PrimaryTextBlockStyle.TextTrimming" Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter x:Uid="PrimaryTextBlockStyle.TextAlignment" Property="TextAlignment" Value="Center"/>
+                <Setter x:Uid="PrimaryTextBlockStyle.Foreground" Property="Foreground" Value="{DynamicResource Brush.SharedStyle.FlatButton.Foreground}"/>
+            </Style>
+
+            <Style x:Uid="PrimaryTextBlockBlueStyle" x:Key="PrimaryTextBlockBlueStyle" BasedOn="{StaticResource TextBlockStyle.SegoeUI.Bold.15px}" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="PrimaryTextBlockBlueStyle.VerticalAlignment" Property="VerticalAlignment" Value="Center"/>
+                <Setter x:Uid="PrimaryTextBlockBlueStyle.HorizontalAlignment" Property="HorizontalAlignment" Value="Center"/>
+                <Setter x:Uid="PrimaryTextBlockBlueStyle.TextTrimming" Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter x:Uid="PrimaryTextBlockBlueStyle.TextAlignment" Property="TextAlignment" Value="Center"/>
+                <Setter x:Uid="PrimaryTextBlockBlueStyle.Foreground" Property="Foreground" Value="{DynamicResource Brush.Title}"/>
+            </Style>
+
+            <Style x:Uid="CheckBoxTextBlockStyle" x:Key="CheckBoxTextBlockStyle" TargetType="TextBlock">
+                <Setter x:Uid="CheckBoxTextBlockStyle.TextTrimming" Property="TextTrimming" Value="CharacterEllipsis"/>
+                <Setter x:Uid="CheckBoxTextBlockStyle.Margin" Property="Margin" Value="5,0,0,0"/>
+                <Style.Triggers>
+                    <Trigger x:Uid="CheckBoxTextBlockStyle.Trigger.IsEnabled" Property="IsEnabled" Value="False">
+                        <Setter x:Uid="CheckBoxTextBlockStyle.Trigger.IsEnabled.Foreground" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Gray}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Uid="PlacementRadioButtonStyle" x:Key="PlacementRadioButtonStyle" TargetType="{x:Type RadioButton}">
+                <Setter x:Uid="PlacementRadioButtonStyle.FocusVisualStyle" Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter x:Uid="PlacementRadioButtonStyle.Template" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="PlacementRadioButtonStyle.ControlTemplate" TargetType="{x:Type RadioButton}">
+                            <Border x:Uid="PlacementRadioButtonStyle.Border" SnapsToDevicePixels="True">
+                                <Border  x:Uid="PlacementRadioButtonStyle.ControlTemplate.Border" BorderBrush="{DynamicResource Brush.Item.Border}" BorderThickness="1" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="Transparent">
+                                    <Grid  x:Uid="PlacementRadioButtonStyle.ControlTemplate.Grid" x:Name="CheckFlag" Height="13" Width="13" Background="Transparent"/>
+                                </Border>
+                                <Border.Style>
+                                    <Style x:Uid="RadioButton.Border.Style" TargetType="{x:Type Border}">
+                                        <Setter x:Uid="Style.BorderThickness" Property="BorderThickness" Value="1"/>
+                                        <Setter x:Uid="Style.BorderBrush" Property="BorderBrush" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding Path=IsKeyboardFocused, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type RadioButton}}}" Value="True">
+                                                <Setter x:Uid="Setter_16" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger  x:Uid="PlacementRadioButtonStyle.ControlTemplate.Trigger" Property="IsChecked" Value="True">
+                                    <Setter  x:Uid="PlacementRadioButtonStyle.ControlTemplate.Trigger.Background" Property="Background" TargetName="CheckFlag" Value="{DynamicResource Brush.RadioBtn.Checked}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="DirectionRadioButtonStyle" x:Key="DirectionRadioButtonStyle" TargetType="{x:Type RadioButton}">
+                <Setter x:Uid="DirectionRadioButtonStyle.FocusVisualStyle" Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+                <Setter x:Uid="DirectionRadioButtonStyle.Template" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate  x:Uid="DirectionRadioButtonStyle.ControlTemplate" TargetType="{x:Type RadioButton}">
+                            <Border x:Uid="DirectionRadioButtonStyle.ControlTemplate.Border" x:Name="bd" BorderBrush="{DynamicResource Brush.Item.Border}" BorderThickness="1">
+                                <Grid x:Uid="DirectionRadioButtonStyle.ControlTemplate.Grid" x:Name="RadioBackground" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="Transparent" HorizontalAlignment="Left">
+                                    <TextBlock x:Uid="DirectionRadioButtonStyle.ControlTemplate.TextBlock" x:Name="Text"  Text="Abc" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource Brush.Text.Foreground}">
+                                        <TextBlock.RenderTransform>
+                                            <RotateTransform x:Uid="DirectionRadioButtonStyle.ControlTemplate.TextBlock.RotateTransform" Angle="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" CenterX="20" CenterY="17"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="DirectionRadioButtonStyle.ControlTemplate.Trigger" Property="IsChecked" Value="True">
+                                    <Setter x:Uid="DirectionRadioButtonStyle.ControlTemplate.Trigger.Background" Property="Background" TargetName="bd" Value="{DynamicResource Brush.RadioBtn.Checked}"/>
+                                    <Setter x:Uid="DirectionRadioButtonStyle.ControlTemplate.Trigger.Foreground" Property="Foreground" TargetName="Text" Value="{DynamicResource Brush.Text.White}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="CheckBoxStyle" x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+                <Setter x:Uid="CheckBoxStyle.FocusVisualStyle" Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+                <Setter x:Uid="CheckBoxStyle.Template" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="CheckBoxStyle.ControlTemplate" TargetType="{x:Type CheckBox}">
+                            <BulletDecorator x:Uid="CheckBoxStyle.BulletDecorator" FlowDirection="LeftToRight" VerticalAlignment="Center">
+                                <BulletDecorator.Bullet>
+                                    <Image x:Uid="CheckBoxStyle.Image" x:Name="cb" Height="16" Width="16" Source="{controls:MultiDPIImageSource false}" SnapsToDevicePixels="true"/>
+                                </BulletDecorator.Bullet>
+                                <Border x:Uid="CheckBoxStyle.Border" x:Name="Border" SnapsToDevicePixels="True"
+                                        Background="Transparent" BorderBrush="Transparent">
+                                    <ContentPresenter x:Uid="CheckBoxStyle.ContentPresenter"/>
+                                </Border>
+                            </BulletDecorator>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="CheckBoxStyle.IsChecked" Property="IsChecked" Value="True">
+                                    <Setter x:Uid="CheckBoxStyle.IsChecked.Source" TargetName="cb" Property="Source" Value="{controls:MultiDPIImageSource true}"></Setter>
+                                    <Setter x:Uid="CheckBoxStyle.IsChecked.Background" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+                                    <Setter x:Uid="CheckBoxStyle.IsChecked.BorderBrush" Property="BorderBrush" Value="{DynamicResource Brush.Background.Gray}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <ControlTemplate x:Uid="ButtonTemplate" TargetType="Button" x:Key="ButtonTemplate">
+                <Border x:Uid="ButtonTemplate.Border" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                    <ContentPresenter x:Uid="ButtonTemplate.ContentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger x:Uid="ButtonTemplate.IsMouseOver" Property="IsMouseOver" Value="True">
+                        <Setter x:Uid="ButtonTemplate.IsMouseOver.Background" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                        <Setter x:Uid="ButtonTemplate.IsMouseOver.BorderBrush" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="ButtonTemplate.IsPressed" Property="IsPressed" Value="True">
+                        <Setter x:Uid="ButtonTemplate.IsPressed.Background" Property="Background" Value="{DynamicResource Brush.Item.SelectedBackground}"/>
+                        <Setter x:Uid="ButtonTemplate.IsPressed.BorderBrush" Property="BorderBrush" Value="{DynamicResource Brush.Item.SelectedBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="ButtonTemplate.IsKeyboardFocused" Property="IsKeyboardFocused" Value="True">
+                        <Setter x:Uid="ButtonTemplate.IsKeyboardFocused.BorderBrush" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <Style x:Uid="CommonButtonStyle" x:Key="CommonButtonStyle" TargetType="{x:Type Button}">
+                <Setter x:Uid="CommonButtonStyle.Background" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+                <Setter x:Uid="CommonButtonStyle.Foreground" Property="Foreground" Value="{DynamicResource Brush.SharedStyle.FlatButton.Foreground}"/>
+                <Setter x:Uid="CommonButtonStyle.BorderBrush" Property="BorderBrush" Value="{DynamicResource Brush.Item.Border}"/>
+                <Setter x:Uid="CommonButtonStyle.FocusVisualStyle" Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter x:Uid="CommonButtonStyle.Template" Property="Template" Value="{StaticResource ButtonTemplate}"/>
+                <Style.Triggers>
+                    <Trigger x:Uid="Trigger_1" Property="IsEnabled" Value="False">
+                        <Setter x:Uid="Setter_61" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Gray}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_1">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Uid="TextBlock_1" Grid.Row="0"
+                   Text="Pages will be watermarked using the settings shown below. Select/adjust the settings you would like applied during the watermarking process."
+                   MinHeight="64" MinWidth="600"
+                   Margin="5,16,5,0"
+                   LineHeight="16"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Left"
+                   TextWrapping="Wrap"
+                   Style="{StaticResource SecondaryTextBlockStyle}"/>
+
+        <Grid x:Uid="Grid_3" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Uid="ColumnDefinition_1" Width="1.1*"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_3" Width="1.5*"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_4" Width="Auto"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_5" Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_4" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_5" Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Image Watermark Part-->
+            <CheckBox x:Uid="CheckBox_1" Grid.Row="0" Grid.Column="0" Margin="10,0,0,5" Style="{StaticResource CheckBoxStyle}" HorizontalAlignment="Left"
+                      IsChecked="{Binding Path=DataContext.UseImageIsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}">
+                <TextBlock x:Uid="TextBlock_2" Text="Use an image in the watermark" Margin="5,0,0,0" TextTrimming="CharacterEllipsis"/>
+            </CheckBox>
+
+            <Grid x:Uid="Grid_4" Grid.Row="1" Grid.Column="0" Margin="5,0,0,0" IsEnabled="{Binding Path=DataContext.UseImageIsChecked, ElementName=WatermarkSettingsView}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_6" Width="*"/>
+                    <ColumnDefinition x:Uid="ColumnDefinition_7" Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_6" Height="Auto"/>
+                    <RowDefinition x:Uid="RowDefinition_7" Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Uid="TextBlock_3" Text="Image" Grid.Column="0" Grid.Row="0" Style="{StaticResource PrimaryTextBlockBlueStyle}" Margin="5,0,0,5"/>
+
+                <WrapPanel x:Uid="WrapPanel_1" Grid.Column="0" Grid.Row="1" Margin="5,0,0,5">
+                    <Grid x:Uid="Grid_5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Border x:Uid="Border_1" BorderThickness="2" BorderBrush="{DynamicResource Brush.Title}" Visibility="{Binding Path=DataContext.IsEyeDropperOn, ElementName=WatermarkSettingsView, Converter={StaticResource BoolToVisibility}}"/>
+                        <Border x:Uid="Border_2" Margin="5" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True" Background="{DynamicResource Brush.Background.Gray}"
+                                BorderBrush="{DynamicResource Brush.WaterMarkRect.Border}" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <Viewbox x:Uid="PreviewViewbox" x:Name="PreviewViewbox">
+                                <Image x:Uid="PreviewImage" x:Name="PreviewImage" Source="{Binding Path=DataContext.SourceImage, ElementName=WatermarkSettingsView}" Width="100" Height="140"
+                                       Visibility="{Binding Path=DataContext.SourceImage, ElementName=WatermarkSettingsView, Converter={StaticResource ContentToVisibilityConverter}}"/>
+                            </Viewbox>
+                            <Border.ToolTip>
+                                <TextBlock x:Uid="TextBlock_4" Text="Image to be used in the watermark." Style="{StaticResource ToolTipTextBlock}"/>
+                            </Border.ToolTip>
+                        </Border>
+                    </Grid>
+                </WrapPanel>
+                
+                <StackPanel x:Uid="StackPanel_3" Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,5,0,0">
+                    <Button x:Uid="Button_1" Width="60" Height="24" Content="Open..." Style="{StaticResource CommonButtonStyle}"  Click="OpenImageButton_Click">
+                        <Button.ToolTip>
+                            <TextBlock x:Uid="TextBlock_6" Text="Open to select a watermark image." Style="{StaticResource ToolTipTextBlock}"/>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <StackPanel x:Uid="StackPanel_4" Orientation="Horizontal" Margin="0,5" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                IsEnabled="{Binding Path=DataContext.BackgroundNotTransparent, ElementName=WatermarkSettingsView}">
+                        <Rectangle x:Uid="Rectangle_1" Width="25" Height="25" Fill="{Binding Path=DataContext.ColorBoxBrush, ElementName=WatermarkSettingsView}" StrokeThickness="1" Stroke="{DynamicResource Brush.Item.Border}">
+                            <Rectangle.ToolTip>
+                                <TextBlock x:Uid="TextBlock_7" Text="Color used to identify the watermark image's background transparency color." Style="{StaticResource ToolTipTextBlock}"/>
+                            </Rectangle.ToolTip>
+                        </Rectangle>
+
+                        <controls:ImageToggleButton x:Uid="ColorPickerButton" x:Name="ColorPickerButton" Width="25" Height="25" HorizontalAlignment="Right" Style="{StaticResource ImageToggleButtonStyle}" 
+                                                    Margin="12,0,0,0" Click="EyeDropperButton_Click" ImageSource="/Resources/eye_dropper.png" Padding="0" BorderBrush="{DynamicResource Brush.Item.Border}" BorderThickness="1"
+                                                    AutomationProperties.Name="Color Picker" IsChecked="{Binding Path=DataContext.IsEyeDropperOn, ElementName=WatermarkSettingsView, Mode=TwoWay}">
+                            <controls:ImageToggleButton.ToolTip>
+                                <TextBlock x:Uid="TextBlock_8" Text="Pick the color from the watermark image used to identify the background transparency color." Style="{StaticResource ToolTipTextBlock}"/>
+                            </controls:ImageToggleButton.ToolTip>
+                        </controls:ImageToggleButton>
+                    </StackPanel>
+
+                    <TextBlock x:Uid="TextBlock_9" Text="Background transparency" TextAlignment="Left" TextWrapping="Wrap" Foreground="{DynamicResource Brush.Item.Text.Gray.Highlight}" FontSize="11" FontFamily="{DynamicResource Shared.FontFamily.SegoeUI}"/>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel x:Uid="StackPanel_5" Grid.Row="2" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top"
+                        IsEnabled="{Binding Path=DataContext.UseImageIsChecked, ElementName=WatermarkSettingsView}">
+                <TextBlock x:Uid="TextBlock_10" Text="Transparency" Margin="0,5,0,2" Style="{StaticResource PrimaryTextBlockStyle}">
+                    <TextBlock.ToolTip>
+                        <TextBlock x:Uid="TextBlock_11" Text="Transparency applied to the watermark image's foreground." Style="{StaticResource ToolTipTextBlock}"/>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+
+                <Slider x:Uid="Slider_1" Maximum="50" Minimum="0" Width="140" SmallChange="1" AutomationProperties.Name="Image Tranparency"
+                        Value="{Binding Path=DataContext.ImageOpacity, ElementName=WatermarkSettingsView, Mode=TwoWay}" FocusVisualStyle="{DynamicResource FocusVisual}" />
+
+                <Grid x:Uid="Grid_2" Width="140" HorizontalAlignment="Center">
+                    <TextBlock x:Uid="TextBlock_12" Text="0%" HorizontalAlignment="Left" FontSize="9" Foreground="{DynamicResource Brush.Text.Foreground}"/>
+                    <TextBlock x:Uid="TextBlock_13" Text="50%" HorizontalAlignment="Right" FontSize="9" Foreground="{DynamicResource Brush.Text.Foreground}"/>
+                </Grid>
+                
+                <StackPanel x:Uid="StackPanel_6" Orientation="Vertical">
+                    <TextBlock x:Uid="TextBlock_14" Text="Placement" Style="{StaticResource PrimaryTextBlockStyle}">
+                        <TextBlock.ToolTip>
+                            <TextBlock x:Uid="TextBlock_15" Text="Location and direction on the page where the watermark image will be superimposed." Style="{StaticResource ToolTipTextBlock}"/>
+                        </TextBlock.ToolTip>
+                    </TextBlock>
+                    <Grid x:Uid="Page.StackPanel.PlacementGrid" HorizontalAlignment="Center" Margin="0,5,0,0" KeyboardNavigation.TabNavigation="Once" 
+                          IsKeyboardFocusWithinChanged="Panel_IsKeyboardFocusWithinChanged">
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Uid="Page.StackPanel.PlacementGrid.RowDefinition_0" Height="27"/>
+                            <RowDefinition x:Uid="Page.StackPanel.PlacementGrid.RowDefinition_1" Height="27"/>
+                            <RowDefinition x:Uid="Page.StackPanel.PlacementGrid.RowDefinition_2" Height="27"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="Page.StackPanel.PlacementGrid.ColumnDefinition_0" Width="20"/>
+                            <ColumnDefinition x:Uid="Page.StackPanel.PlacementGrid.ColumnDefinition_1" Width="20"/>
+                            <ColumnDefinition x:Uid="Page.StackPanel.PlacementGrid.ColumnDefinition_2" Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Uid="RadioButton_10" AutomationProperties.Name="Image Placement, top left" Grid.Row="0" Grid.Column="0" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation0IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_11" AutomationProperties.Name="Image Placement, top center" Grid.Row="0" Grid.Column="1" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation1IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_12" AutomationProperties.Name="Image Placement, top right" Grid.Row="0" Grid.Column="2" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation2IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_13" AutomationProperties.Name="Image Placement, center left" Grid.Row="1" Grid.Column="0" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation3IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_14" AutomationProperties.Name="Image Placement, center" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation4IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_15" AutomationProperties.Name="Image Placement, center right" Grid.Row="1" Grid.Column="2" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation5IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_16" AutomationProperties.Name="Image Placement, Bottom left" Grid.Row="2" Grid.Column="0" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation6IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_17" AutomationProperties.Name="Image Placement, Bottom center" Grid.Row="2" Grid.Column="1" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation7IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_18" AutomationProperties.Name="Image Placement, Bottom right" Grid.Row="2" Grid.Column="2" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Image_Placement" IsChecked="{Binding Path=DataContext.ImageLocation8IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+
+            <!-- Split Line -->
+            <Rectangle x:Uid="Rectangle_2" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="5,0,5,10"  Width="1" Fill="DarkGray"/>
+
+            <!-- Text Watermark Part-->
+            <CheckBox x:Uid="CheckBox_2" Grid.Row="0" Grid.Column="2" Margin="5,0,0,5" Style="{StaticResource CheckBoxStyle}" HorizontalAlignment="Left"
+                      IsChecked="{Binding Path=DataContext.UseTextIsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}">
+                <TextBlock x:Uid="TextBlock_16" Text="Use text in the watermark" Margin="5,0,0,0" TextTrimming="CharacterEllipsis"/>
+            </CheckBox>
+
+            <StackPanel x:Uid="StackPanel_7" Grid.Row="1" Grid.Column="2" Orientation="Vertical" IsEnabled="{Binding Path=DataContext.UseTextIsChecked, ElementName=WatermarkSettingsView}">
+                <StackPanel x:Uid="StackPanel_8" Orientation="Vertical" Margin="5,0">
+                    <TextBlock x:Uid="TextBlock_17" Text="Text" Style="{StaticResource PrimaryTextBlockBlueStyle}" Margin="0,0,0,5"/>
+
+                    <TextBox x:Uid="Page.StackPanel.ContentTextBox" AutomationProperties.Name="Content Text Box" Height="30" BorderThickness="2" Margin="0,5,0,0"
+                             HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="{DynamicResource Brush.Item.Border}"
+                             Text="{Binding Path=DataContext.Content, ElementName=WatermarkSettingsView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBox.ToolTip>
+                            <TextBlock x:Uid="TextBlock_18" Text="The text to be used in the watermark." Style="{StaticResource ToolTipTextBlock}"/>
+                        </TextBox.ToolTip>
+                    </TextBox>
+
+                    <DockPanel x:Uid="DockPanel_1">
+                        <StackPanel x:Uid="StackPanel_9" Orientation="Vertical">
+                            <CheckBox x:Uid="CheckBox_3" Style="{StaticResource CheckBoxStyle}" HorizontalAlignment="Left" Margin="0,5,0,0"
+                                      IsChecked="{Binding Path=DataContext.DateStampIsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_19" Text="Include a date stamp" Style="{StaticResource CheckBoxTextBlockStyle}"/>
+                                <CheckBox.ToolTip>
+                                    <TextBlock x:Uid="TextBlock_20" Text="Append a date stamp to your watermark text." Style="{StaticResource ToolTipTextBlock}"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+
+                            <CheckBox x:Uid="CheckBox_4" Style="{StaticResource CheckBoxStyle}" HorizontalAlignment="Left" Margin="0,5,0,0"
+                                      IsChecked="{Binding Path=DataContext.TimeStampIsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_21" Text="Include a time stamp" Style="{StaticResource CheckBoxTextBlockStyle}"/>
+                                <CheckBox.ToolTip>
+                                    <TextBlock x:Uid="TextBlock_22" Text="Append a time stamp to your watermark text." Style="{StaticResource ToolTipTextBlock}"/>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                        </StackPanel>
+
+                        <Button x:Uid="Page.StackPanel.ContentAndFontDescriptionGrid.FontButton" x:Name="FontButton" Width="80" Height="24" HorizontalAlignment="Right"
+                                Content="Font" Margin="16,0,0,0" Style="{StaticResource CommonButtonStyle}" Click="FontButton_Click">
+                        </Button>
+                    </DockPanel>
+                </StackPanel>
+
+                <StackPanel x:Uid="StackPanel_10" Orientation="Vertical" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock x:Uid="TextBlock_23" Text="Direction" Margin="0,0,0,5" Style="{StaticResource PrimaryTextBlockStyle}">
+                        <TextBlock.ToolTip>
+                            <TextBlock x:Uid="TextBlock_24" Text="The direction/orientation of the text displayed in the watermark." Style="{StaticResource ToolTipTextBlock}"/>
+                        </TextBlock.ToolTip>
+                    </TextBlock>
+                    <Grid x:Uid="Page.StackPanel.DirectionGrid" Height="45" HorizontalAlignment="Center" KeyboardNavigation.TabNavigation="Once" IsKeyboardFocusWithinChanged="Panel_IsKeyboardFocusWithinChanged">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="Page.StackPanel.DirectionGrid_0" Width="51"/>
+                            <ColumnDefinition x:Uid="Page.StackPanel.DirectionGrid_1" Width="51"/>
+                            <ColumnDefinition x:Uid="Page.StackPanel.DirectionGrid_2" Width="51"/>
+                            <ColumnDefinition x:Uid="Page.StackPanel.DirectionGrid_3" Width="51"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Uid="Page.StackPanel.DirectionGrid.RadioButton0" Grid.Column="0" x:Name="Direction0" AutomationProperties.Name="Direction, horizontal" Tag="0" Style="{StaticResource DirectionRadioButtonStyle}" Width="45" Height="45" GroupName="Direction" IsChecked="{Binding Path=DataContext.TextAngle0IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="Page.StackPanel.DirectionGrid.RadioButton1" Grid.Column="1" x:Name="Direction1" AutomationProperties.Name="Direction, vertical" Tag="90" Style="{StaticResource DirectionRadioButtonStyle}" Width="45" Height="45" GroupName="Direction" IsChecked="{Binding Path=DataContext.TextAngle1IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="Page.StackPanel.DirectionGrid.RadioButton2" Grid.Column="2" x:Name="Direction2" AutomationProperties.Name="Direction, tilt to the right" Tag="-45" Style="{StaticResource DirectionRadioButtonStyle}" Width="45" Height="45" GroupName="Direction" IsChecked="{Binding Path=DataContext.TextAngle2IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="Page.StackPanel.DirectionGrid.RadioButton3" Grid.Column="3" x:Name="Direction3" AutomationProperties.Name="Direction, tilt to the left" Tag="45" Style="{StaticResource DirectionRadioButtonStyle}" Width="45" Height="45" GroupName="Direction" IsChecked="{Binding Path=DataContext.TextAngle3IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel x:Uid="StackPanel_11" Grid.Row="2" Grid.Column="2" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Top"
+                        IsEnabled="{Binding Path=DataContext.UseTextIsChecked, ElementName=WatermarkSettingsView}">
+                <TextBlock x:Uid="TextBlock_25" Text="Transparency" Margin="0,5,0,2" Style="{StaticResource PrimaryTextBlockStyle}">
+                    <TextBlock.ToolTip>
+                        <TextBlock x:Uid="TextBlock_26" Text="Transparency applied to the watermark text." Style="{StaticResource ToolTipTextBlock}"/>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+
+                <Slider x:Uid="Slider_2" Maximum="50" Minimum="0" Width="140" SmallChange="1" AutomationProperties.Name="Text Transparency"
+                        Value="{Binding Path=DataContext.TextOpacity, ElementName=WatermarkSettingsView, Mode=TwoWay}" FocusVisualStyle="{DynamicResource FocusVisual}" />
+
+                <Grid x:Uid="Grid_6" Width="140" HorizontalAlignment="Center">
+                    <TextBlock x:Uid="TextBlock_27" Text="0%" HorizontalAlignment="Left" FontSize="9" Foreground="{DynamicResource Brush.Text.Foreground}"/>
+                    <TextBlock x:Uid="TextBlock_28" Text="50%" HorizontalAlignment="Right" FontSize="9" Foreground="{DynamicResource Brush.Text.Foreground}"/>
+                </Grid>
+
+                <StackPanel Grid.Row="3" Grid.Column="2" x:Uid="StackPanel_2">
+                    <TextBlock x:Uid="TextBlock_29" Text="Placement" Margin="0,0,0,5" Style="{StaticResource PrimaryTextBlockStyle}">
+                        <TextBlock.ToolTip>
+                            <TextBlock x:Uid="TextBlock_30" Text="Location and direction on the page where the watermark text will be superimposed." Style="{StaticResource ToolTipTextBlock}"/>
+                        </TextBlock.ToolTip>
+                    </TextBlock>
+                    <Grid x:Uid="Grid_7" HorizontalAlignment="Center" KeyboardNavigation.TabNavigation="Once" IsKeyboardFocusWithinChanged="Panel_IsKeyboardFocusWithinChanged">
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Uid="RowDefinition_8" Height="27"/>
+                            <RowDefinition x:Uid="RowDefinition_9" Height="27"/>
+                            <RowDefinition x:Uid="RowDefinition_10" Height="27"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="ColumnDefinition_8" Width="20"/>
+                            <ColumnDefinition x:Uid="ColumnDefinition_9" Width="20"/>
+                            <ColumnDefinition x:Uid="ColumnDefinition_10" Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Uid="RadioButton_1" AutomationProperties.Name="Text Placement, top left" Grid.Row="0" Grid.Column="0" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation0IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_2" AutomationProperties.Name="Text Placement, top center" Grid.Row="0" Grid.Column="1" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation1IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_3" AutomationProperties.Name="Text Placement, top right" Grid.Row="0" Grid.Column="2" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation2IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_4" AutomationProperties.Name="Text Placement, center left" Grid.Row="1" Grid.Column="0" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation3IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_5" AutomationProperties.Name="Text Placement, center" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation4IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_6" AutomationProperties.Name="Text Placement, center right" Grid.Row="1" Grid.Column="2" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation5IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_7" AutomationProperties.Name="Text Placement, Bottom left" Grid.Row="2" Grid.Column="0" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation6IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_8" AutomationProperties.Name="Text Placement, Bottom center" Grid.Row="2" Grid.Column="1" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation7IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                        <RadioButton x:Uid="RadioButton_9" AutomationProperties.Name="Text Placement, Bottom right" Grid.Row="2" Grid.Column="2" Style="{StaticResource PlacementRadioButtonStyle}" GroupName="Text_Placement" IsChecked="{Binding Path=DataContext.TextLocation8IsChecked, ElementName=WatermarkSettingsView, Mode=TwoWay}"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Split Line -->
+            <Rectangle x:Uid="Rectangle_3" Grid.Row="0" Grid.Column="3" Grid.RowSpan="3" Margin="5,0,5,10"  Width="1" Fill="DarkGray"/>
+
+            <!-- Result Part -->
+            <StackPanel x:Uid="StackPanel_12" Grid.Row="1" Grid.Column="4" Orientation="Vertical" HorizontalAlignment="Center" Width="135">
+                <TextBlock x:Uid="TextBlock_31" Text="Result" Style="{StaticResource PrimaryTextBlockBlueStyle}" Margin="0,0,10,5"/>
+
+                <Border x:Uid="Border_3" Grid.Column="0" Grid.Row="1"  Margin="5,5,15,5" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True" 
+                        BorderBrush="{DynamicResource Brush.WaterMarkRect.Border}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Viewbox x:Uid="ResultViewbox" x:Name="ResultViewbox">
+                        <Canvas x:Uid="ResultCanvas" x:Name="ResultCanvas" Width="100" Height="140">
+                            <Image x:Uid="ResultImage" x:Name="ResultImage" Source="/Resources/Result.png" Stretch="Uniform" Width="100" Height="140">
+                                <Image.ToolTip>
+                                    <TextBlock x:Uid="TextBlock_32" Text="Result that can be expected (approximation) during a Watermark conversion operation." Style="{StaticResource ToolTipTextBlock}"/>
+                                </Image.ToolTip>
+                            </Image>
+                        </Canvas>
+                    </Viewbox>
+                </Border>
+            </StackPanel>
+
+            <Grid x:Uid="Grid_8" Grid.Row="2" Grid.Column="4" >
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_11" Height="*"/>
+                    <RowDefinition x:Uid="RowDefinition_12" Height="70"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Uid="StackPanel_13" Orientation="Vertical" Margin="5,0" HorizontalAlignment="Center" VerticalAlignment="Top" KeyboardNavigation.TabNavigation="Once"
+                            IsKeyboardFocusWithinChanged="Panel_IsKeyboardFocusWithinChanged">
+                    <TextBlock x:Uid="TextBlock_33" Text="Overlay Order" Margin="0,5,0,5" HorizontalAlignment="Left" Style="{StaticResource PrimaryTextBlockStyle}"/>
+                    <RadioButton x:Uid="RadioButton_19" Content="Text over image" GroupName="Overlay" Margin="0,2" Style="{DynamicResource FlatRadioButtonStyle}"
+                                 IsChecked="{Binding Path=DataContext.IsTextOverImage, ElementName=WatermarkSettingsView, Mode=TwoWay}">
+                        <RadioButton.ToolTip>
+                            <TextBlock x:Uid="TextBlock_34" Text="Apply the watermark text over the image and page content." Style="{StaticResource ToolTipTextBlock}"/>
+                        </RadioButton.ToolTip>
+                    </RadioButton>
+                    <RadioButton x:Uid="RadioButton_20" Content="Image over text" GroupName="Overlay" Margin="0,2" Style="{DynamicResource FlatRadioButtonStyle}"
+                                 IsChecked="{Binding Path=DataContext.IsImageOverText, ElementName=WatermarkSettingsView, Mode=OneWay}">
+                        <RadioButton.ToolTip>
+                            <TextBlock x:Uid="TextBlock_35" Text="Apply the watermark image over the text and page content." Style="{StaticResource ToolTipTextBlock}"/>
+                        </RadioButton.ToolTip>
+                    </RadioButton>
+                    <StackPanel.Style>
+                        <Style x:Uid="Style_17" TargetType="StackPanel">
+                            <Setter x:Uid="Setter_50" Property="Visibility" Value="Hidden"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger x:Uid="MultiDataTrigger_1">
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition x:Uid="Condition_1" Binding="{Binding Path=DataContext.UseImageIsChecked, ElementName=WatermarkSettingsView}" Value="True"/>
+                                        <Condition x:Uid="Condition_2" Binding="{Binding Path=DataContext.UseTextIsChecked, ElementName=WatermarkSettingsView}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter x:Uid="Setter_51" Property="Visibility" Value="Visible"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                </StackPanel>
+
+                <Button x:Uid="Button_2" Width="80" Height="28" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="4" Margin="10" IsDefault="True" Content="OK" Click="OKButton_Click">
+                    <Button.Style>
+                        <Style x:Uid="Style_18" BasedOn="{StaticResource FlatButtonBaseStyle}" TargetType="{x:Type Button}">
+                            <Setter x:Uid="Setter_52" Property="IsEnabled" Value="True"/>
+                            <Setter x:Uid="Setter_53" Property="Background" Value="{DynamicResource Brush.Title}"/>
+                            <Setter x:Uid="Setter_54" Property="Foreground" Value="{DynamicResource Brush.SharedStyle.FlatBlueButton.Foreground}"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger x:Uid="MultiDataTrigger_2">
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition x:Uid="Condition_3" Binding="{Binding Path=DataContext.UseImageIsChecked, ElementName=WatermarkSettingsView}" Value="False"/>
+                                        <Condition x:Uid="Condition_4" Binding="{Binding Path=DataContext.UseTextIsChecked, ElementName=WatermarkSettingsView}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter x:Uid="Setter_55" Property="IsEnabled" Value="False"/>
+                                    <Setter x:Uid="Setter_56" Property="Background" Value="{DynamicResource Brush.FilaPaneCloudView.ListBoxItemStyle.SelectedNotActive.Background}"/>
+                                    <Setter x:Uid="Setter_57" Property="Foreground" Value="{DynamicResource Brush.FilePaneCloudView.AddToZipButton.Foreground.Disable}"/>
+                                </MultiDataTrigger>
+                                <DataTrigger x:Uid="DataTrigger_3" Binding="{Binding Path=DataContext.IsEyeDropperOn, ElementName=WatermarkSettingsView}" Value="True">
+                                    <Setter x:Uid="Setter_58" Property="IsEnabled" Value="False"/>
+                                    <Setter x:Uid="Setter_59" Property="Background" Value="{DynamicResource Brush.FilaPaneCloudView.ListBoxItemStyle.SelectedNotActive.Background}"/>
+                                    <Setter x:Uid="Setter_60" Property="Foreground" Value="{DynamicResource Brush.FilePaneCloudView.AddToZipButton.Foreground.Disable}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</controls:BaseWindow>

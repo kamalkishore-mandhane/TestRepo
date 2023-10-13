@@ -1,0 +1,13 @@
+﻿<ResourceDictionary x:Uid="ResourceDictionary_1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingBrush x:Uid="DrawingBrush_1" x:Key="TrialIconDrawingBrush" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_1">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_1" Brush="#FFFFFFFF" Geometry="F1 M 11.3309,17.5826C 9.96954,17.5826 8.86534,16.5253 8.86534,15.2218C 8.86534,15.035 8.89368,14.8553 8.93688,14.6815L 4.24807,10.1912L 5.99684,8.51666L 10.6431,12.9656C 10.8632,12.9042 11.0906,12.861 11.3309,12.861C 12.6929,12.861 13.7964,13.9183 13.7964,15.2218C 13.7964,16.5253 12.6929,17.5826 11.3309,17.5826 Z M 12.5519,4.78308L 12.5519,2.28131L 14.8446,2.28131L 14.8446,-6.10352e-005L 7.81715,-6.10352e-005L 7.81715,2.28131L 10.1099,2.28131L 10.1099,4.78827C 7.97509,5.00995 6.01844,5.79712 4.40601,6.99335L 2.13483,4.81866L 0.386066,6.49316L 2.61944,8.63232C 0.984737,10.513 1.478e-007,12.9294 1.478e-007,15.5682C 1.478e-007,21.5599 5.07285,26.418 11.3309,26.418C 17.5889,26.418 22.6618,21.5599 22.6618,15.5682C 22.6618,9.97076 18.2348,5.3667 12.5519,4.78308 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+</ResourceDictionary>

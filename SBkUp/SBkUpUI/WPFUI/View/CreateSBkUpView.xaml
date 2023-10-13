@@ -1,0 +1,169 @@
+﻿<local:BaseWindow x:Uid="Window_1" x:Class="SBkUpUI.WPFUI.View.CreateSBkUpView"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:SBkUpUI.WPFUI.View"
+                  xmlns:controls="clr-namespace:SBkUpUI.WPFUI.Controls"
+                  mc:Ignorable="d"
+                  WindowStartupLocation="CenterOwner"
+                  SizeToContent="WidthAndHeight"
+                  ResizeMode="NoResize"
+                  ShowInTaskbar="False"
+                  KeyDown="CreateSBkUpViewWindow_KeyDown"
+                  Loaded="CreateSBkUpView_Loaded"
+                  Unloaded="CreateSBkUpView_UnLoaded"
+                  Title="Create Secure Backup">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1" >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_3">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Uid="Style_1" x:Key="ButtonStyle"
+                   TargetType="Button"
+                   BasedOn="{StaticResource FlatBlueButtonStyle}">
+                <Setter x:Uid="Setter_9" Property="HorizontalAlignment" Value="Right"/>
+            </Style>
+
+            <Style x:Uid="Style_2" x:Key="TextBlockStyle"
+                   TargetType="TextBlock">
+                <Setter x:Uid="Setter_10" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Black}"/>
+                <Setter x:Uid="Setter_11" Property="FontFamily" Value="{DynamicResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_12" Property="FontSize" Value="{DynamicResource Shared.FontSize.13px}"/>
+            </Style>
+
+            <Style x:Uid="Style_3" x:Key="TextBoxStyle"
+                   TargetType="TextBox">
+                <Setter x:Uid="Setter_13" Property="Focusable" Value="False"/>
+                <Setter x:Uid="Setter_14" Property="HorizontalAlignment" Value="Left"/>
+                <Setter x:Uid="Setter_15" Property="VerticalAlignment" Value="Center"/>
+                <Setter x:Uid="Setter_16" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_17" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+                <Setter x:Uid="Setter_18" Property="FontSize" Value="{StaticResource Shared.FontSize.13px}"/>
+                <Setter x:Uid="Setter_19" Property="IsEnabled" Value="False"/>
+                <Setter x:Uid="Setter_20" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_1" TargetType="TextBox">
+                            <Border x:Uid="border" x:Name="border" BorderThickness="2" CornerRadius="0"
+                                BorderBrush="{DynamicResource Brush.SelectByNameDialog.FileNameTextBox.Border}">
+                                <ScrollViewer x:Uid="PART_ContentHost" x:Name="PART_ContentHost"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_1">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_4" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_5" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_6" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_7" Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Uid="TextBlock_1"
+                   Grid.Row="0"
+                   Text="Folder to back up:"
+                   Style="{StaticResource TextBlockStyle}"
+                   Margin="16,5"/>
+        <StackPanel x:Uid="stackPanel_1" Grid.Row="1" Orientation="Horizontal" Margin="16,0">
+            <TextBox x:Uid="inputTextBox"
+                     x:Name="backupFolderTextBox"
+                     Width="350"
+                     Height="26"
+                     Margin="20,0,0,0"
+                     Style="{StaticResource TextBoxStyle}"/>
+            <Button x:Uid="button_1" Margin="12,0,0,0" Width="26" Height="26" HorizontalAlignment="Center"
+                    Click="SelectBackupFolderButton_Click"
+                    x:Name="SelectBackupFolderButton"
+                    AutomationProperties.Name="Select Backup Folder"
+                    Style="{StaticResource FlatImageButtonStyle}"
+                    Tag="../Resources/browser.ico">
+            </Button>
+        </StackPanel>
+
+        <TextBlock x:Uid="TextBlock_2" Grid.Row="2"
+                   Text="Where to store the backup file:"
+                   Style="{StaticResource TextBlockStyle}"
+                   Margin="16,5"/>
+        <StackPanel x:Uid="StackPanel_1" Grid.Row="3" Orientation="Horizontal" Margin="16,0">
+            <TextBox x:Uid="TextBox_1"
+                     x:Name="storeFolderTextBox"
+                     Width="350"
+                     Height="26"
+                     Margin="20,0,0,0"
+                     Style="{StaticResource TextBoxStyle}"/>
+            <Button x:Uid="Button_1" Margin="12,0,0,0" Width="26" Height="26" HorizontalAlignment="Center"
+                    Click="SelectStoreFolderButton_Click"
+                    x:Name="SelectStoreFolderButton"
+                    AutomationProperties.Name="Select Store Folder"
+                    Style="{StaticResource FlatImageButtonStyle}"
+                    Tag="../Resources/browser.ico">
+            </Button>
+        </StackPanel>
+
+        <StackPanel x:Uid="StackPanel_2" Grid.Row="4" Orientation="Horizontal" Margin="16,5,16,0" Height="30">
+            <CheckBox x:Uid="checkbox_1"
+                      Style="{StaticResource CheckBoxStyle}"
+                      x:Name="encryptCheckBox">
+                <TextBlock x:Uid="TextBlock_4" Text="Encrypt" Style="{StaticResource TextBlockStyle}" Margin="3,0,0,0" TextTrimming="CharacterEllipsis"/>
+            </CheckBox>
+            <Button x:Uid="Button_2" Margin="10,0,0,0" Width="20" Height="20" HorizontalAlignment="Center"
+                    Click="PasswordDlg_Click"
+                    x:Name="encryptButton"
+                    AutomationProperties.Name="Encrypt Options"
+                    Style="{StaticResource SymbolsButtonStyle}">
+                <StackPanel x:Uid="StackPanel_4" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Ellipse x:Uid="Ellipse_1" Width="2.5" Height="2.5"
+                                     Fill="{DynamicResource Brush.ThreeDots.Background}" Canvas.Left="135"
+                                     Canvas.Top="25" Margin="0,6,0,0"/>
+
+                    <Ellipse x:Uid="Ellipse_2" Width="2.5" Height="2.5"
+                                     Fill="{DynamicResource Brush.ThreeDots.Background}" Canvas.Left="135"
+                                     Canvas.Top="25" Margin="2,6,0,0"/>
+
+                    <Ellipse x:Uid="Ellipse_3" Width="2.5" Height="2.5"
+                                     Fill="{DynamicResource Brush.ThreeDots.Background}" Canvas.Left="135"
+                                     Canvas.Top="25" Margin="2,6,0,0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel x:Uid="StackPanel_3" Grid.Row="5" Orientation="Horizontal" Margin="16,0" Height="30">
+            <CheckBox x:Uid="CheckBox_1"
+                      Style="{StaticResource CheckBoxStyle}"
+                      x:Name="keepCheckBox">
+                <TextBlock x:Uid="TextBlock_5" Text="Keep" Style="{StaticResource TextBlockStyle}" Margin="3,0,0,0" TextTrimming="CharacterEllipsis"/>
+            </CheckBox>
+            <controls:NumericUpDown x:Uid="numericUpDown_1"
+                                    x:Name="numericUpDown"
+                                    Height="26"
+                                    VerticalAlignment="Center"
+                                    Margin="10,0,0,0"
+                                    Value="7"/>
+            <TextBlock x:Uid="TextBlock_3" Text="backups" VerticalAlignment="Center" Style="{StaticResource TextBlockStyle}" Margin="8,0,0,0"/>
+        </StackPanel>
+        <Button x:Uid="okButton"
+                x:Name="okButton"
+                Content="OK"
+                Grid.Row="6"
+                Margin="10,0,10,10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Width="80" Height="30" Click="OkButton_Click"
+                Style="{StaticResource ButtonStyle}"/>
+    </Grid>
+</local:BaseWindow>

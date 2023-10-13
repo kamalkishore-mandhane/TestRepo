@@ -1,0 +1,223 @@
+﻿<Window x:Uid="Window_1" x:Class="StartupPaneLib.FileAssociationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StartupPaneLib"
+        mc:Ignorable="d"
+        x:Name="FileAssocGuideWindow"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Title="WinZip" Height="650" Width="815">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="Themes/WinZipColorTheme.xaml"/>
+                <ResourceDictionary x:Uid="ResourceDictionary_3" Source="Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_1" Margin="75,35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_1" Width="*"/>
+            <ColumnDefinition x:Uid="ColumnDefinition_2" Width="80"/>
+            <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="70"/>
+            <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_4" Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Uid="MainTitleTextBlock" x:Name="MainTitleTextBlock" 
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                   Text="Set WinZip as the default app in three clicks" 
+                   TextWrapping="Wrap" TextAlignment="Center" 
+                   FontWeight="DemiBold" FontSize="25" 
+                   Foreground="{DynamicResource Brush.Title}" 
+                   HorizontalAlignment="Center"/>
+
+        <TextBlock x:Uid="TextBlock_1" Grid.Row="1" Grid.Column="0" 
+                   Text="Click 'Change'" 
+                   FontSize="20" 
+                   Foreground="Gray"
+                   TextWrapping="Wrap" TextAlignment="Center" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Canvas x:Uid="Canvas_1" Grid.Row="2" Grid.Column="0" 
+                Width="270" Height="355" 
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image x:Uid="Image_1" Width="270" 
+                   Source="pack://application:,,,/StartupPaneLib;component/Resources/left.png" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <TextBlock x:Uid="FileExtTextBlock" x:Name="FileExtTextBlock" 
+                       Text="pdf" 
+                       Foreground="#FF0084F1" 
+                       FontSize="10" 
+                       Canvas.Left="33" Canvas.Top="105"/>
+
+            <Image x:Uid="FirstStepImage" x:Name="FirstStepImage" 
+                   Width="20" Height="20" 
+                   Source="pack://application:,,,/StartupPaneLib;component/resources/1.png" 
+                   Canvas.Left="190" Canvas.Top="168"/>
+            
+            <Border x:Uid="ChangeBlockBorder" x:Name="ChangeBlockBorder" 
+                    MinWidth="88" Height="28" 
+                    BorderBrush="LightGray" 
+                    Background="White" 
+                    BorderThickness="2" 
+                    Canvas.Left="155" Canvas.Top="164">
+                <TextBlock x:Uid="ChangeBlockText" x:Name="ChangeBlockText" 
+                           FontWeight="Bold" FontSize="14"
+                           Text="Change" 
+                           Foreground="Gray"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Canvas>
+
+        <Canvas x:Uid="Canvas_2" Grid.Row="2" Grid.Column="1" 
+                Width="80" Height="50">
+            <Image x:Uid="ArrowImage" x:Name="ArrowImage" 
+                   Width="40" Height="30" 
+                   Stretch="Fill" 
+                   Source="pack://application:,,,/StartupPaneLib;component/Resources/Arrow.png" 
+                   Canvas.Left="0" Canvas.Top="10" 
+                   Visibility="Hidden"/>
+        </Canvas>
+
+        <TextBlock x:Uid="ClickOKTextBlock" x:Name="ClickOKTextBlock" 
+                   Grid.Row="1" Grid.Column="2" 
+                   Text="Click WinZip and click 'OK'" 
+                   FontSize="20" Foreground="Gray"
+                   TextWrapping="Wrap" TextAlignment="Center" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Canvas x:Uid="Canvas_3" Grid.Row="2" Grid.Column="2" 
+                Width="270" Height="355" 
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image x:Uid="Image_2" Width="270" 
+                   Source="pack://application:,,,/StartupPaneLib;component/Resources/right.png" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Center"/>
+
+            <Image x:Uid="SecondStepImage" x:Name="SecondStepImage" 
+                   Width="20" Height="20" 
+                   Source="pack://application:,,,/StartupPaneLib;component/resources/2.png" 
+                   Canvas.Left="130" Canvas.Top="168"/>
+            <Border x:Uid="AppletBlockBorder" x:Name="AppletBlockBorder" 
+                    Background="White" 
+                    Height="48" Width="270" 
+                    BorderBrush="LightGray" 
+                    BorderThickness="2" 
+                    Canvas.Top="154">
+                <StackPanel x:Uid="StackPanel_1" Margin="27,0,0,0" 
+                            Orientation="Horizontal">
+                    
+                    <Image x:Uid="AppletImage" x:Name="AppletImage" 
+                           Width="27" Height="27"/>
+                    
+                    <TextBlock x:Uid="AppletName" x:Name="AppletName" 
+                               Margin="10,0,0,0" 
+                               Text="WinZip" 
+                               FontWeight="Bold" FontSize="14"
+                               Foreground="Gray"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <Image x:Uid="ThirdStepImage" x:Name="ThirdStepImage" 
+                   Width="20" Height="20" 
+                   Source="pack://application:,,,/StartupPaneLib;component/resources/3.png" 
+                   Canvas.Left="185" Canvas.Top="317"/>
+            
+            <Border x:Uid="OkBlockBorder" x:Name="OkBlockBorder" 
+                    Height="28" Width="120" 
+                    BorderBrush="LightGray" 
+                    Background="White" 
+                    BorderThickness="2" 
+                    Canvas.Top="315" Canvas.Left="134">
+                <TextBlock x:Uid="OkBlockText" x:Name="OkBlockText" 
+                           Text="OK" 
+                           FontWeight="Bold" FontSize="14" 
+                           Foreground="DarkGray" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Canvas>
+
+        <Button x:Uid="ShowPropertiesButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"
+                Name="ShowPropertiesButton"
+                Content="Show the File Properties dialog again"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Padding="15,0"
+                Foreground="{DynamicResource Brush.Icon.BasicColor}"
+                Background="Transparent"
+                FontSize="{StaticResource Shared.FontSize.20px}"
+                Style="{DynamicResource RoundCornerButtonStyle}"
+                MinWidth="300" Height="45" Click="ShowPropertiesButton_Click"/>
+    </Grid>
+
+    <Window.Triggers>
+        <EventTrigger x:Uid="EventTrigger_1" RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard x:Uid="BeginStoryboard_1">
+                    <Storyboard x:Uid="Storyboard_1" RepeatBehavior="Forever" Duration="0:0:5.6">
+                        
+                        <!-- Step One -->
+                        <DoubleAnimation x:Uid="DoubleAnimation_1" Duration="0:0:0.4" Storyboard.TargetName="FirstStepImage" Storyboard.TargetProperty="(Canvas.Top)" To="140">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase x:Uid="BackEase_1" Amplitude="0.5"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        
+                        <!-- Step Two -->
+                        <ColorAnimation x:Uid="ColorAnimation_1" Duration="0:0:0.4" To="#FF0084F1" BeginTime="0:0:0.8" Storyboard.TargetName="ChangeBlockBorder" Storyboard.TargetProperty="BorderBrush.Color"/>
+                        <ColorAnimation x:Uid="ColorAnimation_2" Duration="0:0:0.4" To="LightGray" BeginTime="0:0:0.8" Storyboard.TargetName="ChangeBlockBorder" Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation x:Uid="ColorAnimation_3" Duration="0:0:0.4" To="Black" BeginTime="0:0:0.8" Storyboard.TargetName="ChangeBlockText" Storyboard.TargetProperty="Foreground.Color"/>
+                        
+                        <!-- Step Three -->
+                        <ObjectAnimationUsingKeyFrames x:Uid="ObjectAnimationUsingKeyFrames_1" BeginTime="0:0:1.6" Storyboard.TargetName="ArrowImage" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame x:Uid="DiscreteObjectKeyFrame_1" KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation x:Uid="DoubleAnimation_2" Duration="0:0:0.4" BeginTime="0:0:1.6" Storyboard.TargetName="ArrowImage" Storyboard.TargetProperty="(Canvas.Left)" To="20">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase x:Uid="BackEase_2" Amplitude="0.5"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        
+                        <!-- Step Four -->
+                        <DoubleAnimation x:Uid="DoubleAnimation_3" Duration="0:0:0.4" BeginTime="0:0:2.4" Storyboard.TargetName="SecondStepImage" Storyboard.TargetProperty="(Canvas.Top)" To="130">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase x:Uid="BackEase_3" Amplitude="0.5"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        
+                        <!-- Step Five -->
+                        <ColorAnimation x:Uid="ColorAnimation_4" Duration="0:0:0.4" To="#FF0084F1" BeginTime="0:0:3.2" Storyboard.TargetName="AppletBlockBorder" Storyboard.TargetProperty="BorderBrush.Color"/>
+                        <ColorAnimation x:Uid="ColorAnimation_5" Duration="0:0:0.4" To="#FF0084F1" BeginTime="0:0:3.2" Storyboard.TargetName="AppletBlockBorder" Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation x:Uid="ColorAnimation_6" Duration="0:0:0.4" To="White" BeginTime="0:0:3.2" Storyboard.TargetName="AppletName" Storyboard.TargetProperty="Foreground.Color"/>
+                        
+                        <!-- Step Six -->
+                        <DoubleAnimation x:Uid="DoubleAnimation_4" Duration="0:0:0.4" BeginTime="0:0:4" Storyboard.TargetName="ThirdStepImage" Storyboard.TargetProperty="(Canvas.Top)" To="290">
+                            <DoubleAnimation.EasingFunction>
+                                <BackEase x:Uid="BackEase_4" Amplitude="0.5"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        
+                        <!-- Step Seven -->
+                        <ColorAnimation x:Uid="ColorAnimation_7" Duration="0:0:0.4" To="#FF0084F1" BeginTime="0:0:4.8" Storyboard.TargetName="OkBlockBorder" Storyboard.TargetProperty="BorderBrush.Color"/>
+                        <ColorAnimation x:Uid="ColorAnimation_8" Duration="0:0:0.4" To="LightGray" BeginTime="0:0:4.8" Storyboard.TargetName="OkBlockBorder" Storyboard.TargetProperty="Background.Color"/>
+                        <ColorAnimation x:Uid="ColorAnimation_9" Duration="0:0:0.4" To="Black" BeginTime="0:0:4.8" Storyboard.TargetName="OkBlockText" Storyboard.TargetProperty="Foreground.Color"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+</Window>

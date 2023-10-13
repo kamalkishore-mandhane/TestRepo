@@ -1,0 +1,107 @@
+﻿<local:BaseWindow x:Uid="SimpleMessageBoxWindow" x:Class="SafeShare.WPFUI.Controls.SimpleMessageBox"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:SafeShare.WPFUI.Controls"
+                  mc:Ignorable="d"
+                  Background="Transparent"
+                  AllowsTransparency="True"
+                  x:Name="SimpleMessageBoxWindow"
+                  WindowStyle="None"
+                  ResizeMode="NoResize"
+                  WindowStartupLocation="CenterOwner"
+                  MouseLeftButtonDown="Window_MouseLeftButtonDown"
+                  SizeToContent="Height"
+                  Width="300"
+                  AutomationProperties.Name="WinZip SafeShare"
+                  KeyDown="SimpleMessageBoxWindow_KeyDown"
+                  Loaded="SimpleMessageBoxWindow_Loaded"
+                  Unloaded="SimpleMessageBoxWindow_Unloaded">
+
+    <local:BaseWindow.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_5">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/ColorTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/SharedStyle.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_6" Source="../Themes/SharedGeometry.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Uid="Storyboard_1" x:Key="FlashTitleStoryBord" Duration="0:0:0.4" RepeatBehavior="2">
+                <DoubleAnimation x:Uid="DoubleAnimation_1" BeginTime="0:0:0" Duration="0:0:0.1" Storyboard.TargetName="TitleTextBlock" Storyboard.TargetProperty="Opacity" To="0.3" />
+                <DoubleAnimation x:Uid="DoubleAnimation_2" BeginTime="0:0:0.1" Duration="0:0:0.2" Storyboard.TargetName="TitleTextBlock" Storyboard.TargetProperty="Opacity" To="1" />
+            </Storyboard>
+        </ResourceDictionary>
+    </local:BaseWindow.Resources>
+
+    <Border x:Uid="Border_1" Style="{StaticResource DialogBorder}" Margin="0,0,10,10">
+        <Grid x:Uid="Grid_1">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_1" Height="Auto" />
+                <RowDefinition x:Uid="RowDefinition_2" Height="Auto" />
+                <RowDefinition x:Uid="RowDefinition_3" Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Uid="ColumnDefinition_1" Width="*" />
+                <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle x:Uid="Rectangle_1" Margin="14,15,0,0"
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Width="120" Height="15"
+                       HorizontalAlignment="Left"
+                       Fill="{StaticResource WordMarkDrawBrush}" />
+
+            <Button x:Uid="CloseButton" x:Name="CloseButton"
+                    Grid.Row="0" Grid.Column="1"
+                    Margin="0,0,5,0"
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Style="{StaticResource CloseButtonStyle}"
+                    Click="CloseButton_Click" />
+
+            <TextBlock x:Uid="ContextTextBlock" x:Name="ContextTextBlock"
+                       Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                       Margin="15,25,15,25"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Text="Are you sure you want to close SafeShare?"
+                       TextWrapping="Wrap"
+                       FontSize="{StaticResource Shared.FontSize.12px}"
+                       FontWeight="{StaticResource Shared.FontWeight.Normal}"
+                       Foreground="{DynamicResource Brush.Text.Black.Foreground}" />
+
+            <Border x:Uid="Border_2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    Height="65"
+                    BorderThickness="0"
+                    CornerRadius="0,0,6,6"
+                    Background="{DynamicResource Brush.Window.Gray.LightBackground}" />
+
+            <StackPanel x:Uid="StackPanel_1" Grid.Row="2" Grid.Column="1"
+                        Height="65" Orientation="Horizontal">
+                <Button x:Uid="Button_1" x:Name="OkButton"
+                        Width="120" Height="36"
+                        Content="OK"
+                        IsDefault="True"
+                        Margin="0,0,15,15"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        Style="{StaticResource RoundCornerBlackButtonStyle}"
+                        Foreground="{DynamicResource Brush.Text.White.Foreground}"
+                        Click="ButtonOK_Click" />
+
+                <Button x:Uid="Button_2" x:Name="CancelButton"
+                        Width="120" Height="36"
+                        Margin="0,0,15,15"
+                        Content="Cancel"
+                        IsCancel="True"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        Style="{StaticResource RoundCornerWhiteButtonStyle}"
+                        Foreground="{DynamicResource Brush.CancelButton.Black.Foreground}"
+                        Click="ButtonCancel_Click"
+                        Visibility="Visible" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</local:BaseWindow>

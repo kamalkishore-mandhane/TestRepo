@@ -1,0 +1,100 @@
+﻿<ResourceDictionary x:Uid="ResourceDictionary_3" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SBkUpUI.WPFUI.Themes">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <BooleanToVisibilityConverter x:Uid="BooleanToVisibilityConverter_1" x:Key="BoolToVisibility"/>
+
+    <ContextMenu x:Uid="ContextMenu_1" x:Key="ThumbnailPaneContextMenu"
+                 FontFamily="{StaticResource Shared.FontFamily.SegoeUI}"
+                 FontWeight="{StaticResource Shared.FontWeight.Normal}"
+                 IsOpen="{Binding RelativeSource={RelativeSource Mode=Self}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.IsContextMenuOpen}">
+
+        <MenuItem x:Uid="MenuItem_1" Tag="SetBackgroundColor"
+                  Header="Set background color"
+                  Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.IsShowSetBackgroundColorMenuItem, Converter={StaticResource BoolToVisibility}}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.SetBackgroundColorCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_1" Source="/Resources/SetBackgroundColor.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_2" Tag="AddBlankPage"
+                  Header="Add blank page"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.AddBlankPageCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_2" Source="/Resources/AddBlankPage.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_3" Tag="DeletePages"
+                  Header="Delete page(s)"
+                  Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.IsShowDeletePagesMenuItem, Converter={StaticResource BoolToVisibility}}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.DeletePagesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_3" Source="/Resources/DeletePage.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_4" Tag="DeleteBlankPages"
+                  Header="Delete blank page(s)"
+                  Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.IsShowDeleteBlankPagesMenuItem, Converter={StaticResource BoolToVisibility}}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.DeleteBlankPagesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_4" Source="/Resources/DeleteBlankPage.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_5" Tag="ExtractImages"
+                  Header="Extract image(s)"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.ExtractImagesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_5" Source="/Resources/ExportImages.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_6" Tag="ExtractPages"
+                  Header="Extract page(s)"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.ExtractPagesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_6" Source="/Resources/ExportPages.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_7" Tag="ImportFiles"
+                  Header="Import files"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.ImportFilesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_7" Source="/Resources/ImportFiles.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_8" Tag="ImportFromCamera"
+                  Header="Import from Camera"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.ImportFromCameraCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_8" Source="/Resources/ImportCamera.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_9" Tag="ImportFromScanner"
+                  Header="Import from Scanner"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.ImportFromScannerCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_9" Source="/Resources/ImportScanner.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_10" Tag="RotatePages"
+                  Header="Rotate page(s)"
+                  Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.IsShowRotatePagesMenuItem, Converter={StaticResource BoolToVisibility}}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.RotatePagesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_10" Source="/Resources/RotatePage.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_11" Tag="Watermarkpages"
+                  Header="Watermark page(s)"
+                  Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.IsShowWaterMarkPagesMenuItem, Converter={StaticResource BoolToVisibility}}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}, Path=PlacementTarget.DataContext.ThumbnailPaneContextMenuViewModel.ViewModelCommands.WatermarkPagesCommand}">
+            <MenuItem.Icon>
+                <Image x:Uid="Image_11" Source="/Resources/Watermark.ico" Width="16" Height="16" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
+            </MenuItem.Icon>
+        </MenuItem>
+    </ContextMenu>
+
+</ResourceDictionary>

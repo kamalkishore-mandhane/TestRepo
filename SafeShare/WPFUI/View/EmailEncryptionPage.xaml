@@ -1,0 +1,540 @@
+﻿<ctrl:BasePage x:Uid="EmailEncryptionPageView" x:Class="SafeShare.WPFUI.View.EmailEncryptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:SafeShare.WPFUI.View"
+      xmlns:ctrl="clr-namespace:SafeShare.WPFUI.Controls"
+      mc:Ignorable="d"
+      Height="Auto"
+      MinHeight="355"
+      Width="410"
+      Title="EmailEncryptionPage"
+      x:Name="EmailEncryptionPageView"
+      Loaded="EmailEncryptionPageView_Loaded"
+      Unloaded="EmailEncryptionPageView_Unloaded">
+
+    <Page.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/ColorTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/SharedStyle.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_6" Source="../Themes/SharedGeometry.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/FlatScrollViewerStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ctrl:BoolToVisibilityValueConverter x:Uid="ctrl:BoolToVisibilityValueConverter_1" x:Key="bool2Vis" />
+            <ctrl:InvertBooleanToVisibilityConverter x:Uid="ctrl:InvertBooleanToVisibilityConverter" x:Key="invertBool2Vis" />
+            <ctrl:FileSizeConverter x:Uid="controls:FileSizeConverter_1" x:Key="fileSizeConverter" />
+            <ctrl:ObjectToVisibilityConverter x:Uid="ctrl:ObjectToVisibilityConverter_1" x:Key="object2Vis" />
+
+            <Style x:Uid="Style_7" x:Key="PasswordButtonStyle" TargetType="{x:Type Button}">
+                <Setter x:Uid="Setter_211" Property="BorderBrush" Value="Transparent" />
+                <Setter x:Uid="Setter_212" Property="Background" Value="Transparent" />
+                <Setter x:Uid="Setter_213" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_11" TargetType="{x:Type ctrl:ImageButton}">
+                            <Border x:Uid="Border_3" CornerRadius="0"
+                                    SnapsToDevicePixels="True"
+                                    BorderThickness="0"
+                                    BorderBrush="{TemplateBinding BorderBrush}">
+                                <Grid x:Uid="Grid_5">
+                                    <Rectangle x:Uid="Rectangle_4" Width="20" Height="20"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Fill="{TemplateBinding ButtonBrushSource}"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="Style_8" x:Key="PasswordHideButtonStyle"
+                   TargetType="{x:Type ctrl:ImageButton}"
+                   BasedOn="{StaticResource PasswordButtonStyle}">
+                <Style.Triggers>
+                    <DataTrigger x:Uid="DataTrigger_1" Binding="{Binding Path=IsPasswordHide}" Value="True">
+                        <Setter x:Uid="Setter_214" Property="ButtonBrushSource" Value="{StaticResource PasswordShowDrawingBrush}"/>
+                    </DataTrigger>
+                    <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding Path=IsPasswordHide}" Value="False">
+                        <Setter x:Uid="Setter_215" Property="ButtonBrushSource" Value="{StaticResource PasswordHideDrawingBrush}"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Uid="Style_2" x:Key="HyperLinkStyle" TargetType="Hyperlink">
+                <Setter x:Uid="Setter_9" Property="TextDecorations" Value="None" />
+                <Style.Triggers>
+                    <Trigger x:Uid="Trigger_5" Property="IsMouseOver" Value="True">
+                        <Setter x:Uid="Setter_10" Property="Foreground" Value="{DynamicResource Brush.BaseContral.Hover.Background}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.InputBindings>
+        <KeyBinding x:Uid="KeyBinding_1" Command="{Binding Path=DataContext.ViewModelCommands.NextCommand, ElementName=EmailEncryptionPageView}" Key="Enter" />
+    </Page.InputBindings>
+
+    <Grid x:Uid="ContainerGrid" x:Name="ContainerGrid">
+        <Border x:Uid="Border_7" Style="{StaticResource PageWindowBorder}" />
+        <Grid x:Uid="Grid_1">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_1" Height="Auto" />
+                <RowDefinition x:Uid="RowDefinition_2" Height="*" />
+                <RowDefinition x:Uid="RowDefinition_3" Height="56" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Uid="Grid_4" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_8" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_9" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_10" Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_1" Width="*" />
+                    <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Uid="BackButton"
+                        Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                        Margin="10,14,0,0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource BackButtonStyle}"
+                        Click="BackButton_Click" />
+
+                <Button x:Uid="CloseButton"
+                        Grid.Row="0" Grid.Column="1"
+                        Margin="0,5,5,0"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource CloseButtonStyle}"
+                        VerticalAlignment="Center"
+                        Command="ApplicationCommands.Close"
+                        TabIndex="11" />
+
+                <TextBlock x:Uid="StepText"
+                           Grid.Row="1" Grid.Column="1"
+                           HorizontalAlignment="Right"
+                           Margin="0,3,15,0"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource GrayContentTextBlockStyle}"
+                           Text="Step 2 of 3" />
+
+                <TextBlock x:Uid="AddEmailText" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                           Margin="15,5,15,0"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Left"
+                           Visibility="{Binding ShowAddAccountSubTitle, Converter={StaticResource bool2Vis}}"
+                           Style="{StaticResource TitleTextBlockStyle}">
+                            Add an
+                            <Hyperlink x:Uid="Hyperlink_1" Click="AddEmailHyperlink_Click" Focusable="{Binding ShowAddAccountSubTitle}" Style="{StaticResource HyperLinkStyle}">email account</Hyperlink>
+                            to share
+                </TextBlock>
+
+                <TextBlock x:Uid="TextBlock_12" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                           Margin="15,5,15,0"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Left"
+                           Visibility="{Binding ShowAddCloudSubTitle, Converter={StaticResource bool2Vis}}"
+                           Style="{StaticResource TitleTextBlockStyle}">
+                            Add a
+                            <Hyperlink x:Uid="Hyperlink_2" Click="AddCloudHyperlink_Click" Focusable="{Binding ShowAddCloudSubTitle}" Style="{StaticResource HyperLinkStyle}">cloud account</Hyperlink>
+                            to share
+                </TextBlock>
+            </Grid>
+
+            <Grid x:Uid="AnimationGrid"
+                  x:Name="AnimationGrid"
+                  Grid.Row="1"
+                  Style="{StaticResource AnimationGridStyle}">
+                <StackPanel x:Uid="EmailEncryptionStackPanel" x:Name="EmailEncryptionStackPanel"
+                            Margin="10,5,10,10"
+                            Visibility="Visible">
+                    <TextBlock x:Uid="TextBlock_1" Margin="5"
+                               Text="Share Using"
+                               Style="{StaticResource TitleTextBlockStyle}" />
+
+                    <Grid x:Uid="Grid_2" Margin="5,0,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Uid="RowDefinition_4" />
+                            <RowDefinition x:Uid="RowDefinition_5" />
+                        </Grid.RowDefinitions>
+
+                        <Border x:Uid="Border_2" Grid.Row="0"
+                                Margin="0,4,0,4"
+                                Style="{StaticResource ContentBorderStyle}">
+                            <Grid x:Uid="Grid_8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*" />
+                                    <ColumnDefinition x:Uid="ColumnDefinition_4" Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <RadioButton x:Uid="EmailAttachmentRadioButton" Grid.Column="0"
+                                             Margin="13,5,5,5"
+                                             Height="40"
+                                             x:Name="EmailAttachmentRadioButton"
+                                             GroupName="ShareUsingGroup"
+                                             VerticalAlignment="Center"
+                                             IsEnabled="{Binding CanUseEmailAttachment}"
+                                             IsChecked="{Binding Path=DataContext.EmailAttachmentIsChecked, ElementName=EmailEncryptionPageView, Mode=TwoWay}"
+                                             Style="{StaticResource BlackRadioButtonStyle}">
+                                    <TextBlock x:Uid="TextBlock_13" Margin="5,0,0,0"
+                                               Text="Email attachment"
+                                               MaxWidth="160"
+                                               TextWrapping="Wrap"
+                                               VerticalAlignment="Center"
+                                               Style="{StaticResource BlackContentTextBlockEnableChangeStyle}"/>
+                                </RadioButton>
+
+                                <Button x:Uid="Button_1" x:Name="ManageEmailButton"
+                                        AutomationProperties.Name="Manage email account"
+                                        Grid.Column="1"
+                                        MinHeight="27"
+                                        Margin="0,0,10,0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Visibility="{Binding CanUseEmailAttachment, Converter={StaticResource bool2Vis}}"
+                                        Click="EmailAttachmentButton_Click">
+                                    <Button.Template>
+                                        <ControlTemplate x:Uid="ControlTemplate_3" TargetType="Button">
+                                            <Border x:Uid="RoundedBorder" x:Name="RoundedBorder"
+                                                    Background="Transparent"
+                                                    BorderBrush="{DynamicResource Brush.ListView.Item.Button.Hover}"
+                                                    BorderThickness="0"
+                                                    CornerRadius="5">
+                                                <StackPanel x:Uid="StackPanel_4" Orientation="Horizontal">
+                                                    <Image x:Uid="Image_1"
+                                                           MaxHeight="22" MaxWidth="22"
+                                                           Margin="5,0,0,0"
+                                                           VerticalAlignment="Center"
+                                                           Source="{Binding SelectedEmailServiceIcon}"
+                                                           Visibility="{Binding Path=SelectedEmailServiceIcon, Converter={StaticResource object2Vis}}"/>
+
+                                                    <TextBlock x:Uid="TextBlock_4"
+                                                               MaxWidth="150"
+                                                               TextWrapping="Wrap"
+                                                               Margin="5,0,0,0"
+                                                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                                                               TextAlignment="Right"
+                                                               TextTrimming="CharacterEllipsis"
+                                                               ToolTip="{Binding SelectedEmailAccount}"
+                                                               Text="{Binding SelectedEmailAccount}" />
+
+                                                    <Path x:Uid="Path_1" Width="8" Height="8"
+                                                          Margin="5,0,5,0"
+                                                          Stretch="Uniform"
+                                                          SnapsToDevicePixels="True"
+                                                          StrokeThickness="1"
+                                                          Stroke="{DynamicResource Brush.Text.Gray.Foreground}"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          Data="M 0 4 L 4 0 L 0 -4" />
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                                                    <Setter x:Uid="Setter_5" TargetName="RoundedBorder" Property="BorderThickness" Value="1" />
+                                                </Trigger>
+                                                <Trigger x:Uid="Trigger_3" Property="IsPressed" Value="True">
+                                                    <Setter x:Uid="Setter_7" TargetName="RoundedBorder" Property="Background" Value="{DynamicResource Brush.White.Button.Backgroung}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                                <StackPanel x:Uid="StackPanel_6" Grid.Column="1"
+                                            Orientation="Horizontal"
+                                            Visibility="{Binding CanUseEmailAttachment, Converter={StaticResource invertBool2Vis}}">
+                                    <TextBlock x:Uid="EmailAttachmentLimitTextBlock"
+                                               x:Name="EmailAttachmentLimitTextBlock"
+                                               MaxWidth="150"
+                                               TextWrapping="Wrap"
+                                               Margin="5,0,0,0"
+                                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                                               TextAlignment="Right"
+                                               TextTrimming="CharacterEllipsis"
+                                               Text="Max file size of 10MB"
+                                               MouseEnter="EmailAttachmentLimitTextBlock_MouseEnter">
+                                        <TextBlock.TextDecorations>
+                                            <TextDecoration x:Uid="TextDecoration_1" Location="Underline">
+                                                <TextDecoration.Pen>
+                                                    <Pen x:Uid="Pen_1" Brush="{DynamicResource Brush.TextBox.DottedLine.Brush}">
+                                                        <Pen.DashStyle>
+                                                            <DashStyle x:Uid="DashStyle_1" Dashes="3" />
+                                                        </Pen.DashStyle>
+                                                    </Pen>
+                                                </TextDecoration.Pen>
+                                            </TextDecoration>
+                                        </TextBlock.TextDecorations>
+                                        <TextBlock.ToolTip>
+                                            <ToolTip x:Uid="ToolTip_1" Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Height="100" Width="180"
+                                                     Placement="Bottom">
+                                                <Label x:Uid="Label_3" Style="{StaticResource BubbleTooltipLabelHeightStyle}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <StackPanel x:Uid="StackPanel_7" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Width="140">
+                                                        <TextBlock x:Uid="TextBlock_10" Margin="0,0,0,3" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                                   TextAlignment="Center"
+                                                                   Text="Files exceed the 10 MB attachment limit."
+                                                                   TextWrapping="Wrap"
+                                                                   FontSize="{StaticResource Shared.FontSize.13px}"
+                                                                   FontWeight="{StaticResource Shared.FontWeight.SemiBold}" />
+                                                        <TextBlock x:Uid="TextBlock_11" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                                   TextAlignment="Center"
+                                                                   Text="Send using email link."
+                                                                   TextWrapping="Wrap"
+                                                                   FontSize="{StaticResource Shared.FontSize.10px}" />
+                                                    </StackPanel>
+                                                </Label>
+                                            </ToolTip>
+                                        </TextBlock.ToolTip>
+                                    </TextBlock>
+
+                                    <Button x:Uid="Button_4" Margin="0,0,10,0"
+                                            AutomationProperties.Name="Manage email account"
+                                            Style="{StaticResource SettingButtonStyle}"
+                                            HorizontalAlignment="Right"
+                                            Click="EmailAttachmentButton_Click" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <Border x:Uid="ManageCloudButton" x:Name="ManageCloudButton"
+                                Grid.Row="1"
+                                Margin="0,4,0,4"
+                                Style="{StaticResource ContentBorderStyle}">
+                            <Grid x:Uid="Grid_6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Uid="ColumnDefinition_7" Width="*" />
+                                    <ColumnDefinition x:Uid="ColumnDefinition_8" Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <RadioButton x:Uid="EmailLinkRadioButton" Grid.Column="0"
+                                             Margin="13,5,5,5"
+                                             Height="40"
+                                             x:Name="EmailLinkRadioButton"
+                                             GroupName="ShareUsingGroup"
+                                             VerticalAlignment="Center"
+                                             IsChecked="{Binding Path=DataContext.EmailLinkIsChecked, ElementName=EmailEncryptionPageView, Mode=TwoWay}"
+                                             Style="{StaticResource BlackRadioButtonStyle}">
+                                    <TextBlock x:Uid="TextBlock_14" Margin="5,0,0,0"
+                                               Text="Email link"
+                                               Style="{StaticResource BlackContentTextBlockStyle}"
+                                               VerticalAlignment="Center" />
+                                </RadioButton>
+
+                                <Button x:Uid="Button_2" Grid.Column="1"
+                                        AutomationProperties.Name="Manage cloud account"
+                                        MinHeight="27"
+                                        Margin="0,0,10,0"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Click="EmailServiceButton_Click">
+                                    <Button.Template>
+                                        <ControlTemplate x:Uid="ControlTemplate_2" TargetType="Button">
+                                            <Border x:Uid="Border_6" x:Name="RoundedBorder"
+                                                    Background="Transparent"
+                                                    BorderBrush="{DynamicResource Brush.ListView.Item.Button.Hover}"
+                                                    BorderThickness="0"
+                                                    CornerRadius="5">
+                                                <StackPanel x:Uid="StackPanel_5" Orientation="Horizontal">
+
+                                                    <Image x:Uid="Image_2"
+                                                           MaxHeight="22" MaxWidth="22"
+                                                           Source="{Binding SelectedCloudServiceIcon}"
+                                                           Visibility="{Binding Path=SelectedCloudServiceIcon, Converter={StaticResource object2Vis}}"
+                                                           Margin="5,0,0,0"
+                                                           VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Uid="TextBlock_5"
+                                                               MaxWidth="160"
+                                                               Margin="5,0,0,0"
+                                                               VerticalAlignment="Center" HorizontalAlignment="Right"
+                                                               TextAlignment="Right"
+                                                               TextTrimming="CharacterEllipsis"
+                                                               Text="{Binding SelectedCloudAccount}"
+                                                               ToolTip="{Binding SelectedCloudAccount}" />
+
+                                                    <Path x:Uid="Path_2" Width="8" Height="8"
+                                                          Margin="5,0,5,0"
+                                                          Stretch="Uniform"
+                                                          SnapsToDevicePixels="True"
+                                                          StrokeThickness="1"
+                                                          Stroke="{DynamicResource Brush.Text.Gray.Foreground}"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          Data="M 0 4 L 4 0 L 0 -4" />
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger x:Uid="Trigger_2" Property="IsMouseOver" Value="True">
+                                                    <Setter x:Uid="Setter_6" TargetName="RoundedBorder" Property="BorderThickness" Value="1" />
+                                                </Trigger>
+                                                <Trigger x:Uid="Trigger_4" Property="IsPressed" Value="True">
+                                                    <Setter x:Uid="Setter_8" TargetName="RoundedBorder" Property="Background" Value="{DynamicResource Brush.White.Button.Backgroung}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <TextBlock x:Uid="TextBlock_2" Margin="5,15,5,5"
+                               Text="Share As"
+                               Style="{StaticResource TitleTextBlockStyle}" />
+
+                    <Grid x:Uid="Grid_3" Margin="5,0,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Uid="RowDefinition_6" />
+                            <RowDefinition x:Uid="RowDefinition_7" />
+                        </Grid.RowDefinitions>
+
+                        <ctrl:FileNameTextBox x:Uid="SharedFileNameTextBox" x:Name="SharedFileNameTextBox"
+                                              AutomationProperties.Name="Shared file name"
+                                              Grid.Row="0"
+                                              Height="30"
+                                              Margin="1,5,1,5"
+                                              TipsIsOpen="{Binding Path=DataContext.ShowFileNameErrorTips, ElementName=EmailEncryptionPageView, Mode=TwoWay}"
+                                              NameContent="{Binding Path=DataContext.ZipFileName, ElementName=EmailEncryptionPageView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              TipsInfo="{Binding Path=DataContext.FileNameErrorTips, ElementName=EmailEncryptionPageView, Mode=TwoWay}">
+                        </ctrl:FileNameTextBox>
+
+                        <Border x:Uid="Border_4" Grid.Row="1" Margin="0,4,0,4"
+                                Style="{StaticResource ContentBorderStyle}">
+                            <Grid x:Uid="Grid_7">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Uid="ColumnDefinition_11" Width="*" />
+                                    <ColumnDefinition x:Uid="ColumnDefinition_12" Width="Auto" />
+                                    <ColumnDefinition x:Uid="ColumnDefinition_13" Width="Auto" />
+                                    <ColumnDefinition x:Uid="ColumnDefinition_14" Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ctrl:SpaceCheckBox x:Uid="CheckBox_3"
+                                                    Grid.Column="0"
+                                                    Margin="8,0,0,0"
+                                                    Height="35"
+                                                    VerticalAlignment="Center"
+                                                    Content="Encrypt file"
+                                                    IsChecked="{Binding Path=DataContext.EncryptFileIsChecked, ElementName=EmailEncryptionPageView, Mode=TwoWay}"
+                                                    IsEnabled="{Binding Path=DataContext.EncryptFileIsEnabled, ElementName=EmailEncryptionPageView}"
+                                                    Style="{StaticResource RoundCheckboxStyle}">
+                                </ctrl:SpaceCheckBox>
+
+                                <StackPanel x:Uid="StackPanel_8" Orientation="Horizontal"
+                                            Grid.Column="1"
+                                            Margin="5,0"
+                                            Visibility="{Binding Path=EncryptFileIsChecked, Converter={StaticResource bool2Vis}}">
+
+                                    <TextBlock x:Uid="TextBlock_6"
+                                               VerticalAlignment="Center"
+                                               TextTrimming="CharacterEllipsis"
+                                               Margin="0,0,5,0"
+                                               Text="Password:">
+                                    </TextBlock>
+
+                                    <ctrl:FlatScrollViewer x:Uid="ctrl:FlatScrollViewer_1"
+                                                           CanContentScroll="True"
+                                                           MaxWidth="80"
+                                                           Height="28"
+                                                           Template="{StaticResource fileListScrollViewTemplate}"
+                                                           Visibility="{Binding IsPasswordHide, Converter={StaticResource invertBool2Vis}}"
+                                                           PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+                                                           VerticalScrollBarVisibility="Disabled"
+                                                           HorizontalScrollBarVisibility="Auto">
+                                        <TextBlock x:Uid="TextBlock_15"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding EncryptPassword}">
+                                        </TextBlock>
+                                    </ctrl:FlatScrollViewer>
+
+                                    <TextBlock x:Uid="TextBlock_16"
+                                               VerticalAlignment="Center"
+                                               Visibility="{Binding IsPasswordHide, Converter={StaticResource bool2Vis}}"
+                                               Text="********">
+                                    </TextBlock>
+                                </StackPanel>
+
+                                <StackPanel x:Uid="StackPanel_9" Grid.Column="2"
+                                            Orientation="Horizontal"
+                                            Visibility="{Binding Path=EncryptFileIsChecked, Converter={StaticResource bool2Vis}}">
+                                    <ctrl:ImageButton x:Uid="PasswordHideButton"
+                                                      x:Name="PasswordHideButton"
+                                                      AutomationProperties.Name="Hide/Show Password"
+                                                      Height="25"
+                                                      Margin="3,0"
+                                                      Style="{StaticResource PasswordHideButtonStyle}"
+                                                      Click="PasswordHideButton_Click">
+                                    </ctrl:ImageButton>
+
+                                    <ctrl:ImageButton x:Uid="PasswordCopyButton"
+                                                      x:Name="PasswordCopyButton"
+                                                      AutomationProperties.Name="Copy Password"
+                                                      Height="25"
+                                                      Margin="0,0,3,0"
+                                                      Click="PasswordCopyButton_Click"
+                                                      Style="{StaticResource PasswordButtonStyle}"
+                                                      ButtonBrushSource="{StaticResource PasswordCopyDrawingBrush}"/>
+                                </StackPanel>
+
+                                <Popup x:Uid="PasswordTooltip" x:Name="PasswordTooltip"
+                                       Height="45"
+                                       Placement="Top"
+                                       PlacementTarget="{Binding ElementName=PasswordCopyButton}"
+                                       AllowsTransparency="True"
+                                       StaysOpen="True">
+                                    <Label x:Uid="Label_2" Style="{StaticResource BubbleTooltipLabelStyle}">
+                                        <TextBlock x:Uid="TextBlock_7" x:Name="PasswordTooltipText"
+                                                   Style="{StaticResource ToolTipTextBlock}"
+                                                   Text="Copied"
+                                                   VerticalAlignment="Center" />
+                                    </Label>
+                                </Popup>
+
+                                <Button x:Uid="Button_5" Margin="0,10,10,10"
+                                        AutomationProperties.Name="Encrypt Settings"
+                                        Grid.Column="3"
+                                        Style="{StaticResource SettingButtonStyle}"
+                                        HorizontalAlignment="Right" Tag="0"
+                                        Click="EncryptButton_Click" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Uid="EmailEncryptionBottomPanel" x:Name="EmailEncryptionBottomPanel" Grid.Row="2">
+                <StackPanel x:Uid="StackPanel_2"
+                            Margin="10,0,10,10"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left">
+                    <TextBlock x:Uid="TextBlock_3"
+                               Margin="10,0,0,0"
+                               MaxWidth="230"
+                               TextWrapping="Wrap"
+                               Text="{Binding Path=DataContext.TotalUnzipSize, ElementName=EmailEncryptionPageView}"
+                               Style="{StaticResource GrayContentTextBlockStyle}" />
+                </StackPanel>
+
+                <Button x:Uid="NextButton" x:Name="NextButton"
+                        Content="Next"
+                        Margin="0,0,15,15"
+                        Width="120"
+                        Height="36"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource RoundCornerBlackButtonStyle}"
+                        Foreground="{DynamicResource Brush.Text.White.Foreground}"
+                        IsEnabled="{Binding CanGoNextStep}"
+                        Command="{Binding Path=DataContext.ViewModelCommands.NextCommand, ElementName=EmailEncryptionPageView}" />
+            </Grid>
+        </Grid>
+    </Grid>
+</ctrl:BasePage>

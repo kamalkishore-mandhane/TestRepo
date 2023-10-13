@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_BOOKMARK_TITLE" xml:space="preserve">
+    <value>Add a Bookmark</value>
+  </data>
+  <data name="ADD_SUBBOOKMARK_TITLE" xml:space="preserve">
+    <value>Add a sub-bookmark</value>
+  </data>
+  <data name="COLOR_DIALOG_CANCEL" xml:space="preserve">
+    <value>Ca&amp;ncel</value>
+  </data>
+  <data name="COLOR_DIALOG_OK" xml:space="preserve">
+    <value>O&amp;K</value>
+  </data>
+  <data name="COLOR_DIALOG_REMOVEBACKGROUNDCOLOR" xml:space="preserve">
+    <value>Re&amp;move background color</value>
+  </data>
+  <data name="COLOR_DIALOG_SETBACKGROUNDCOLOR" xml:space="preserve">
+    <value>Se&amp;t background color</value>
+  </data>
+  <data name="COLOR_DIALOG_SOLID" xml:space="preserve">
+    <value>|Solid</value>
+  </data>
+  <data name="COMMENT_DIALOG_ADDCOMMENT" xml:space="preserve">
+    <value>Add a Comment</value>
+  </data>
+  <data name="COMMENT_DIALOG_EDITCOMMENT" xml:space="preserve">
+    <value>Edit Comment</value>
+  </data>
+  <data name="DELETE_BLANK_PAGES_CONFIRMING" xml:space="preserve">
+    <value>Are you sure you want to delete all blank pages?</value>
+  </data>
+  <data name="DELETE_BLANK_PAGES_SUCCESSFULLY" xml:space="preserve">
+    <value>Blank page(s) deleted.</value>
+  </data>
+  <data name="DELETE_PAGES_CONFIRMING" xml:space="preserve">
+    <value>Are you sure you want to delete the selected page(s)?</value>
+  </data>
+  <data name="DELETE_PAGES_SUCCESSFULLY" xml:space="preserve">
+    <value>Selected pages(s) have been deleted.</value>
+  </data>
+  <data name="NO_BLANK_PAGES_FOUND" xml:space="preserve">
+    <value>No blank pages found.</value>
+  </data>
+  <data name="SELECT_PAGES_WARNING" xml:space="preserve">
+    <value>Please select the page(s) to delete.</value>
+  </data>
+  <data name="IDENTIFYKEY_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="INFO_VIEW_BY_ACTUAL_SIZE" xml:space="preserve">
+    <value>Actual size</value>
+  </data>
+  <data name="INFO_VIEW_BY_SIZE_TO_FIT" xml:space="preserve">
+    <value>Size to fit</value>
+  </data>
+  <data name="RENAME_BOOKMARK_TITLE" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="NO_IMAGES_EXTRACT_WARNING" xml:space="preserve">
+    <value>No images to extract.</value>
+  </data>
+  <data name="INFORMATION_PDF_HAS_BEEN_LOCKED" xml:space="preserve">
+    <value>PDF has been locked.</value>
+  </data>
+  <data name="INFORMATION_PDF_HAS_BEEN_UNLOCKED" xml:space="preserve">
+    <value>PDF has been unlocked.</value>
+  </data>
+  <data name="INFORMATION_PDF_IS_NOT_LOCKED" xml:space="preserve">
+    <value>PDF is not locked.</value>
+  </data>
+  <data name="PDF_OPEN_PASSWORD_ACQUIRE" xml:space="preserve">
+    <value>The PDF file '{0}' is protected. Please enter an Open Password to open the file.</value>
+  </data>
+  <data name="PDF_PERMISSION_PASSWORD_ACQUIRE" xml:space="preserve">
+    <value>The PDF file '{0}' is already protected. Please enter a Permission Password to change the locked permissions.</value>
+  </data>
+  <data name="WARNING_LOCK_PDF_WARNING" xml:space="preserve">
+    <value>Not all PDF products support/enforce the permissions you have set. Such tools may bypass some or all of this PDF's permissions.</value>
+  </data>
+  <data name="WARNING_UNABLE_TO_UNLOCK_PDF" xml:space="preserve">
+    <value>Unable to unlock the PDF with the password you provided.</value>
+  </data>
+  <data name="WARNING_OPEN_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Open Password is empty. Please either deselect the 'Password required to open this PDF' option or enter the Open Password.</value>
+  </data>
+  <data name="WARNING_OPEN_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>The passwords you typed do not match. Please enter Open Password again.</value>
+  </data>
+  <data name="WARNING_PERMISSION_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Change Permissions password is empty. Please either deselect the 'Password required to change permissions below' option or enter the Change Permissions password.</value>
+  </data>
+  <data name="WARNING_PERMISSION_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>The passwords you typed do not match. Please enter Change Permissions password again.</value>
+  </data>
+  <data name="WARNING_PASSWORD_INCORRECT" xml:space="preserve">
+    <value>The password is incorrect.</value>
+  </data>
+  <data name="INFORMATION_PDF_ALREADY_LOCKED" xml:space="preserve">
+    <value>This PDF is already locked. What do you want to do?</value>
+  </data>
+  <data name="BUTTON_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BUTTON_CANCEL_PERMISSION_CHANGE_TIP" xml:space="preserve">
+    <value>Leave this PDF locked with the existing permissions</value>
+  </data>
+  <data name="BUTTON_CHANGE_PERMISSIONS" xml:space="preserve">
+    <value>Change passwords and/or permissions</value>
+  </data>
+  <data name="BUTTON_CHANGE_PERMISSIONS_TIP" xml:space="preserve">
+    <value>Change access passwords and/or change what a user can do to this locked PDF</value>
+  </data>
+  <data name="PDF_UTILITY_FRIENDLY_NAME" xml:space="preserve">
+    <value>PDF Express</value>
+  </data>
+  <data name="PDF_UTILITY_TITLE" xml:space="preserve">
+    <value>WinZip PDF Express</value>
+  </data>
+  <data name="DEFAULT_PDF_TITLE_NAME" xml:space="preserve">
+    <value>New.pdf</value>
+  </data>
+  <data name="WARNING_NO_PAGE_NUMBER" xml:space="preserve">
+    <value>There is no page numbered '{0}' in this document.</value>
+  </data>
+  <data name="EXECUTE_ADD_SUB_BOOKMARK_TIPS" xml:space="preserve">
+    <value>Please select a bookmark.</value>
+  </data>
+  <data name="EXECUTE_CLOSE_TIPS" xml:space="preserve">
+    <value>Nothing to close. No opened PDF. Please import pages or open a PDF.</value>
+  </data>
+  <data name="EXECUTE_EXTRACT_IMAGES_TIPS" xml:space="preserve">
+    <value>No images to extract. No opened PDF. Please import pages or open a PDF.</value>
+  </data>
+  <data name="EXECUTE_EXTRACT_PAGES_TIPS" xml:space="preserve">
+    <value>No pages to extract. No opened PDF. Please import pages or open a PDF.</value>
+  </data>
+  <data name="EXECUTE_GOTO_BOOKMARK_TIPS" xml:space="preserve">
+    <value>Please select a bookmark.</value>
+  </data>
+  <data name="EXECUTE_REMOVE_BOOKMARK_TIPS" xml:space="preserve">
+    <value>Please select a bookmark.</value>
+  </data>
+  <data name="EXECUTE_RENAME_BOOKMARK_TIPS" xml:space="preserve">
+    <value>Please select a bookmark.</value>
+  </data>
+  <data name="EXECUTE_ROTATE_PAGES_TIPS" xml:space="preserve">
+    <value>Please select the page(s) to rotate.</value>
+  </data>
+  <data name="EXECUTE_SAVE_TO_ZIP_INDEPENDENTLY_TIPS" xml:space="preserve">
+    <value>Unable to save to Zip. WinZip PDF Express was not run from WinZip's Files Pane or Zip Pane.</value>
+  </data>
+  <data name="EXECUTE_SET_BACKGROUND_COLOR_PDF_TIPS" xml:space="preserve">
+    <value>Please select the page to use to set the background color.</value>
+  </data>
+  <data name="EXECUTE_WATERMARK_PAGES_TIPS" xml:space="preserve">
+    <value>Please select the page(s) to watermark.</value>
+  </data>
+  <data name="OPEN_PICKER_BUTTON" xml:space="preserve">
+    <value>&amp;Open</value>
+  </data>
+  <data name="OPEN_PICKER_TITLE" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="SAVE_PICKER_BUTTON" xml:space="preserve">
+    <value>&amp;Save</value>
+  </data>
+  <data name="SAVE_PICKER_TITLE" xml:space="preserve">
+    <value>Save to PC or Cloud</value>
+  </data>
+  <data name="SELECTFOLDER_PICKER_BUTTON" xml:space="preserve">
+    <value>&amp;Select Folder</value>
+  </data>
+  <data name="SELECTFOLDER_PICKER_TITLE" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="CREATE_FROM_PICKER_TITLE" xml:space="preserve">
+    <value>Create from Files</value>
+  </data>
+  <data name="FILE_NOT_FOUND_WARNING" xml:space="preserve">
+    <value>Cannot open '{0}' - the file has been deleted or moved.</value>
+  </data>
+  <data name="IMPORT_FILE_PICKER_BUTTON" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="IMPORT_FILE_PICKER_TITLE" xml:space="preserve">
+    <value>Import File(s)</value>
+  </data>
+  <data name="PASSWORD_CONSISTENCY_WARNING" xml:space="preserve">
+    <value>The password to open this PDF and the password to change this PDF's permissions cannot be the same. Please provide a unique password for each.</value>
+  </data>
+  <data name="PDF_FILE_INVALID_WARNING" xml:space="preserve">
+    <value>Cannot open file '{0}'. It does not appear to be a valid PDF file.</value>
+  </data>
+  <data name="PDF_LOCKED_WARNING" xml:space="preserve">
+    <value>{0} is locked. You don't have the permission to do this operation. Please unlock the PDF file first.</value>
+  </data>
+  <data name="SELECT_PAGE_TO_EXTRACT_IMAGE_WARNING" xml:space="preserve">
+    <value>Please select one or more pages to extract images.</value>
+  </data>
+  <data name="SELECT_PAGE_TO_EXTRACT_WARNING" xml:space="preserve">
+    <value>Please select one or more pages to extract.</value>
+  </data>
+  <data name="PRING_SELECTED_PAGE" xml:space="preserve">
+    <value>The selected pages ({0} pages)</value>
+  </data>
+  <data name="PRINT_ALL_PAGES" xml:space="preserve">
+    <value>All pages ({0} pages)</value>
+  </data>
+  <data name="PRINT_CURRENT_PAGE" xml:space="preserve">
+    <value>The current page (page {0})</value>
+  </data>
+  <data name="PRINT_INVALID_PAGE_NUMBER" xml:space="preserve">
+    <value>Please enter a valid page number.</value>
+  </data>
+  <data name="PRINT_PAGE_OUT_OF_RANGE" xml:space="preserve">
+    <value>The page number exceeds the maximum page number ({0}).</value>
+  </data>
+  <data name="WINZIP_UNSAVE_CHECK_DO_NOT_SAVE" xml:space="preserve">
+    <value>Don't Save</value>
+  </data>
+  <data name="WINZIP_UNSAVE_CHECK_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="WINZIP_UNSAVE_CHECK_SAVE_AS" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="WINZIP_UNSAVE_CHECK_SAVE_AS_CHANGES" xml:space="preserve">
+    <value>Save your changes to another location or file name.</value>
+  </data>
+  <data name="WINZIP_UNSAVE_CHECK_SAVE_CHANGES" xml:space="preserve">
+    <value>Save your changes in the current PDF file.</value>
+  </data>
+  <data name="WINZIP_UNSAVE_CHECK_DO_NOT_SAVE_CHANGES" xml:space="preserve">
+    <value>All changes will be lost.</value>
+  </data>
+  <data name="SAVE_CHANGES_WARNING" xml:space="preserve">
+    <value>Do you want to save the changes that you have made?</value>
+  </data>
+  <data name="PDF_MODIFYED_PLEASE_SELECT_ONE_OPTION" xml:space="preserve">
+    <value>The current PDF file has been modified. To continue, select one of the options below.</value>
+  </data>
+  <data name="SELECT_ONE_OPTION" xml:space="preserve">
+    <value>Select one of the options below.</value>
+  </data>
+  <data name="EXTRACT_IMAGE_PROGRESS_TEXT_CONTENT" xml:space="preserve">
+    <value>Extracting image(s) from {0}…</value>
+  </data>
+  <data name="IMAGE_EXTRACTED_SUCCESSFULLY" xml:space="preserve">
+    <value>Image(s) extracted successfully.</value>
+  </data>
+  <data name="PAGES_EXTRACTED_SUCCESSFULLY" xml:space="preserve">
+    <value>Page(s) extracted successfully.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CheckBoxChecked16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked16.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked20.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked24.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked32.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked40.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked48.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked64.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxChecked80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxChecked80.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked16.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked20.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked24.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked32.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked40.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked48.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked64.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckBoxUnchecked80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckBoxUnchecked80.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="INTEGRATION_DISABLE_BY_ADMIN" xml:space="preserve">
+    <value>Desktop and Start menu shortcuts and File Associations have been disabled by your system administrator.</value>
+  </data>
+  <data name="ADMIN_REQUIRED_DLG_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ADMIN_REQUIRED_DLG_CANCEL_TIP" xml:space="preserve">
+    <value>Return to the options dialog</value>
+  </data>
+  <data name="ADMIN_REQUIRED_DLG_CONTENT" xml:space="preserve">
+    <value>In order to set one or more of the options you have changed, administrator privileges are required.</value>
+  </data>
+  <data name="ADMIN_REQUIRED_DLG_OK" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
+  <data name="ADMIN_REQUIRED_DLG_OK_TIP" xml:space="preserve">
+    <value>Please click 'Yes' or 'OK' if Windows asks for permission to make changes</value>
+  </data>
+  <data name="ADMIN_REQUIRED_DLG_TITLE" xml:space="preserve">
+    <value>Administrator privileges required</value>
+  </data>
+  <data name="WATERMARK_SETTING_DEFAULT_CONTENT" xml:space="preserve">
+    <value>Confidential, do not copy</value>
+  </data>
+  <data name="WARNING_WATERMARK_NO_CONTENT" xml:space="preserve">
+    <value>Please enter Watermark text.</value>
+  </data>
+  <data name="PDF_SIGNED_OR_CERTIFIED_WARNING" xml:space="preserve">
+    <value>This PDF file has been signed or certified. So you cannot lock/unlock it.</value>
+  </data>
+  <data name="EXTRACT_PAGE_PROGRESS_TEXT_CONTENT" xml:space="preserve">
+    <value>Extracting page(s) from {0}…</value>
+  </data>
+  <data name="FILE_IN_USE_WARNING" xml:space="preserve">
+    <value>Operation failed. The file is in use. Please try again later.</value>
+  </data>
+  <data name="SEARCHING_COMPLETED" xml:space="preserve">
+    <value>Search completed.</value>
+  </data>
+  <data name="SEARCHING_NOT_FOUND" xml:space="preserve">
+    <value>Search completed. No match found.</value>
+  </data>
+  <data name="SEARCHING_PAGE_IN_PROGRESS" xml:space="preserve">
+    <value>Searching page {0}/{1}</value>
+  </data>
+  <data name="CONVERSION_COMPLETED_SUCCESSFULLY" xml:space="preserve">
+    <value>Conversion completed successfully.</value>
+  </data>
+  <data name="PRINT_MINIMUMPAGE_LESS_MAXIMUM" xml:space="preserve">
+    <value>The minimum page number must be less than the maximum page number.</value>
+  </data>
+  <data name="SHARE_CHARMS_DESCRIPTION" xml:space="preserve">
+    <value>Share selected files</value>
+  </data>
+  <data name="SAVE_AS_PROGRESS_TEXT_CONTENT" xml:space="preserve">
+    <value>Save file as {0} ...</value>
+  </data>
+  <data name="SCAN_CLOSE_DESC" xml:space="preserve">
+    <value>Just close this window</value>
+  </data>
+  <data name="SCAN_CLOSE_TITLE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="SCAN_OPEN_IN_EXPRESS_DESC" xml:space="preserve">
+    <value>Open the scanned document in WinZip PDF Express</value>
+  </data>
+  <data name="SCAN_OPEN_IN_EXPRESS_TITLE" xml:space="preserve">
+    <value>Open in WinZip PDF Express</value>
+  </data>
+  <data name="SCAN_SAVE_TO_PATH_CONTENT" xml:space="preserve">
+    <value>What do you want to do?</value>
+  </data>
+  <data name="SCAN_SAVE_TO_PATH_MAIN" xml:space="preserve">
+    <value>Your scan has been saved as "{0}".</value>
+  </data>
+  <data name="PdfUtil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PdfUtil.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CONVERTING_FILES" xml:space="preserve">
+    <value>Converting {0} file(s)...</value>
+  </data>
+  <data name="PDF_FILE" xml:space="preserve">
+    <value>The PDF file</value>
+  </data>
+  <data name="WARNING_UNABLE_TO_LOCK_THIS_PDF" xml:space="preserve">
+    <value>Unable to lock this PDF file.</value>
+  </data>
+  <data name="WARNING_UNABLE_TO_UNLOCK_THIS_PDF" xml:space="preserve">
+    <value>Unable to unlock this PDF file.</value>
+  </data>
+  <data name="WARNING_NOT_SUPPORTED_ENCRYPTION" xml:space="preserve">
+    <value>This PDF is encrypted with an encryption method not supported by WinZip PDF Express.  Unable to unlock this PDF.</value>
+  </data>
+  <data name="WARNING_SAVE_LOCATION_NOT_SUPPORTED" xml:space="preserve">
+    <value>You can't save here. Please choose another location.</value>
+  </data>
+  <data name="WARNING_ACCESS_DENY" xml:space="preserve">
+    <value>Access is denied.</value>
+  </data>
+  <data name="PDF_IS_READ_ONLY" xml:space="preserve">
+    <value>This PDF is read-only and cannot be updated.</value>
+  </data>
+  <data name="EyeballDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\eyeballdisable.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EyeballEnable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\eyeballenable.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WARNING_ENCRYPT_PASSWORD_EMPTY" xml:space="preserve">
+    <value>The password cannot be empty. Please enter the password.</value>
+  </data>
+  <data name="WARNING_ENCRYPT_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>The passwords you typed do not match. Please enter the password again.</value>
+  </data>
+  <data name="BUTTON_SKIP" xml:space="preserve">
+    <value>Skip this file</value>
+  </data>
+  <data name="PDF_FILENAME_IS_READ_ONLY" xml:space="preserve">
+    <value>'{0}' is read-only and cannot be updated.</value>
+  </data>
+  <data name="TASKDLG_DO_FOR_ALL_FILE" xml:space="preserve">
+    <value>Do this for all files</value>
+  </data>
+  <data name="FILE_ASSOC_HANDLER_FILE_NAME" xml:space="preserve">
+    <value>Click on 'Change' to select the default handler</value>
+  </data>
+  <data name="FILE_ASSOC_HTML_CHOOSE_TIP" xml:space="preserve">
+    <value>Choose WinZip PDF Express and click 'OK'</value>
+  </data>
+  <data name="FILE_ASSOC_HTML_CLICK_TIP" xml:space="preserve">
+    <value>Click 'Change'</value>
+  </data>
+  <data name="FILE_ASSOC_HTML_REDISPLAY_TEXT" xml:space="preserve">
+    <value>Show the File Properties dialog again</value>
+  </data>
+  <data name="FILE_ASSOC_HTML_TITLE" xml:space="preserve">
+    <value>Set WinZip PDF Express as the default app in three clicks</value>
+  </data>
+  <data name="WARNING_OVERWRITE_ZIP_FILE" xml:space="preserve">
+    <value>Warning.  Extracting pages to the current Zip file may overwrite files that you already have in your Zip file.  Continue with extract?</value>
+  </data>
+  <data name="WARNING_PATH_TOO_LONG" xml:space="preserve">
+    <value>The specified path, file name, or both are too long.</value>
+  </data>
+  <data name="WARNING_PDF_IS_EMPTY" xml:space="preserve">
+    <value>The PDF is empty.  Please import pages or open a PDF.</value>
+  </data>
+  <data name="WARNING_NO_OPEN_PDF" xml:space="preserve">
+    <value>No opened PDF. Please import pages or open a PDF.</value>
+  </data>
+  <data name="WARNING_NO_OPEN_PDF_SAVE" xml:space="preserve">
+    <value>Nothing to save. No opened PDF. Please import pages or open a PDF.</value>
+  </data>
+  <data name="WARNING_RESTRICTED_FEATURE" xml:space="preserve">
+    <value>Your administrator has restricted the use of this feature.</value>
+  </data>
+  <data name="SELECT_PAGES_MOVE_WARNING" xml:space="preserve">
+    <value>Please select the page(s) to move.</value>
+  </data>
+  <data name="ERROR_IMAGE_INVALID" xml:space="preserve">
+    <value>The image you selected is invalid. Please select another image.</value>
+  </data>
+  <data name="WARNING_WATERMARK_NO_IMAGE" xml:space="preserve">
+    <value>Please set the watermark image.</value>
+  </data>
+  <data name="ABOUTBOX_EXPRIESDATE" xml:space="preserve">
+    <value>Renews on:</value>
+  </data>
+  <data name="WINZIP_TITLE" xml:space="preserve">
+    <value>WinZip</value>
+  </data>
+  <data name="INSERT_DROPDESCRIPTION" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="OPEN_PICKER_FILTERS" xml:space="preserve">
+    <value>All Documents|*.pdf;*.doc*;*.xls*;*.ppt*;*.htm*;*.tex;*.txt;*.rtf;*.xps;*.bmp;*.ccitt;*.dib;*.emf;*.exif;*.gif;*.ico;*.jp*g;*.jfif;*.png;*.tif*;*.wmf|PDF files|*.pdf|Documents|*.doc*;*.xls*;*.ppt*;*.htm*;*.tex;*.txt;*.rtf;*.xps|Images|*.bmp;*.ccitt;*.dib;*.emf;*.exif;*.gif;*.ico;*.jp*g;*.jfif;*.png;*.tif*;*.wmf</value>
+  </data>
+  <data name="PDF_FILTER" xml:space="preserve">
+    <value>PDF files|*.pdf</value>
+  </data>
+  <data name="SAVE_PICKER_FILTERS" xml:space="preserve">
+    <value>PDF files|*.pdf|Document|*.doc;*.docx|Images|*.bmp;*.jpg;*.png;*.tif|Zipx files|*.zipx|Zip files|*.zip</value>
+  </data>
+  <data name="WATERMARK_FILTERS" xml:space="preserve">
+    <value>Image Files|*.bmp;*.jpg;*.jpeg;*.png;*.tif</value>
+  </data>
+  <data name="ZIP_FILTERS" xml:space="preserve">
+    <value>Zipx files|*.zipx|Zip files|*.zip</value>
+  </data>
+  <data name="CREATE_FROM_FILTERS" xml:space="preserve">
+    <value>All Documents|*.pdf*;*.doc*;*.xls*;*.ppt*;*.htm*;*.tex;*.txt*;*.rtf*;*.xps;*.bmp*;*.ccitt;*.dib;*.emf;*.exif*;*.gif;*.ico;*.jp*g;*.jfif;*.png;*.tif*;*.wmf|PDF files|*.pdf|Documents|*.doc*;*.xls*;*.ppt*;*.htm;*.tex;*.txt;*.rtf;*.xps|Images|*.bmp;*.ccitt;*.dib;*.emf;*.exif*;*.gif;*.ico;*.jp*g;*.jfif;*.png;*.tif*;*.wmf</value>
+  </data>
+  <data name="CONFIRM_DIALOG_BUTTON_NO_TEXT" xml:space="preserve">
+    <value>Skip this file</value>
+  </data>
+  <data name="CONFIRM_DIALOG_BUTTON_OK_TEXT" xml:space="preserve">
+    <value>Copy, but keep both files</value>
+  </data>
+  <data name="CONFIRM_DIALOG_BUTTON_YES_TEXT" xml:space="preserve">
+    <value>Replace the file in the destination folder</value>
+  </data>
+  <data name="CONFIRM_DIALOG_CONTENT" xml:space="preserve">
+    <value>Would you like to replace the existing file:
+        {0}
+
+with this one:
+        {1}</value>
+  </data>
+  <data name="CONFIRM_DIALOG_MAIN_INSTRUCTION" xml:space="preserve">
+    <value>The folder already contains this file.</value>
+  </data>
+  <data name="CONFIRM_DIALOG_TITLE" xml:space="preserve">
+    <value>Confirm File Replace</value>
+  </data>
+  <data name="CONFIRM_DIALOG_VERIFICATION_TEXT" xml:space="preserve">
+    <value>Do this for all affected files</value>
+  </data>
+  <data name="BUY_NOW_BUTTON_TITLE" xml:space="preserve">
+    <value>Buy Now</value>
+  </data>
+  <data name="DISMISS_BUTTON_TITLE" xml:space="preserve">
+    <value>Dismiss</value>
+  </data>
+  <data name="SUBSCRIBE_SUCESS" xml:space="preserve">
+    <value>Thank you for subscribing!</value>
+  </data>
+  <data name="TRIAL_EXPRIED_CONTENT" xml:space="preserve">
+    <value>has expired</value>
+  </data>
+  <data name="TRIAL_EXPRIED_TITLE" xml:space="preserve">
+    <value>Your trial period</value>
+  </data>
+  <data name="TRIAL_REMAIN_DAYS" xml:space="preserve">
+    <value>{0} days.</value>
+  </data>
+  <data name="TRIAL_REMAIN_TITLE" xml:space="preserve">
+    <value>Days remaining in your free trial:</value>
+  </data>
+  <data name="FILLING_FORM_CONTENT" xml:space="preserve">
+    <value>The author of this form has specified the fields which you can fill. Click on any field to start filling form.</value>
+  </data>
+  <data name="FILLING_FORM_TITLE" xml:space="preserve">
+    <value>Specified fields detected</value>
+  </data>
+  <data name="COMMENT_ADDING_TEXT" xml:space="preserve">
+    <value>Adding...</value>
+  </data>
+  <data name="COMMENT_EMPTY_CONTENT" xml:space="preserve">
+    <value>(Empty)</value>
+  </data>
+  <data name="COMMENT_PAGE_TITLE" xml:space="preserve">
+    <value>Page {0}</value>
+  </data>
+  <data name="COMMENT_PANE_TITLE" xml:space="preserve">
+    <value>Comments ({0})</value>
+  </data>
+  <data name="COMMENT_SORT_AUTHOR" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="COMMENT_SORT_DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="COMMENT_SORT_PAGE" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="GRACE_EXPRIED_TITLE" xml:space="preserve">
+    <value>Your grace period has expired.</value>
+  </data>
+  <data name="GRACE_REMAIN_TITLE" xml:space="preserve">
+    <value>Days remaining in your grace period:</value>
+  </data>
+  <data name="LOGSIGN_SUCESS" xml:space="preserve">
+    <value>You have successfully logged in as:</value>
+  </data>
+  <data name="LOG_SIGN_BUTTON_TITLE" xml:space="preserve">
+    <value>Log in or sign up</value>
+  </data>
+</root>

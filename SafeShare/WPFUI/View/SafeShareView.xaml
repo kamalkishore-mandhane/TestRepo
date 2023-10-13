@@ -1,0 +1,34 @@
+﻿<controls:BaseNavigationWindow x:Uid="controls:BaseNavigationWindow_1" x:Class="SafeShare.WPFUI.View.SafeShareView"
+                               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                               xmlns:controls="clr-namespace:SafeShare.WPFUI.Controls"
+                               mc:Ignorable="d"
+                               Title="SafeShareView"
+                               Width="410"
+                               Height="420"
+                               Background="Transparent"
+                               AllowsTransparency="True"
+                               WindowStyle="None"
+                               ShowsNavigationUI="False"
+                               WindowStartupLocation="CenterScreen"
+                               ResizeMode="NoResize"
+                               KeyDown="SafeShareView_KeyDown"
+                               MouseLeftButtonDown="SafeShareView_MouseLeftButtonDown"
+                               Closing="SafeShareView_Closing"
+                               Closed="SafeShareView_Closed"
+                               Loaded="SafeShareView_Loaded"
+                               Unloaded="SafeShareView_Unloaded"
+                               SizeChanged="SafeShareView_SizeChanged">
+
+    <controls:BaseNavigationWindow.CommandBindings>
+        <CommandBinding x:Uid="CommandBinding_1" Command="ApplicationCommands.Close"
+                        Executed="ExecuteCloseCommand"
+                        CanExecute="CanExecuteCloseCommand" />
+
+        <CommandBinding x:Uid="CommandBinding_2" Command="NavigationCommands.PreviousPage"
+                        Executed="ExecutePreviousPageCommand"
+                        CanExecute="CanExecutePreviousPageCommand" />
+    </controls:BaseNavigationWindow.CommandBindings>
+</controls:BaseNavigationWindow>

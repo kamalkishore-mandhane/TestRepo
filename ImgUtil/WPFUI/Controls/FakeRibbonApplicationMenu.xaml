@@ -1,0 +1,616 @@
+﻿<local:BaseMenu x:Uid="Menu_1" x:Class="ImgUtil.WPFUI.Controls.FakeRibbonApplicationMenu"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:util="clr-namespace:ImgUtil.WPFUI.Utils"
+                xmlns:local="clr-namespace:ImgUtil.WPFUI.Controls"
+                Loaded="Menu_Loaded"
+                Unloaded="BaseMenu_Unloaded">
+
+    <Menu.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_3">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_4">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_6" Source="../Themes/FlatScrollViewerStyle.xaml"/>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <util:ItemSourceCountFilterConverter x:Uid="local:ItemSourceCountFilterConverter_1" x:Key="ItemSourceCountFilter"/>
+
+            <Style x:Uid="Style_1" x:Key="FakeRibbonApplicationMenuItem" TargetType="{x:Type MenuItem}">
+                <Setter x:Uid="Setter_1" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+                <Setter x:Uid="Setter_2" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type MenuItem}">
+                            <Grid x:Uid="Grid_1">
+                                <Border x:Uid="ButtonBorder" Name="ButtonBorder"
+                                    Height="24" Width="40"
+                                    CornerRadius="0" BorderThickness="0,0,0,1"
+                                    SnapsToDevicePixels="True" BorderBrush="{DynamicResource Brush.Item.Border}"
+                                    Background="{DynamicResource Brush.FakeRibbonApplicationMenuButton.Background}">
+                                    <Border x:Uid="focusedBorder" x:Name="focusedBorder" 
+                                            Width="36" 
+                                            Height="20"
+                                            BorderThickness="0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                        <Border.BorderBrush>
+                                            <DrawingBrush x:Uid="DrawingBrush_1" Viewport="0,0,4,4" ViewportUnits="Absolute" TileMode="Tile">
+                                                <DrawingBrush.Drawing>
+                                                    <DrawingGroup x:Uid="DrawingGroup_1">
+                                                        <GeometryDrawing x:Uid="GeometryDrawing_1" Brush="{DynamicResource Brush.Item.Text.Gray}">
+                                                            <GeometryDrawing.Geometry>
+                                                                <GeometryGroup x:Uid="GeometryGroup_1">
+                                                                    <RectangleGeometry x:Uid="RectangleGeometry_1" Rect="0,0,50,50" />
+                                                                    <RectangleGeometry x:Uid="RectangleGeometry_2" Rect="50,50,50,50" />
+                                                                </GeometryGroup>
+                                                            </GeometryDrawing.Geometry>
+                                                        </GeometryDrawing>
+                                                    </DrawingGroup>
+                                                </DrawingBrush.Drawing>
+                                            </DrawingBrush>
+                                        </Border.BorderBrush>
+                                        <StackPanel x:Uid="StackPanel_3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                                            <Rectangle x:Uid="Rectangle_1" Width="7" Height="1" Fill="{DynamicResource Brush.FakeRibbonApplicationMenuButton.Content}"/>
+                                            <Rectangle x:Uid="Rectangle_2" Width="7" Height="1" Margin="0,2,0,0" Fill="{DynamicResource Brush.FakeRibbonApplicationMenuButton.Content}"/>
+                                            <Rectangle x:Uid="Rectangle_3" Width="7" Height="1" Margin="0,2,0,0" Fill="{DynamicResource Brush.FakeRibbonApplicationMenuButton.Content}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Border>
+                                <Popup x:Uid="Popup" x:Name="Popup"
+                                       Placement="Bottom"
+                                       IsOpen="{TemplateBinding IsSubmenuOpen}"
+                                       AllowsTransparency="False"
+                                       Focusable="False"
+                                       PopupAnimation="Fade">
+                                    <Border x:Uid="SubmenuBorder" x:Name="SubmenuBorder"
+                                            SnapsToDevicePixels="True"
+                                            BorderThickness="1"
+                                            BorderBrush="{DynamicResource Brush.PreviewPane.DarkBackground}"
+                                            Background="{DynamicResource Brush.Background.White}">
+                                        <local:FlatScrollViewer x:Uid="local:FlatScrollViewer_1" VerticalScrollBarVisibility="Auto"
+                                                                Template="{StaticResource menuScrollViewTemplate}"
+                                                                ScrollChanged="MenuScrollViewer_ScrollChanged"
+                                                                CanContentScroll="False">
+                                            <local:TouchScrollingStackPane x:Uid="local:TouchScrollingStackPane_1" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                                        </local:FlatScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                                    <Setter x:Uid="Setter_3" TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Brush.FakeRibbonApplicationMenuButton.HoverBackground}"/>
+                                </Trigger>
+                                <Trigger x:Uid="Trigger_2" Property="IsSubmenuOpen" Value="True">
+                                    <Setter x:Uid="Setter_4" TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+                                </Trigger>
+                                <Trigger x:Uid="Trigger_7" Property="IsKeyboardFocused" Value="True">
+                                    <Setter x:Uid="Setter_48" TargetName="focusedBorder" Property="BorderThickness" Value="1"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="Style_8" x:Key="RecentFileMenuItemStyle" TargetType="{x:Type MenuItem}">
+                <Setter x:Uid="Setter_42" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+                <Setter x:Uid="Setter_43" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_3" TargetType="{x:Type MenuItem}">
+                            <Border x:Uid="templateRoot" x:Name="templateRoot" BorderThickness="1" BorderBrush="Transparent">
+                                <Grid x:Uid="Grid_8">
+                                    <ContentPresenter x:Uid="ContentPresenter_1" Margin="6,3,6,3"
+                                        ContentSource="Header"
+                                        RecognizesAccessKey="True" />
+                                    <Popup x:Uid="Popup_2"
+                                       Placement="Right"
+                                       Width="260"
+                                       x:Name="recentListPopup"
+                                       IsOpen="{TemplateBinding IsSubmenuOpen}"
+                                       AllowsTransparency="False"
+                                       Focusable="True">
+                                        <Border x:Uid="Border_4" x:Name="SubmenuBorder"
+                                               SnapsToDevicePixels="True"
+                                               BorderThickness="1"
+                                               BorderBrush="{DynamicResource Brush.PreviewPane.DarkBackground}"
+                                               Background="{DynamicResource Brush.Background.White}">
+                                            <local:FlatScrollViewer x:Uid="local:FlatScrollViewer_2" VerticalScrollBarVisibility="Auto"
+                                                                    Template="{StaticResource menuScrollViewTemplate}"
+                                                                    ScrollChanged="MenuScrollViewer_ScrollChanged"
+                                                                    CanContentScroll="False">
+                                                <local:TouchScrollingStackPane x:Uid="local:TouchScrollingStackPane_2" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                                            </local:FlatScrollViewer>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_5" Property="IsMouseOver" Value="True">
+                                    <Setter x:Uid="Setter_44" Property="Background" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.Background}"/>
+                                    <Setter x:Uid="Setter_45" Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.BorderBrush}"/>
+                                </Trigger>
+                                <Trigger x:Uid="Trigger_6" Property="IsKeyboardFocused" Value="True">
+                                    <Setter x:Uid="Setter_46" Property="Background" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.Background}"/>
+                                    <Setter x:Uid="Setter_47" Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.BorderBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="Style_10" x:Key="CommonFileMenuItemStyle" TargetType="{x:Type MenuItem}">
+                <Setter x:Uid="Setter_49" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+                <Setter x:Uid="Setter_50" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_4" TargetType="{x:Type MenuItem}">
+                            <Border x:Uid="Border_6" x:Name="templateRoot" BorderThickness="1" BorderBrush="Transparent">
+                                <Grid x:Uid="Grid_9">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition x:Uid="ColumnDefinition_12" Width="*"/>
+                                        <ColumnDefinition x:Uid="ColumnDefinition_13" Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter x:Uid="ContentPresenter_2" Grid.Column="0" Margin="6,3,6,3"
+                                                      ContentSource="Header"
+                                                      RecognizesAccessKey="True" />
+                                    <TextBlock x:Uid="TextBlock_8" Grid.Column="1"
+                                               Text="{TemplateBinding InputGestureText}"
+                                               Margin="35,11,15,2" />
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_8" Property="IsMouseOver" Value="True">
+                                    <Setter x:Uid="Setter_51" Property="Background" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.Background}"/>
+                                    <Setter x:Uid="Setter_52" Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.BorderBrush}"/>
+                                </Trigger>
+                                <Trigger x:Uid="Trigger_9" Property="IsKeyboardFocused" Value="True">
+                                    <Setter x:Uid="Setter_53" Property="Background" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.Background}"/>
+                                    <Setter x:Uid="Setter_54" Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource Brush.FileMenuItemButton.BorderBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <util:CommandReference x:Uid="CommandReference.CreateFrom"
+                                 x:Key="CreateFromCommand"
+                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.CreateFromCommand}"/>
+            <util:CommandReference x:Uid="CommandReference.Open"
+                                 x:Key="OpenCommand"
+                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.OpenCommand}"/>
+            <util:CommandReference x:Uid="util:CommandReference_1"
+                                 x:Key="SaveCommand"
+                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.SaveCommand}"/>
+            <util:CommandReference x:Uid="util:CommandReference_2"
+                                 x:Key="SaveAsCommand"
+                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.SaveAsCommand}"/>
+            <util:CommandReference x:Uid="util:CommandReference_3"
+                                 x:Key="ExitCommand"
+                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.ExitCommand}"/>
+        </ResourceDictionary>
+    </Menu.Resources>
+
+    <MenuItem x:Uid="MenuItem_1" Header="+"
+              Margin="0"
+              x:Name="mainMenu"
+              ToolTip="File menu"
+              Focusable="True"
+              PreviewKeyDown="OpenRecent_PreviewKeyDown"
+              Style="{StaticResource FakeRibbonApplicationMenuItem}">
+        <MenuItem x:Uid="MenuItem_2" Tag="CreateFrom" x:Name="CreateFrom"
+                  AutomationProperties.Name="Create From"
+                  Height="42"
+                  Margin="0,5"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.CreateFromCommand}" InputGestureText="CTRL+N">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_14" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_15" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_4" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Create}"/>
+                    <Label x:Uid="Label_1" Grid.Column="1" Content="Create From..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem.InputBindings>
+                <KeyBinding x:Uid="KeyBinding_1" Key="N"  Modifiers="Ctrl" Command="{StaticResource CreateFromCommand}"/>
+            </MenuItem.InputBindings>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_3" Tag="Open"
+                  AutomationProperties.Name="Open"
+                  Margin="0,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.OpenCommand}"
+                  InputGestureText="CTRL+O">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_11">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_16" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_17" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_17" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Open}"/>
+                    <Label x:Uid="Label_2" Grid.Column="1" Content="Open..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem.InputBindings>
+                <KeyBinding x:Uid="KeyBinding_2" Key="O"  Modifiers="Ctrl" Command="{StaticResource OpenCommand}"/>
+            </MenuItem.InputBindings>
+        </MenuItem>
+        <MenuItem x:Uid="OpenRecent" x:Name="OpenRecent"
+                  AutomationProperties.Name="Open Recent"
+                  Tag="OpenRecent"
+                  Margin="0,5"
+                  Height="42"
+                  Style="{StaticResource RecentFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  ItemsSource="{Binding RecentFileList.RecentListData, Converter={StaticResource ItemSourceCountFilter}, ConverterParameter=10}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.OpenRecentCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_5" x:Name="HeaderGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_3" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_4" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_5" Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_6" Width="32" Height="32" Margin="6,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{StaticResource Geometry_OpenRecent}"/>
+                    <Label x:Uid="Label_13" Grid.Column="1" Content="Open Recent" Margin="0,3,0,0"/>
+                    <Path x:Uid="geometry" Name="geometry"
+                          Grid.Column="2"
+                          Margin="0,0,12,0"
+                          HorizontalAlignment="Right"
+                          Data="{StaticResource Skin_DropDownIcon_Geometry}"
+                          Fill="{DynamicResource Brush.Icon.BasicColor}" 
+                          VerticalAlignment="Center" />
+                    <Popup 
+                        x:Uid="noRecentFilesPop" x:Name="noRecentFilesPop"
+                        IsOpen="{Binding Path=IsMouseOver, ElementName=OpenRecent, Mode=OneWay}"
+                        Visibility="Visible"
+                        Placement="Right"
+                        PlacementTarget="{Binding ElementName=OpenRecent}"
+                        StaysOpen="True">
+                        <Border x:Uid="Border_5" BorderThickness="1"
+                                Height="40"
+                                Width="260"
+                                Visibility="{Binding Path=RecentFileList.RecentListData.Count, Converter={StaticResource int2VisInvert}}"
+                                BorderBrush="{DynamicResource Brush.PreviewPane.DarkBackground}"
+                                Background="{DynamicResource Brush.Background.White}">
+                            <TextBlock x:Uid="TextBlock_5" Text="No Recent Files"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Shared.FontFamily.SegoeUI}"
+                                           FontSize="{StaticResource Shared.FontSize.12px}"
+                                           Foreground="{DynamicResource Brush.Item.Text.Gray}"/>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem.ItemTemplate>
+                <HierarchicalDataTemplate x:Uid="HierarchicalDataTemplate_1" DataType="RecentFile" 
+                                          ItemsSource="{Binding RecentFileList.RecentListData}">
+                    <Grid x:Uid="Grid_7" 
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Center"
+                          Height="28"
+                          ToolTip="{Binding Path=RecentFileTooltip}"
+                          Margin="-20,8,-35,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Uid="ColumnDefinition_6" Width="Auto"/>
+                            <ColumnDefinition x:Uid="ColumnDefinition_7" Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Uid="TextBlock_4" 
+                                         x:Name="recentFileIndex"
+                                         Grid.Column="0"
+                                         Width="16"
+                                         Text="{Binding Path=RecentFileIndex, Converter={StaticResource IndexToTextConverter}}"
+                                         TextTrimming="CharacterEllipsis"
+                                         FontSize="{StaticResource Shared.FontSize.12px}"
+                                         FontFamily="{StaticResource Shared.FontFamily.SegoeUI}"
+                                         TextDecorations="Underline"/>
+                        <TextBlock x:Uid="TextBlock_3" 
+                                         x:Name="recentFileName"
+                                         Grid.Column="1"
+                                         TextTrimming="CharacterEllipsis"
+                                         Text="{Binding Path=RecentFileName}"
+                                         FontSize="{StaticResource Shared.FontSize.12px}"
+                                         FontFamily="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                    </Grid>
+                </HierarchicalDataTemplate>
+            </MenuItem.ItemTemplate>
+            <MenuItem.ItemContainerStyle>
+                <Style x:Uid="Style_9" TargetType="MenuItem">
+                    <EventSetter x:Uid="EventSetter_2" Event="PreviewMouseLeftButtonDown" Handler="RecentFileItem_MouseLeftButtonDown"/>
+                    <EventSetter x:Uid="EventSetter_1" Event="PreviewKeyDown" Handler="RecentFileItem_PreviewKeyDown"/>
+                </Style>
+            </MenuItem.ItemContainerStyle>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_14" Tag="Open with..."
+                  AutomationProperties.Name="Open With"
+                  Margin="0,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.OpenWithCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_18" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_19" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_16" Grid.Column="0" Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_OpenWith}"/>
+                    <Label x:Uid="Label_14" Grid.Column="1" Content="Open with..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+        </MenuItem>
+        <Separator x:Uid="Separator_1" Style="{DynamicResource MenuItemSeparator}" />
+        <MenuItem x:Uid="MenuItem_5" Tag="Print"
+                  AutomationProperties.Name="Print"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.PrintCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_13">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_20" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_21" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_7" Grid.Column="0" Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Print}"/>
+                    <Label x:Uid="Label_4" Grid.Column="1" Content="Print..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+        </MenuItem>
+        <Separator x:Uid="Separator_2" Style="{DynamicResource MenuItemSeparator}" />
+        <MenuItem x:Uid="MenuItem_6" Tag="Save"
+                  AutomationProperties.Name="Save"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.SaveCommand}" 
+                  InputGestureText="CTRL+S">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_22" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_23" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_8" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Save}"/>
+                    <Label x:Uid="Label_5" Grid.Column="1" Content="Save"  Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem.InputBindings>
+                <KeyBinding x:Uid="KeyBinding_3" Key="S"  Modifiers="Ctrl" Command="{StaticResource SaveCommand}"/>
+            </MenuItem.InputBindings>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_7" Tag="SaveAs"
+                  AutomationProperties.Name="Save As"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.SaveAsCommand}"
+                  InputGestureText="CTRL+SHIFT+A">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_24" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_25" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_9" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_SaveAs}"/>
+                    <Label x:Uid="Label_6" Grid.Column="1" Content="Save As..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem.InputBindings>
+                <KeyBinding x:Uid="KeyBinding_4" Key="A"  Modifiers="Ctrl+Shift" Command="{StaticResource SaveAsCommand}"/>
+            </MenuItem.InputBindings>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_8" Tag="SaveToZip"
+                  AutomationProperties.Name="Save to Zip"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.SaveToZipCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_26" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_27" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_10" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_SaveAsZip}"/>
+                    <Label x:Uid="Label_7" Grid.Column="1" Content="Save to Zip..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_9" Tag="Share"
+                  AutomationProperties.Name="Share"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.ImgUtilView.SafeShareEnabled}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.ShareCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_17">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_28" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_29" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_11" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Share}"/>
+                    <Label x:Uid="Label_8" Grid.Column="1" Content="Share..." Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+        </MenuItem>
+        <Separator x:Uid="Separator_3" Style="{DynamicResource MenuItemSeparator}" />
+        <MenuItem x:Uid="MenuItem_10"
+                  x:Name="OpenSetting"
+                  AutomationProperties.Name="Settings"
+                  Tag="OpenSetting"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource RecentFileMenuItemStyle}">
+            <MenuItem.Header>
+                <Grid x:Uid="ImgSettingsHeaderGrid" x:Name="ImgSettingsHeaderGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  x:Uid="ColumnDefinition_11" Width="Auto"/>
+                        <ColumnDefinition  x:Uid="ColumnDefinition_9" Width="Auto"/>
+                        <ColumnDefinition  x:Uid="ColumnDefinition_10" Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_12" Width="32" Height="32" Margin="6,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{StaticResource Geometry_Settings}"/>
+                    <Label x:Uid="Label_15"
+                           Grid.Column="1"
+                           Content="Settings..."
+                           Margin="0,3,0,0"/>
+                    <Path x:Uid="geometry_1"
+                          Grid.Column="2"
+                          Margin="0,0,12,0"
+                          HorizontalAlignment="Right"
+                          Data="{StaticResource Skin_DropDownIcon_Geometry}"
+                          Fill="{DynamicResource Brush.Icon.BasicColor}" 
+                          VerticalAlignment="Center"/>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem x:Uid="MenuItem_15"
+                      Height="40"
+                      Style="{StaticResource CommonFileMenuItemStyle}"
+                      Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.ImgSettingsCommand}">
+                <MenuItem.Header>
+                    <TextBlock x:Uid="TextBlock_6"
+                                   Text="Image Settings…"
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem x:Uid="MenuItem_16"
+                      Height="40"
+                      Style="{StaticResource CommonFileMenuItemStyle}"
+                      Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.IsShowWindowsIntegration}"
+                      Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.WindowsIntegrationCommand}">
+                <MenuItem.Header>
+                    <TextBlock x:Uid="TextBlock_7"
+                                   Text="Windows Integration…"
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+        </MenuItem>
+        <Separator x:Uid="Separator_4" Style="{DynamicResource MenuItemSeparator}" />
+        <MenuItem x:Uid="MenuItem_11" Tag="CloseFile"
+                  AutomationProperties.Name="Close File"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.CloseCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_18">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_30" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_31" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_13" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Close}"/>
+                    <Label x:Uid="Label_10" Grid.Column="1" Content="Close" Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+        </MenuItem>
+        <MenuItem x:Uid="MenuItem_12" Tag="NewWindow"
+                  AutomationProperties.Name="New Window"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.NewWindowCommand}">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_19">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_32" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_33" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_14" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_NewWindow}"/>
+                    <Label x:Uid="Label_11" Grid.Column="1" Content="New Window" Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+        </MenuItem>
+        <Separator x:Uid="Separator_5" Style="{DynamicResource MenuItemSeparator}" />
+        <MenuItem x:Uid="MenuItem_13" Tag="Exit"
+                  AutomationProperties.Name="Exit"
+                  Margin="2,5"
+                  Height="42"
+                  Style="{StaticResource CommonFileMenuItemStyle}"
+                  Loaded="MenuItem_Loaded"
+                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}, Path=DataContext.RibbonCommands.ExitCommand}"
+                  InputGestureText="ALT+F4">
+            <MenuItem.Header>
+                <Grid x:Uid="Grid_20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_34" Width="Auto"/>
+                        <ColumnDefinition x:Uid="ColumnDefinition_35" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle x:Uid="Rectangle_15" Grid.Column="0"
+                               Width="32" Height="32"
+                               Margin="6,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="{StaticResource Geometry_Exit}"/>
+                    <Label x:Uid="Label_12" Grid.Column="1" Content="Exit" Margin="0,3,0,0"/>
+                </Grid>
+            </MenuItem.Header>
+            <MenuItem.InputBindings>
+                <KeyBinding x:Uid="KeyBinding_5" Key="X"  Modifiers="Ctrl" Command="{StaticResource ExitCommand}"/>
+            </MenuItem.InputBindings>
+        </MenuItem>
+    </MenuItem>
+</local:BaseMenu>

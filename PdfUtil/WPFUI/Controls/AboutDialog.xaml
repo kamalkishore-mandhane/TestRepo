@@ -1,0 +1,214 @@
+﻿<local:BaseWindow x:Uid="local:BaseWindow_1" x:Class="PdfUtil.WPFUI.Controls.AboutDialog"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:PdfUtil.WPFUI.Controls"
+                  mc:Ignorable="d"
+                  KeyDown="OnWindowKeyDown"
+                  Title="About WinZip PDF Express"
+                  Width="540"
+                  Height="470"
+                  ResizeMode="NoResize"
+                  ShowInTaskbar="False"
+                  SnapsToDevicePixels="True"
+                  WindowStartupLocation="CenterOwner"
+                  Loaded="AboutDialog_Loaded"
+                  Unloaded="AboutDialog_Unloaded"
+                  SourceInitialized="AboutDialog_SourceInitialized">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_3">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:BoolToVisibilityValueConverter x:Uid="local:BoolToVisibilityValueConverter_1" x:Key="bool2Vis"/>
+
+            <Style x:Uid="Style_1" x:Key="Shared.TextBlockStyle.SegoeUI.Normal.12px" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_1" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_2" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+                <Setter x:Uid="Setter_3" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}"/>
+            </Style>
+
+            <Style x:Uid="Style_32" x:Key="Shared.TextBlockStyle.SegoeUI.Normal.14px" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_18" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_19" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+                <Setter x:Uid="Setter_20" Property="FontSize" Value="{StaticResource Shared.FontSize.16px}"/>
+            </Style>
+
+            <ControlTemplate x:Uid="ControlTemplate_1" TargetType="Button" x:Key="ButtonTemplate">
+                <Border x:Uid="Border_1" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                    <ContentPresenter x:Uid="ButtonTemplate.ContentPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                        <Setter x:Uid="Setter_4" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                        <Setter x:Uid="Setter_5" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="Trigger_2" Property="IsPressed" Value="True">
+                        <Setter x:Uid="Setter_6" Property="Background" Value="{DynamicResource Brush.Item.SelectedBackground}"/>
+                        <Setter x:Uid="Setter_7" Property="BorderBrush" Value="{DynamicResource Brush.Item.SelectedBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="Trigger_3" Property="IsKeyboardFocused" Value="True">
+                        <Setter x:Uid="Setter_8" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="Trigger_4" Property="IsEnabled" Value="False">
+                        <Setter x:Uid="Setter_9" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <Style x:Uid="Style_2" x:Key="HelpButtonStyle" TargetType="{x:Type Button}">
+                <Setter x:Uid="Setter_13" Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter x:Uid="Setter_14" Property="Template" Value="{StaticResource ButtonTemplate}"/>
+            </Style>
+
+            <Style x:Uid="Style_3" x:Key="CommonButtonTextStyle" TargetType="TextBlock" BasedOn="{StaticResource Shared.TextBlockStyle.SegoeUI.Normal.12px}">
+                <Setter x:Uid="Setter_15" Property="Foreground" Value="{DynamicResource Brush.Text.Foreground}"/>
+                <Style.Triggers>
+                    <DataTrigger x:Uid="DataTrigger_1" Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}" Value="True">
+                        <Setter x:Uid="Setter_16" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Black.Highlight}"/>
+                    </DataTrigger>
+                    <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}" Value="False">
+                        <Setter x:Uid="Setter_17" Property="Foreground" Value="{DynamicResource Brush.Item.Border}"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Uid="Style_33" x:Key="InfoTextStyle" TargetType="TextBlock" BasedOn="{StaticResource Shared.TextBlockStyle.SegoeUI.Normal.14px}" />
+
+            <Style x:Uid="Style_31" x:Key="VersionTextStyle" TargetType="TextBlock" BasedOn="{StaticResource Shared.TextBlockStyle.SegoeUI.Normal.12px}" />
+
+            <Style x:Uid="Style_34" x:Key="GroupBoxStyle" TargetType="{x:Type GroupBox}">
+                <Setter x:Uid="Setter_22" Property="BorderThickness" Value="1"/>
+                <Setter x:Uid="Setter_24" Property="SnapsToDevicePixels" Value="True"/>
+                <Setter x:Uid="Setter_25" Property="Width" Value="158"/>
+                <Setter x:Uid="Setter_26" Property="Height" Value="66"/>
+                <Setter x:Uid="Setter_29" Property="HorizontalAlignment" Value="Center"/>
+                <Setter x:Uid="Setter_30" Property="VerticalAlignment" Value="Center"/>
+                <Setter x:Uid="Setter_23" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_2" TargetType="{x:Type GroupBox}">
+                            <Grid x:Uid="Grid_1" SnapsToDevicePixels="true">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Uid="ColumnDefinition_1" Width="16"/>
+                                    <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto"/>
+                                    <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+                                    <RowDefinition x:Uid="RowDefinition_2" Height="Auto"/>
+                                    <RowDefinition x:Uid="RowDefinition_3" Height="*"/>
+                                    <RowDefinition x:Uid="RowDefinition_4" Height="6"/>
+                                </Grid.RowDefinitions>
+                                <Border x:Uid="Border_2" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" RenderTransformOrigin="0.5,0.5" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="3" CornerRadius="0" Grid.Row="1" Grid.RowSpan="3"/>
+                                <Border x:Uid="Header" x:Name="Header" Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" HorizontalAlignment="Center" Padding="3,1,3,0" Grid.Row="0" Grid.RowSpan="2" CornerRadius="1">
+                                    <ContentPresenter x:Uid="ContentPresenter_1" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                                <ContentPresenter x:Uid="ContentPresenter_2" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="Style_35" x:Key="ButtonStyle" TargetType="Button">
+                <Setter x:Uid="Setter_31" Property="Width" Value="124"/>
+                <Setter x:Uid="Setter_32" Property="Height" Value="28"/>
+                <Setter x:Uid="Setter_27" Property="Background" Value="{DynamicResource Brush.SharedStyle.FlatButton.Background}"/>
+                <Setter x:Uid="Setter_28" Property="BorderBrush" Value="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}"/>
+                <Setter x:Uid="Setter_33" Property="HorizontalAlignment" Value="Center"/>
+                <Setter x:Uid="Setter_34" Property="VerticalAlignment" Value="Center"/>
+                <Setter x:Uid="Setter_35" Property="BorderThickness" Value="1"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_2">
+
+        <Image x:Uid="Image_1" Grid.Column="0" Grid.Row="0"
+               Source="/Resources/PdfUtil.ico" Margin="50,23,0,0" RenderTransformOrigin="0.488,0.738" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" Width="80"  />
+
+        <TextBlock x:Uid="TextBolck_VersionInfo_1" x:Name="TextBolck_VersionInfo_1" HorizontalAlignment="Left" Margin="149,56,0,0" TextWrapping="Wrap" Text="WinZip® PDF Express 27.0 (17005) - 64-bit" VerticalAlignment="Top" Style="{StaticResource InfoTextStyle}"/>
+
+        <Grid x:Uid="GridVersionInfo" x:Name="GridVersionInfo" HorizontalAlignment="Center" Height="66" Margin="0,90,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <TextBlock x:Uid="TextBolck_VersionInfo_2" x:Name="TextBolck_VersionInfo_2" Margin="10,0,0,0" TextWrapping="Wrap" Text="WinZip® 27.0 Enterprise BETA (17005) - 64-bit" VerticalAlignment="Top" HorizontalAlignment="Center" />
+            <TextBlock x:Uid="TextBolck_CopyRight" x:Name="TextBolck_CopyRight" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="© 1991-2023 Corel Corporation" VerticalAlignment="Top"/>
+            <TextBlock x:Uid="TextBolck_Rights" x:Name="TextBolck_Rights" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="All Rights Reserved" VerticalAlignment="Top" />
+        </Grid>
+
+        <Grid x:Uid="GridLicenseInfo" x:Name="GridLicenseInfo" HorizontalAlignment="Center" Height="86" Margin="0,168,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <TextBlock x:Uid="TextBolck_L1" x:Name="TextBolck_L1" Margin="0,0,0,0" TextWrapping="Wrap" Text="This copy of WinZip is licensed to " VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}" HorizontalAlignment="Center" />
+            <TextBlock x:Uid="TextBolck_L2" x:Name="TextBolck_L2" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="© 1991-2023 Corel Corporation" VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}"/>
+            <TextBlock x:Uid="TextBolck_L3" x:Name="TextBolck_L3" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Registration code" VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}"/>
+            <TextBlock x:Uid="TextBolck_L4" x:Name="TextBolck_L4" HorizontalAlignment="Center" Margin="0,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}"/>
+        </Grid>
+
+        <Grid x:Uid="GridLicenseEvaInfo" x:Name="GridLicenseEvaInfo" HorizontalAlignment="Center" Height="86" Margin="0,168,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            <TextBlock x:Uid="TextBolck_Evaluate_L1" x:Name="TextBolck_Evaluate_L1" Margin="0,0,0,0" TextWrapping="Wrap" Text="This is an unlicensed copy for evaluation use only." VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}" HorizontalAlignment="Center" />
+            <TextBlock x:Uid="TextBolck_Evaluate_L2" x:Name="TextBolck_Evaluate_L2" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Text="Please remember that if you use this software you are" VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}"/>
+            <TextBlock x:Uid="TextBolck_Evaluate_L3" x:Name="TextBolck_Evaluate_L3" HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="required to pay the registration fee, as described in" VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}"/>
+            <TextBlock x:Uid="TextBolck_Evaluate_L4" x:Name="TextBolck_Evaluate_L4" HorizontalAlignment="Center" Margin="0,60,0,0" TextWrapping="Wrap" Text="the License Agreement." VerticalAlignment="Top" Style="{StaticResource VersionTextStyle}"/>
+        </Grid>
+
+        <Grid x:Uid="Grid_Suite" Margin="0,262,0,0"
+                      Width="490"
+                      x:Name="Grid_Suite"
+                      VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Uid="ColumnDefinition_12" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_21" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_22" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_23" Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Separator x:Uid="Separator_1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,10"/>
+            <TextBlock x:Uid="TextBlock_Suite" Grid.Row="1" Grid.Column="0"
+                               x:Name="TextBlock_Suite"
+                               Text=""
+                               Style="{StaticResource Shared.TextBlockStyle.SegoeUI.SemiBold.13px}"/>
+            <TextBlock x:Uid="TextBlock_name" Grid.Row="2" Grid.Column="0"
+                               x:Name="TextBlock_name"
+                               Text=""
+                               Style="{StaticResource Shared.TextBlockStyle.SegoeUI.Normal.12px}"/>
+            <TextBlock x:Uid="TextBlock_renews" Grid.Row="2" Grid.Column="0" TextAlignment="Right"
+                               x:Name="TextBlock_renews"
+                               Text=""
+                               Style="{StaticResource Shared.TextBlockStyle.SegoeUI.Normal.12px}"/>
+        </Grid>
+
+        <Grid x:Uid="Grid_3" Margin="0,0,0,18" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Uid="ColumnDefinition_5" Width="1*"></ColumnDefinition>
+                <ColumnDefinition x:Uid="ColumnDefinition_6" Width="1*"></ColumnDefinition>
+                <ColumnDefinition x:Uid="ColumnDefinition_7" Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <GroupBox x:Uid="GroupBox_1" Style="{DynamicResource GroupBoxStyle}" Header="Help" Grid.Row="0" Grid.Column="0">
+                <Button x:Uid="Button_1" Style="{DynamicResource ButtonStyle}" Click="Button_KnowledgebaseClick" Content="Knowledge Base">
+                </Button>
+            </GroupBox>
+            <GroupBox x:Uid="GroupBox_2" Style="{DynamicResource GroupBoxStyle}" Header="Legal" Grid.Row="0" Grid.Column="1">
+                <Button x:Uid="Button_2" Style="{DynamicResource ButtonStyle}" Click="Button_LicenseClick" Content="License">
+                </Button>
+            </GroupBox>
+            <GroupBox x:Uid="GroupBox_3" Style="{DynamicResource GroupBoxStyle}" Header="WinZip" Grid.Row="0" Grid.Column="2">
+                <Button x:Uid="Button_3" Style="{DynamicResource ButtonStyle}" Click="Button_HomePageClick" Content="Home Page"/>
+            </GroupBox>
+        </Grid>
+       
+    </Grid>
+</local:BaseWindow>

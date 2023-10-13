@@ -1,0 +1,60 @@
+name: pull-request-ci
+
+on:
+  pull_request:
+    branches: [ master ]
+    types:
+      - opened
+      - synchronize
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+  GITHUB_NAME: ''
+
+jobs:
+  build:
+    name: dot net build Windows
+    runs-on: windows-latest
+    if: github.repository == 'Alludo-WinZip/Applets'
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Get authenticated user and their permissions
+        run: |
+          $PAT_TOKEN = "${{ secrets.PAT_TOKEN }}"
+          $response = Invoke-RestMethod -Uri "https://api.github.com/user" -Headers @{"Authorization"="token $PAT_TOKEN"}
+          
+          # Extract the  user's name
+          $githubName = $response.login
+          
+          # Set the GITHUB_NAME environment variable
+          echo "GITHUB_NAME=$githubName" >> $env:GITHUB_ENV
+
+      - name: Check Choco Installed
+        shell: powershell
+        run: |
+          choco --version
+
+      - name: Install .NET Framework 4.6.1
+        shell: powershell
+        run: |
+          mkdir ./Downloads
+          Invoke-WebRequest -Uri 'https://download.microsoft.com/download/F/1/D/F1DEB8DB-D277-4EF9-9F48-3A65D4D8F965/NDP461-DevPack-KB3105179-ENU.exe' -OutFile './Downloads/NDP461-KB3102436-x86-x64-AllOS-ENU.exe'
+          Start-Process -FilePath './Downloads/NDP461-KB3102436-x86-x64-AllOS-ENU.exe' -ArgumentList '/q' -Wait
+
+      - name: Check NuGet command line tool
+        shell: powershell
+        run: |
+          nuget help | select -First 1; exit 0
+
+      - name: Build Applets
+        shell: powershell
+        run: |
+          $installPath = & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationpath
+          Import-Module (Join-Path $installPath "Common7\Tools\Microsoft.VisualStudio.DevShell.dll")
+          Enter-VsDevShell -VsInstallPath $installPath -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+          msbuild Applets.sln /t:restore,build -p:RestorePackagesConfig=true

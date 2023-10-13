@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <MSBuildCommunityTasksPath>$(SolutionDir)</MSBuildCommunityTasksPath>
+    </PropertyGroup>
+    <Import Project="$(SolutionDir)\MSBuild.Community.Tasks.Targets"/>
+    <PropertyGroup>
+        <WZMAJORVER Condition=" $(WZMAJORVER) == '' ">26</WZMAJORVER>
+        <WZMINORVER Condition=" $(WZMINORVER) == '' ">0</WZMINORVER>
+        <REVISION Condition=" $(REVISION) == '' ">0</REVISION>
+        <BUILDNUMBER_FILE Condition=" $(BUILDNUMBER_FILE) == '' ">13382</BUILDNUMBER_FILE>
+        <REVISION_FILE Condition=" $(REVISION_FILE) == '' ">0</REVISION_FILE>
+        <COPY_RIGHT Condition=" $(COPY_RIGHT) == '' ">2023</COPY_RIGHT>
+    </PropertyGroup>
+    <Target Name="GetVersionHeaderFile">
+        <CreateProperty Value="$([System.IO.File]::ReadAllText(`..\version.h`))">
+            <Output PropertyName="VersionHeaderFile" TaskParameter="Value" />
+        </CreateProperty>
+    </Target>
+    <Target Name="GetBuildNumberHeaderFile">
+        <CreateProperty Condition=" '$(WZ_SUBS_REL)'=='True' " Value="$([System.IO.File]::ReadAllText(`..\..\..\Common\WzVersion-Subs.h`))">
+            <Output PropertyName="BuildNumberVersionHeaderFile" TaskParameter="Value" />
+        </CreateProperty>
+        <CreateProperty Condition=" '$(WZ_SUBS_REL)'=='False' " Value="$([System.IO.File]::ReadAllText(`..\..\..\Common\WzVersion-Perp.h`))">
+            <Output PropertyName="BuildNumberVersionHeaderFile" TaskParameter="Value" />
+        </CreateProperty>
+    </Target>
+    <Target Name="GetBuildNumberFromBNVHF" DependsOnTargets="GetBuildNumberHeaderFile">
+        <CreateProperty Value="$([System.Text.RegularExpressions.Regex]::Match(`$(BuildNumberVersionHeaderFile)`, `BUILD_NUMBER[ ]*\d{5}`))">
+            <Output PropertyName="BuildNumberFromBNVHF" TaskParameter="Value" />
+        </CreateProperty>
+    </Target>
+    <Target Name="GetBuildNumber" DependsOnTargets="GetBuildNumberFromBNVHF">
+        <CreateProperty Value="$([System.Text.RegularExpressions.Regex]::Match(`$(BuildNumberFromBNVHF)`, `\d{5}`))">
+            <Output PropertyName="_Build_Number_" TaskParameter="Value" />
+        </CreateProperty>
+    </Target>
+    <Target Name="GetWzWxfVerMajorFromVHF" DependsOnTargets="GetVersionHeaderFile">
+      <CreateProperty Value="$([System.Text.RegularExpressions.Regex]::Match(`$(VersionHeaderFile)`, `WZMAJORVER[ ]*\d{1}`))">
+        <Output PropertyName="WzWxfVerMajorFromVHF" TaskParameter="Value" />
+      </CreateProperty>
+    </Target>
+    <Target Name="GetWzWxfVerMajor" DependsOnTargets="GetWzWxfVerMajorFromVHF">
+      <CreateProperty Value="$([System.Text.RegularExpressions.Regex]::Match(`$(WzWxfVerMajorFromVHF)`, `\d{1}`))">
+        <Output PropertyName="_Wxf_Major_Version_" TaskParameter="Value" />
+      </CreateProperty>
+    </Target>
+    <Target Name="GetWzWxfVerMinorFromVHF" DependsOnTargets="GetVersionHeaderFile">
+      <CreateProperty Value="$([System.Text.RegularExpressions.Regex]::Match(`$(VersionHeaderFile)`, `WZMINORVER[ ]*\d{1}`))">
+        <Output PropertyName="WzWxfVerMinorFromVHF" TaskParameter="Value" />
+      </CreateProperty>
+    </Target>
+    <Target Name="GetWzWxfVerMinor" DependsOnTargets="GetWzWxfVerMinorFromVHF">
+      <CreateProperty Value="$([System.Text.RegularExpressions.Regex]::Match(`$(WzWxfVerMinorFromVHF)`, `\d{1}`))">
+        <Output PropertyName="_Wxf_Minor_Version_" TaskParameter="Value" />
+      </CreateProperty>
+    </Target>
+    <Target Name="ConfigureVersionNumber" DependsOnTargets="GetBuildNumber;GetWzWxfVerMajor;GetWzWxfVerMinor">
+        <CreateProperty Value="$(_Wxf_Major_Version_).$(_Wxf_Minor_Version_).$(_Build_Number_).$(REVISION)">
+            <Output PropertyName="VersionNumber" TaskParameter="Value" />
+        </CreateProperty>
+    </Target>
+    <Target Name="ConfigureFileVersionNumber">
+        <CreateProperty Value="$(WZMAJORVER).$(WZMINORVER).$(BUILDNUMBER_FILE).$(REVISION_FILE)">
+            <Output PropertyName="FileVersionNumber" TaskParameter="Value" />
+        </CreateProperty>
+    </Target>
+    <PropertyGroup>
+        <PropertiesDir>Properties</PropertiesDir>
+    </PropertyGroup>
+    <ItemGroup>
+        <AssemblyInfo Include="$(PropertiesDir)\AssemblyVersionInfo.cs" />
+        <Compile Include="@(AssemblyInfo)" />
+    </ItemGroup>
+    <Target Name="CreateAssemblyInfo" DependsOnTargets="ConfigureVersionNumber">
+        <MakeDir Directories="$(PropertiesDir)" />
+        <AssemblyInfo OutputFile="@(AssemblyInfo)"
+                      CodeLanguage="CS"
+                      AssemblyCopyright="(c) 2015-$(COPY_RIGHT) Corel Corporation All rights reserved."
+                      AssemblyFileVersion="$(FileVersionNumber)"
+                      AssemblyInformationalVersion="$(VersionNumber)"
+                      AssemblyVersion="$(VersionNumber)"
+                      />
+    </Target>
+    <Target Name="DeleteAssemblyInfo">
+        <Delete Files="@(AssemblyInfo)" />
+    </Target>
+    <PropertyGroup>
+        <BuildDependsOn>ConfigureVersionNumber;CreateAssemblyInfo;$(BuildDependsOn)</BuildDependsOn>
+        <CleanDependsOn>DeleteAssemblyInfo;$(CleanDependsOn)</CleanDependsOn>
+    </PropertyGroup>
+</Project>

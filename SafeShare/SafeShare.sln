@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeShare", "SafeShare.csproj", "{3A014959-547D-475F-A999-AF090C8465BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A014959-547D-475F-A999-AF090C8465BF}.Debug|x64.ActiveCfg = Debug|x64
+		{3A014959-547D-475F-A999-AF090C8465BF}.Debug|x64.Build.0 = Debug|x64
+		{3A014959-547D-475F-A999-AF090C8465BF}.Debug|x86.ActiveCfg = Debug|x86
+		{3A014959-547D-475F-A999-AF090C8465BF}.Debug|x86.Build.0 = Debug|x86
+		{3A014959-547D-475F-A999-AF090C8465BF}.Release|x64.ActiveCfg = Release|x64
+		{3A014959-547D-475F-A999-AF090C8465BF}.Release|x64.Build.0 = Release|x64
+		{3A014959-547D-475F-A999-AF090C8465BF}.Release|x86.ActiveCfg = Release|x86
+		{3A014959-547D-475F-A999-AF090C8465BF}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {338EB74A-5C05-4CFC-84B1-C9E1EEF66466}
+	EndGlobalSection
+EndGlobal

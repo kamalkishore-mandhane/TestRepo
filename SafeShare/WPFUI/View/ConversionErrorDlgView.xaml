@@ -1,0 +1,373 @@
+﻿<controls:BaseWindow x:Uid="ConvertErrorView" x:Class="SafeShare.WPFUI.View.ConversionErrorDlgView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:local="clr-namespace:SafeShare.WPFUI.View"
+                     xmlns:controls="clr-namespace:SafeShare.WPFUI.Controls"
+                     mc:Ignorable="d"
+                     MinHeight="370" Width="540"
+                     SizeToContent="Height"
+                     Background="Transparent"
+                     AllowsTransparency="True"
+                     WindowStyle="None"
+                     ResizeMode="NoResize"
+                     Loaded="ConversionErrorDlgView_Loaded"
+                     Unloaded="ConversionErrorDlgView_UnLoaded"
+                     MouseLeftButtonDown="ConversionErrorDlgView_MouseLeftButtonDown"
+                     x:Name="ConvertErrorView"
+                     AutomationProperties.Name="WinZip SafeShare">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/ColorTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/SharedStyle.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/SharedGeometry.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Uid="Style_1" x:Key="RadioButtonPanelBorder" TargetType="{x:Type Border}">
+                <Setter x:Uid="Setter_1" Property="CornerRadius" Value="5" />
+                <Setter x:Uid="Setter_2" Property="BorderThickness" Value="2" />
+                <Setter x:Uid="Setter_3" Property="BorderBrush" Value="{DynamicResource Brush.RadioButton.Panel.Border}" />
+                <Setter x:Uid="Setter_4" Property="Background" Value="{DynamicResource Brush.RadioButton.Panel.Background}" />
+                <Setter x:Uid="Setter_5" Property="SnapsToDevicePixels" Value="True" />
+            </Style>
+
+            <Style x:Uid="Style_2" x:Key="ErrorDescTitleTextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_6" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_7" Property="FontSize" Value="{StaticResource Shared.FontSize.17px}" />
+                <Setter x:Uid="Setter_8" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}" />
+                <Setter x:Uid="Setter_9" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+                <Setter x:Uid="Setter_10" Property="TextWrapping" Value="Wrap" />
+            </Style>
+
+            <Style x:Uid="Style_3" x:Key="ErrorDescTextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_11" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_12" Property="FontSize" Value="{StaticResource Shared.FontSize.13px}" />
+                <Setter x:Uid="Setter_13" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}" />
+                <Setter x:Uid="Setter_14" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+                <Setter x:Uid="Setter_15" Property="TextWrapping" Value="Wrap" />
+            </Style>
+
+            <Style x:Uid="Style_4" x:Key="ContinueOrSkipTextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_16" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_17" Property="FontSize" Value="{StaticResource Shared.FontSize.14px}" />
+                <Setter x:Uid="Setter_18" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}" />
+                <Setter x:Uid="Setter_19" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+                <Setter x:Uid="Setter_20" Property="TextWrapping" Value="Wrap" />
+            </Style>
+
+            <Style x:Uid="Style_5" x:Key="ContinueOrSkipDescTextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_21" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_22" Property="FontSize" Value="{StaticResource Shared.FontSize.11px}" />
+                <Setter x:Uid="Setter_23" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}" />
+                <Setter x:Uid="Setter_24" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+                <Setter x:Uid="Setter_25" Property="TextWrapping" Value="Wrap" />
+            </Style>
+
+            <Style x:Uid="Style_6" x:Key="NotShowAgainTextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_26" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_27" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}" />
+                <Setter x:Uid="Setter_28" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}" />
+                <Setter x:Uid="Setter_29" Property="Foreground" Value="{DynamicResource Brush.Text.Black.Foreground}" />
+                <Setter x:Uid="Setter_30" Property="TextWrapping" Value="Wrap" />
+            </Style>
+
+            <Style x:Uid="Style_7" x:Key="ErrorDetailsTextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter x:Uid="Setter_31" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_32" Property="FontSize" Value="{StaticResource Shared.FontSize.11px}" />
+                <Setter x:Uid="Setter_33" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}" />
+                <Setter x:Uid="Setter_34" Property="Foreground" Value="{DynamicResource Brush.Detail.Error.Foreground}" />
+                <Setter x:Uid="Setter_35" Property="TextWrapping" Value="Wrap" />
+            </Style>
+
+            <Style x:Uid="Style_8" x:Key="ShowErrorDetailMsgButtonStyle" TargetType="{x:Type Button}">
+                <Setter x:Uid="Setter_50" Property="Height" Value="20"/>
+                <Setter x:Uid="Setter_36" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_37" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_1">
+                            <Grid x:Uid="Grid_1">
+                                <Border x:Uid="Border_1" BorderThickness="0">
+                                    <StackPanel x:Uid="StackPanel_1" Orientation="Horizontal" Margin="3,0,3,0">
+                                        <Path x:Uid="Path_1" VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          StrokeThickness="1"
+                                          Stroke="{DynamicResource Brush.Down.Up.Button.Foreground}"
+                                          Data="M 8 0 L 4 4 L 0 0" />
+                                        <TextBlock x:Uid="TextBlock_1" Margin="4,0,0,0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Right"
+                                               Text="Show details"
+                                               Style="{StaticResource ErrorDetailsTextBlockStyle}" />
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="Style_9" x:Key="HideErrorDetailMsgButtonStyle" TargetType="{x:Type Button}">
+                <Setter x:Uid="Setter_51" Property="Height" Value="20"/>
+                <Setter x:Uid="Setter_38" Property="SnapsToDevicePixels" Value="True" />
+                <Setter x:Uid="Setter_39" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_2">
+                            <Grid x:Uid="Grid_2">
+                                <Border x:Uid="Border_2" BorderThickness="0">
+                                    <StackPanel x:Uid="StackPanel_2" Orientation="Horizontal" Margin="3,0,3,0">
+                                        <Path x:Uid="Path_2" VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          StrokeThickness="1"
+                                          Stroke="{DynamicResource Brush.Down.Up.Button.Foreground}"
+                                          Data="M 8 4 L 4 0 L 0 4" />
+                                        <TextBlock x:Uid="TextBlock_2" Margin="4,0,0,0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               Text="Hide details"
+                                               Style="{StaticResource ErrorDetailsTextBlockStyle}" />
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Uid="Style_11" x:Key="BlackCheckBoxStyle" TargetType="{x:Type CheckBox}">
+                <Setter x:Uid="Setter_52" Property="Height" Value="26"/>
+                <Setter x:Uid="Setter_46" Property="HorizontalAlignment" Value="Left" />
+                <Setter x:Uid="Setter_47" Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Uid="ControlTemplate_4" TargetType="{x:Type CheckBox}">
+                            <Border x:Uid="Border_4" SnapsToDevicePixels="True">
+                                <Grid x:Uid="Grid_4">
+                                    <DockPanel x:Uid="DockPanel_2">
+                                        <Rectangle x:Uid="Rectangle_1" x:Name="R_Ico" Margin="3,0,0,0"
+                                                   Width="20" Height="20"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center" Fill="{StaticResource RadioButtonInaDrawBrush}" />
+                                        <Border x:Uid="Border_5" x:Name="Border" SnapsToDevicePixels="True"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,3,0"
+                                                Background="Transparent" BorderBrush="Transparent">
+                                            <ContentPresenter x:Uid="ContentPresenter_2" Margin="0,0,0,0" />
+                                        </Border>
+                                    </DockPanel>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger x:Uid="Trigger_3" Property="IsChecked" Value="True">
+                                    <Setter x:Uid="Setter_48" Property="Fill" Value="{StaticResource RadioButtonDrawBrush}" TargetName="R_Ico" />
+                                </Trigger>
+                                <Trigger x:Uid="Trigger_4" Property="IsEnabled" Value="False">
+                                    <Setter x:Uid="Setter_49" Property="Fill" Value="{StaticResource RadioButtonDisableDrawBrush}" TargetName="R_Ico" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_5">
+        <Border x:Uid="Border_6" Margin="0,0,10,10"
+                Style="{StaticResource DialogBorder}">
+            <Grid x:Uid="Grid_6">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_1" Height="52" />
+                    <RowDefinition x:Uid="RowDefinition_2" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_3" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_4" Height="*" />
+                    <RowDefinition x:Uid="RowDefinition_5" Height="72" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_1" Width="5*" />
+                    <ColumnDefinition x:Uid="ColumnDefinition_2" Width="5*" />
+                </Grid.ColumnDefinitions>
+
+                <DockPanel x:Uid="MainTitlePanel" x:Name="MainTitlePanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+
+                    <Rectangle x:Uid="Rectangle_2" Margin="20,2,0,0"
+                       Width="120" Height="15"
+                       HorizontalAlignment="Left"
+                       Fill="{StaticResource WordMarkDrawBrush}" />
+
+                    <StackPanel x:Uid="StackPanel_3" HorizontalAlignment="Right">
+                        <Button x:Uid="CloseButton" x:Name="CloseButton"
+                                Margin="0,5,5,0"
+                                HorizontalAlignment="Right"
+                                Style="{StaticResource CloseButtonStyle}"
+                                VerticalAlignment="Center"
+                                Click="CloseButton_Click" />
+                    </StackPanel>
+                </DockPanel>
+
+                <DockPanel x:Uid="DockPanel_3" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                       Background="{DynamicResource Brush.Window.White.Background}">
+                    <TextBlock x:Uid="ErrorDescTitleTextBox" x:Name="ErrorDescTitleTextBox"
+                           Margin="20,10,20,10"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Text="An error was detected while performing the {0} conversion. How do you want to proceed?"
+                           Style="{StaticResource ErrorDescTitleTextBlockStyle}" />
+                </DockPanel>
+
+                <Grid x:Uid="Grid_9" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*" />
+                        <ColumnDefinition x:Uid="ColumnDefinition_4" Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Uid="ErrorDescMsgTextBox" x:Name="ErrorDescMsgTextBox"
+                               Grid.Column="0"
+                               Margin="20,20,20,20"
+                               HorizontalAlignment="Left"
+                               Text="Conversion failed on file {0}."
+                               Style="{StaticResource ErrorDescTextBlockStyle}" />
+
+                    <StackPanel x:Uid="DetailsStackPanel" x:Name="DetailsStackPanel"
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                Margin="0,20,20,20">
+                        <Button x:Uid="ShowDetailsButton" x:Name="ShowDetailsButton"
+                                AutomationProperties.Name="Show details"
+                                HorizontalAlignment="Right"
+                                Style="{StaticResource ShowErrorDetailMsgButtonStyle}"
+                                Click="ShowDetailsButton_Click" />
+                        <Button x:Uid="HideDetailsButton" x:Name="HideDetailsButton"
+                                AutomationProperties.Name="Hide details"
+                                HorizontalAlignment="Right"
+                                Style="{StaticResource HideErrorDetailMsgButtonStyle}"
+                                Click="HideDetailsButton_Click"
+                                Visibility="Collapsed" />
+                        <TextBlock x:Uid="ConvertErrorTextBlock" x:Name="ConvertErrorTextBlock"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Text=" {0} conversion error"
+                                   Style="{StaticResource ErrorDetailsTextBlockStyle}"
+                                   Visibility="Collapsed" />
+                        <TextBlock x:Uid="ErrorCodeTextBlock" x:Name="ErrorCodeTextBlock"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Text="Error Code: {0}"
+                                   Style="{StaticResource ErrorDetailsTextBlockStyle}"
+                                   Visibility="Collapsed" />
+                        <TextBlock x:Uid="ErrorDetailsDescTextBlock" x:Name="ErrorDetailsDescTextBlock"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Text="Error Description: {0}"
+                                   Style="{StaticResource ErrorDetailsTextBlockStyle}"
+                                   Visibility="Collapsed" />
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel x:Uid="StackPanel_4" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,30">
+                    <Border x:Uid="Border_7" Height="52" Margin="20,0,20,0" Style="{StaticResource RadioButtonPanelBorder}">
+                        <DockPanel x:Uid="DockPanel_6">
+                            <RadioButton x:Uid="ContinueRadioButton" x:Name="ContinueRadioButton"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="12,0,0,0"
+                                         GroupName="ContinueOrSkipGroup"
+                                         Style="{StaticResource BlackRadioButtonStyle}">
+                                <TextBlock x:Uid="TextBlock_3" Margin="10,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Text="Continue"
+                                           Style="{StaticResource ContinueOrSkipTextBlockStyle}" />
+                            </RadioButton>
+                            <TextBlock x:Uid="ContinueDescTextBox" x:Name="ContinueDescTextBox"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Right"
+                                       Text="File {0} will be zipped without conversion"
+                                       Margin="0,0,10,0"
+                                       MaxWidth="265"
+                                       Style="{StaticResource ContinueOrSkipDescTextBlockStyle}" />
+                        </DockPanel>
+                    </Border>
+                    <Border x:Uid="Border_8" Height="52" Margin="20,5,20,0" Style="{StaticResource RadioButtonPanelBorder}">
+                        <DockPanel x:Uid="DockPanel_7">
+                            <RadioButton x:Uid="SkipRadioButton" x:Name="SkipRadioButton"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Margin="12,0,0,0"
+                                         GroupName="ContinueOrSkipGroup"
+                                         Style="{StaticResource BlackRadioButtonStyle}">
+                                <TextBlock x:Uid="TextBlock_4" Margin="10,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Text="Skip the file"
+                                           Style="{StaticResource ContinueOrSkipTextBlockStyle}" />
+                            </RadioButton>
+                            <TextBlock x:Uid="SkipDescTextBox" x:Name="SkipDescTextBox"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Right"
+                                       Text="File {0} will not be zipped"
+                                       Margin="0,0,10,0"
+                                       MaxWidth="265"
+                                       Style="{StaticResource ContinueOrSkipDescTextBlockStyle}" />
+                        </DockPanel>
+                    </Border>
+                </StackPanel>
+
+                <Border x:Uid="Border_9" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                        Height="{Binding Path=ActualHeight, ElementName=BottomDockPanel}"
+                        BorderThickness="0"
+                        CornerRadius="0,0,6,6"
+                        Background="{DynamicResource Brush.RadioButton.Panel.Background}" />
+
+                <DockPanel x:Uid="DockPanel_8" x:Name="BottomDockPanel"
+                           Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                    <CheckBox x:Uid="DoNotShowAgainRadioButton" x:Name="DoNotShowAgainRadioButton"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Margin="20,12,0,12"
+                              Style="{StaticResource BlackCheckBoxStyle}">
+                        <TextBlock x:Uid="TextBlock_5" Margin="5,0,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Text="Don't show this again"
+                                   Style="{StaticResource NotShowAgainTextBlockStyle}" />
+                    </CheckBox>
+
+                    <StackPanel x:Uid="StackPanel_5" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal"
+                                Margin="0,0,20,0">
+                        <Button x:Uid="OKButton" x:Name="OKButton"
+                                Content="OK"
+                                IsDefault="True"
+                                Margin="0,0,5,0"
+                                Width="120"
+                                Height="36"
+                                Style="{StaticResource RoundCornerBlackButtonStyle}"
+                                Foreground="{DynamicResource Brush.Text.White.Foreground}"
+                                Click="OKButton_Click" />
+
+                        <Button x:Uid="CancelButton" x:Name="CancelButton"
+                                Content="Cancel"
+                                IsCancel="True"
+                                Margin="5,0,0,0"
+                                Width="120"
+                                Height="36"
+                                Style="{StaticResource RoundCornerGrayButtonStyle}"
+                                Foreground="{DynamicResource Brush.CancelButton.Black.Foreground}"
+                                Click="CancelButton_Click" />
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:BaseWindow>

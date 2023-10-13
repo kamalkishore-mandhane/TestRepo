@@ -1,0 +1,100 @@
+﻿<local:BaseControl x:Uid="UserControl_1" x:Class="ImgUtil.WPFUI.Controls.CropSelectionTab"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:local="clr-namespace:ImgUtil.WPFUI.Controls"
+                   Panel.ZIndex="1000"
+                   SnapsToDevicePixels="True"
+                   mc:Ignorable="d"
+                   Loaded="CropSelectionTab_Loaded"
+                   Unloaded="CropSelectionTab_Unloaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_3" >
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <ControlTemplate x:Uid="ControlTemplate_1" TargetType="Button" x:Key="ButtonTemplate">
+                <Border x:Uid="Border_2" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                    <ContentPresenter x:Uid="ButtonTemplate.ContentPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                        <Setter x:Uid="Setter_15" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                        <Setter x:Uid="Setter_16" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="Trigger_2" Property="IsPressed" Value="True">
+                        <Setter x:Uid="Setter_17" Property="Background" Value="{DynamicResource Brush.Item.SelectedBackground}"/>
+                        <Setter x:Uid="Setter_18" Property="BorderBrush" Value="{DynamicResource Brush.Item.SelectedBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="Trigger_3" Property="IsKeyboardFocused" Value="True">
+                        <Setter x:Uid="Setter_19" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                    </Trigger>
+                    <Trigger x:Uid="Trigger_4" Property="IsEnabled" Value="False">
+                        <Setter x:Uid="Setter_20" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+
+            <Style x:Uid="Style_4" x:Key="CommonButtonStyle" TargetType="{x:Type Button}">
+                <Setter x:Uid="Setter_21" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+                <Setter x:Uid="Setter_22" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Black}"/>
+                <Setter x:Uid="Setter_23" Property="BorderBrush" Value="{DynamicResource Brush.Item.Border}"/>
+                <Setter x:Uid="Setter_24" Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter x:Uid="Setter_25" Property="Template" Value="{StaticResource ButtonTemplate}"/>
+            </Style>
+
+            <Style x:Uid="Style_3" x:Key="CheckBoxBaseStyle"
+                   BasedOn="{StaticResource FlatCheckBoxStyle}"
+                   TargetType="CheckBox">
+                <Setter x:Uid="Setter_11" Property="Width" Value="Auto"/>
+                <Setter x:Uid="Setter_12" Property="HorizontalAlignment" Value="Left"/>
+                <Setter x:Uid="Setter_13" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_14" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border x:Uid="Border_1" BorderThickness="1" BorderBrush="{DynamicResource Brush.Item.Border.Black}">
+        <StackPanel x:Uid="StackPanel_1" Background="{DynamicResource Brush.CropSelectionTab.Background}" Orientation="Horizontal">
+            <CheckBox x:Uid="MaintainRationCheckBox" x:Name="MaintainRationCheckBox"
+                      Style="{StaticResource CheckBoxBaseStyle}"
+                      Margin="10">
+                <TextBlock x:Uid="TextBlock_1" Margin="5,0,0,0" Text="Maintain aspect ratio"/>
+            </CheckBox>
+            <Button x:Uid="CancelCropButton" x:Name="CancelCropButton"
+                    Style="{StaticResource CommonButtonStyle}"
+                    Margin="7"
+                    MinWidth="57"
+                    Padding="12,2"
+                    Click="CancelButton_Clicked">
+                <TextBlock x:Uid="TextBlock_2" Text="Cancel"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Padding="10,0,10,0"
+                           Foreground="{DynamicResource Brush.Text.Foreground}"/>
+            </Button>
+            <Button x:Uid="CropButton" x:Name="CropButton"
+                    Style="{StaticResource CommonButtonStyle}"
+                    Margin="2,7,7,7"
+                    MinWidth="57"
+                    Padding="12,2"
+                    Click="CropButton_Clicked">
+                <TextBlock x:Uid="TextBlock_3" Text="Crop"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Padding="10,0,10,0"
+                           Foreground="{DynamicResource Brush.Text.Foreground}"/>
+            </Button>
+        </StackPanel>
+    </Border>
+</local:BaseControl>

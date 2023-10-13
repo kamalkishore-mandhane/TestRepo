@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A014959-547D-475F-A999-AF090C8465BF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SafeShare</RootNamespace>
+    <AssemblyName Condition=" '$(Platform)' == 'Win32' ">SafeShare32</AssemblyName>
+    <AssemblyName Condition=" '$(Platform)' == 'x64' ">SafeShare64</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SafeShare.SafeShareApplet</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SafeShare.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <AssemblyName>SafeShare64</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\Debug\x64\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <AssemblyName>SafeShare64</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\Release\x64\</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <AssemblyName>SafeShare32</AssemblyName>
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\Debug\x86\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <AssemblyName>SafeShare32</AssemblyName>
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\Release\x86\</OutputPath>
+    <DebugType>pdbonly</DebugType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\SafeShare.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>SafeShare.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="RecipientClient">
+      <HintPath>lib\RecipientClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WXFCMBPDF">
+      <HintPath>lib\WXFCMBPDF.dll</HintPath>
+    </Reference>
+    <Reference Include="WXFD2P">
+      <HintPath>lib\WXFD2P.dll</HintPath>
+    </Reference>
+    <Reference Include="WXFRMPD">
+      <HintPath>lib\WXFRMPD.dll</HintPath>
+    </Reference>
+    <Reference Include="WXFWMRK">
+      <HintPath>lib\WXFWMRK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="WPFUI\View\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converter\ConvertService\IMGVWRService.cs" />
+    <Compile Include="Converter\ConvertUtil\RemoveOptions.cs" />
+    <Compile Include="Converter\ConvertWorker\BaseConvertWorker.cs" />
+    <Compile Include="Converter\ConvertWorker\CombinePDFWorker.cs" />
+    <Compile Include="Converter\ConvertWorker\ConvertToPDFWorker.cs" />
+    <Compile Include="Converter\ConvertWorker\ConverWorkerManager.cs" />
+    <Compile Include="Converter\ConvertWorker\ReducePhotoWorker.cs" />
+    <Compile Include="Converter\ConvertWorker\RemovePersonalDataWorker.cs" />
+    <Compile Include="Converter\ConvertWorker\WatermarkWorker.cs" />
+    <Compile Include="ProcessCommand.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SafeShare.cs" />
+    <Compile Include="Util\EDPHelper.cs" />
+    <Compile Include="Util\JobManagement.cs" />
+    <Compile Include="Util\RegeditOperation.cs" />
+    <Compile Include="Util\UWPHelper.cs" />
+    <Compile Include="WPFUI\Commands\ConversionPageViewModelCommand.cs" />
+    <Compile Include="WPFUI\Commands\EmailEncryptionPageViewModelCommand.cs" />
+    <Compile Include="WPFUI\Commands\ExperiencePageViewModelCommand.cs" />
+    <Compile Include="WPFUI\Commands\FileListPageViewModelCommand.cs" />
+    <Compile Include="WPFUI\Commands\FrontPageViewModelCommand.cs" />
+    <Compile Include="WPFUI\Commands\ModelCommand.cs" />
+    <Compile Include="WPFUI\Controls\BaseNavigationWindow.cs" />
+    <Compile Include="WPFUI\Controls\BasePage.cs" />
+    <Compile Include="WPFUI\Controls\BaseWindow.cs" />
+    <Compile Include="WPFUI\Controls\FileNameTextBox.xaml.cs">
+      <DependentUpon>FileNameTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\Controls\PlaceholderTextBox.xaml.cs">
+      <DependentUpon>PlaceholderTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\Controls\SimpleMessageBox.xaml.cs">
+      <DependentUpon>SimpleMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\Controls\SpaceCheckBox.cs" />
+    <Compile Include="WPFUI\Controls\FileSizeConverter.cs" />
+    <Compile Include="WPFUI\Controls\FlatScrollBarNotifier.cs" />
+    <Compile Include="WPFUI\Controls\FlatScrollViewer.cs" />
+    <Compile Include="WPFUI\Controls\ImageButton.cs" />
+    <Compile Include="WPFUI\Controls\NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\Controls\UCScrollBar.cs" />
+    <Compile Include="WPFUI\Model\Services\CloudItem.cs" />
+    <Compile Include="WPFUI\Model\Services\CloudService.cs" />
+    <Compile Include="WPFUI\Model\Services\EmailItem.cs" />
+    <Compile Include="WPFUI\Model\Services\EmailService.cs" />
+    <Compile Include="WPFUI\Model\Services\ServiceBase.cs" />
+    <Compile Include="WPFUI\Model\SurveyChoiceItem.cs" />
+    <Compile Include="WPFUI\Utils\SurveyXmlDownloadHelper.cs" />
+    <Compile Include="WPFUI\Utils\FileOperation.cs" />
+    <Compile Include="WPFUI\Utils\ItemsControlExtensions.cs" />
+    <Compile Include="WPFUI\Utils\NativeMethods.cs" />
+    <Compile Include="WPFUI\Utils\NavigationCommandsManager.cs" />
+    <Compile Include="WPFUI\Utils\PasswordGenerater.cs" />
+    <Compile Include="WPFUI\Utils\SimpleMessageWindows.cs" />
+    <Compile Include="WPFUI\Utils\SnapsToDevicePixelsBitmap.cs" />
+    <Compile Include="WPFUI\Utils\StackGuard.cs" />
+    <Compile Include="WPFUI\Utils\SysImageList.cs" />
+    <Compile Include="WPFUI\Utils\TaskExtension.cs" />
+    <Compile Include="WPFUI\Utils\TrackHelper.cs" />
+    <Compile Include="WPFUI\Utils\VisualTreeHelperUtils.cs" />
+    <Compile Include="WPFUI\Utils\WinZipMethodHelper.cs" />
+    <Compile Include="WPFUI\Utils\WinzipMethods.cs" />
+    <Compile Include="WPFUI\Utils\WpfDragDropHelper.cs" />
+    <Compile Include="WPFUI\ViewModel\ConversionPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\ConvertOptViewModels.cs" />
+    <Compile Include="WPFUI\ViewModel\EmailEncryptionPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\EncryptOptPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\ExperiencePageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\FileListPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\FrontPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\GracePeriodPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\ListViewItemEntry.cs" />
+    <Compile Include="WPFUI\ViewModel\ManageCloudPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\ManageEmailPageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\ModelBase.cs" />
+    <Compile Include="WPFUI\ViewModel\OtherOptPageViewModels.cs" />
+    <Compile Include="WPFUI\ViewModel\SafeShareViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\SubscribePageViewModel.cs" />
+    <Compile Include="WPFUI\ViewModel\ViewModelBase.cs" />
+    <Compile Include="WPFUI\View\AddEmailAccountPage.xaml.cs">
+      <DependentUpon>AddEmailAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\AddEmailServicePage.xaml.cs">
+      <DependentUpon>AddEmailServicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WPFUI\View\ConversionErrorDlgView.xaml.cs">
+      <DependentUpon>ConversionErrorDlgView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\ConversionPage.xaml.cs">
+      <DependentUpon>ConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\ConvertOptPage.xaml.cs">
+      <DependentUpon>ConvertOptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\EmailEncryptionPage.xaml.cs">
+      <DependentUpon>EmailEncryptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\EncryptOptPage.xaml.cs">
+      <DependentUpon>EncryptOptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\ExperiencePage.xaml.cs">
+      <DependentUpon>ExperiencePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\FileListPage.xaml.cs">
+      <DependentUpon>FileListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\FrontPage.xaml.cs">
+      <DependentUpon>FrontPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\GracePeriodPageView.xaml.cs">
+      <DependentUpon>GracePeriodPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\ManageCloudPage.xaml.cs">
+      <DependentUpon>ManageCloudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\ManageEmailPage.xaml.cs">
+      <DependentUpon>ManageEmailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\OtherOptPage.xaml.cs">
+      <DependentUpon>OtherOptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\SafeShareView.xaml.cs">
+      <DependentUpon>SafeShareView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\ServiceSettingsPage.xaml.cs">
+      <DependentUpon>ServiceSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\View\SubscribePageView.xaml.cs">
+      <DependentUpon>SubscribePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUI\WorkFlowManager.cs" />
+    <Compile Include="..\Common\IntPtrExtension.cs">
+      <Link>Common\IntPtrExtension.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
+    <EmbeddedResource Include="Properties\Resources.es-ES.resx" />
+    <EmbeddedResource Include="Properties\Resources.es-MX.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Properties\Resources.it-IT.resx" />
+    <EmbeddedResource Include="Properties\Resources.ja-JP.resx" />
+    <EmbeddedResource Include="Properties\Resources.nl-NL.resx" />
+    <EmbeddedResource Include="Properties\Resources.pt-BR.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SafeShare.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="SafeShare.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\horLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WPFUI\Controls\FileNameTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\Controls\NumericUpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\Controls\PlaceholderTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\Controls\SimpleMessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\Themes\ColorTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\Themes\FlatScrollViewerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\Themes\HighContrastTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\Themes\SharedGeometry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\Themes\SharedStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\AddEmailAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\AddEmailServicePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\ConversionErrorDlgView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\View\ConversionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\ConvertOptPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\EmailEncryptionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\EncryptOptPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\View\ExperiencePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\FileListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\View\FrontPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\View\GracePeriodPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\View\ManageCloudPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\ManageEmailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\OtherOptPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\SafeShareView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFUI\View\ServiceSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFUI\View\SubscribePageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\button_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SafeShare.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\de-DE\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\de-DE\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\en-US\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\en-US\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\es-ES\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\es-ES\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\es-MX\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\es-MX\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fr-FR\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fr-FR\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\it-IT\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\it-IT\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ja-JP\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ja-JP\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nl-NL\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nl-NL\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pt-BR\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pt-BR\email-e.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zh-CN\email.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zh-CN\email-e.html" />
+  </ItemGroup>
+  <Import Project="AppxForCs.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="Versioning.targets" />
+</Project>

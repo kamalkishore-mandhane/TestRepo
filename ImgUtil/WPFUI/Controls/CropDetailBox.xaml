@@ -1,0 +1,31 @@
+﻿<local:BaseControl x:Uid="CropDetails" x:Class="ImgUtil.WPFUI.Controls.CropDetailBox"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:local="clr-namespace:ImgUtil.WPFUI.Controls"
+                   mc:Ignorable="d"
+                   Panel.ZIndex="1000"
+                   Loaded="CropDetails_Loaded"
+                   Unloaded="CropDetails_Unloaded"
+                   x:Name="CropDetails">
+
+    <UserControl.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" >
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border x:Uid="Border_1" BorderThickness="1" BorderBrush="{DynamicResource Brush.Item.Border.Black}">
+        <StackPanel x:Uid="StackPanel_1" Background="LightGray">
+            <TextBlock x:Uid="WidthTextBlock" x:Name="WidthTextBlock"  FontSize="15px" Margin="10,10,10,1" FontFamily="Century Gothic" Width="auto"/>
+            <TextBlock x:Uid="HeightTextBlock" x:Name="HeightTextBlock" FontSize="15px" Margin="10,1,10,10" FontFamily="Century Gothic" Width="auto"/>
+        </StackPanel>
+    </Border>
+</local:BaseControl>

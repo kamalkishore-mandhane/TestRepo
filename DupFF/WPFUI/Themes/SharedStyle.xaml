@@ -1,0 +1,1027 @@
+﻿<ResourceDictionary x:Uid="ResourceDictionary_1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:controls="clr-namespace:DupFF.WPFUI.Controls"
+                    xmlns:utils="clr-namespace:DupFF.WPFUI.Utils">
+
+    <FontFamily x:Uid="FontFamily_1" x:Key="Shared.FontFamily.SegoeUI">Segoe UI</FontFamily>
+
+    <FontWeight x:Uid="FontWeight_1" x:Key="Shared.FontWeight.Light">Light</FontWeight>
+    <FontWeight x:Uid="FontWeight_2" x:Key="Shared.FontWeight.Normal">Normal</FontWeight>
+    <FontWeight x:Uid="FontWeight_3" x:Key="Shared.FontWeight.SemiBold">SemiBold</FontWeight>
+    <!-- SemiLight is not added in the System.Windows.FontWeights, which value is 350 -->
+    <!-- We change 350 to 351, to use Segoe UI Normal instead in winodws system without Segoe UI SemiLight font -->
+    <!-- https://connect.microsoft.com/VisualStudio/feedback/details/774452/semilight-350-should-be-added-to-system-windows-fontweights -->
+    <FontWeight x:Uid="FontWeight_4" x:Key="Shared.FontWeight.SemiLight">351</FontWeight>
+    <FontWeight x:Uid="FontWeight_5" x:Key="Shared.FontWeight.Bold">Bold</FontWeight>
+
+    <sys:Double x:Uid="sys:Double_1" x:Key="Shared.FontSize.12px">12</sys:Double>
+    <sys:Double x:Uid="sys:Double_2" x:Key="Shared.FontSize.13px">13</sys:Double>
+    <sys:Double x:Uid="sys:Double_3" x:Key="Shared.FontSize.14px">14</sys:Double>
+    <sys:Double x:Uid="sys:Double_4" x:Key="Shared.FontSize.15px">15</sys:Double>
+    <sys:Double x:Uid="sys:Double_15" x:Key="Shared.FontSize.16px">16</sys:Double>
+    <sys:Double x:Uid="sys:Double_5" x:Key="Shared.FontSize.22px">22</sys:Double>
+    <sys:Double x:Uid="sys:Double_6" x:Key="Shared.FontSize.26px">26</sys:Double>
+    <sys:Double x:Uid="sys:Double_7" x:Key="Shared.FontSize.55px">55</sys:Double>
+
+    <!-- To Set Height for WPF half-pixel issue -->
+    <sys:Double x:Uid="sys:Double_8" x:Key="Shared.FontSize.12px.Height.16">16</sys:Double>
+    <sys:Double x:Uid="sys:Double_9" x:Key="Shared.FontSize.13px.Height.17">17</sys:Double>
+    <sys:Double x:Uid="sys:Double_10" x:Key="Shared.FontSize.14px.Height.19">19</sys:Double>
+    <sys:Double x:Uid="sys:Double_11" x:Key="Shared.FontSize.15px.Height.20">20</sys:Double>
+    <sys:Double x:Uid="sys:Double_12" x:Key="Shared.FontSize.22px.Height.29">29</sys:Double>
+    <sys:Double x:Uid="sys:Double_13" x:Key="Shared.FontSize.26px.Height.35">35</sys:Double>
+    <sys:Double x:Uid="sys:Double_14" x:Key="Shared.FontSize.55px.Height.73">73</sys:Double>
+
+    <sys:String x:Uid="sys:String_1" x:Key="Shared.String.FreeOf">free of</sys:String>
+    <sys:String x:Uid="sys:String_2" x:Key="Shared.String.Items">item(s)</sys:String>
+    <sys:String x:Uid="sys:String_3" x:Key="Shared.String.ItemsSelected">item(s) selected</sys:String>
+    <sys:String x:Uid="sys:String_4" x:Key="Shared.String.OpenIn">Open in</sys:String>
+    <sys:String x:Uid="sys:String_5" x:Key="Shared.String.UnlimitedQuota">{0} space used of unlimited space available</sys:String>
+    <sys:String x:Uid="sys:String_6" x:Key="GoToBookmark">Go to bookmark</sys:String>
+    <sys:String x:Uid="sys:String_7" x:Key="AddBookmark">Add bookmark</sys:String>
+    <sys:String x:Uid="sys:String_8" x:Key="AddSubBookmark">Add sub-bookmark</sys:String>
+    <sys:String x:Uid="sys:String_9" x:Key="RemoveBookmark">Remove bookmark</sys:String>
+    <sys:String x:Uid="sys:String_10" x:Key="RenameBookmark">Rename</sys:String>
+    <sys:String x:Uid="sys:String_11" x:Key="AddBookmarkTitle">Add a Bookmark</sys:String>
+    <sys:String x:Uid="sys:String_12" x:Key="AddSubBookmarkTitle">Add a sub-bookmark</sys:String>
+    <sys:String x:Uid="sys:String_13" x:Key="BookmarkName">Bookmark name:</sys:String>
+    <sys:String x:Uid="Find" x:Key="Find">Find</sys:String>
+    <sys:String x:Uid="Previous" x:Key="Previous">Previous</sys:String>
+    <sys:String x:Uid="Next" x:Key="Next">Next</sys:String>
+    <sys:String x:Uid="ReplaceWith" x:Key="ReplaceWith">Replace With</sys:String>
+    <sys:String x:Uid="Replace" x:Key="Replace">Replace</sys:String>
+    <sys:String x:Uid="ReplaceAll" x:Key="ReplaceAll">Replace All</sys:String>
+
+    <StreamGeometry x:Uid="StreamGeometry_3" x:Key="Skin_Add_Geometry">
+        F1 M 15.072,0L 15.072,15.072L -1.27157e-006,15.072L -1.27157e-006,24.348L 15.072,24.348L 15.072,40L 24.348,40L 24.348,24.348L 40,24.348L 40,15.072L 24.348,15.072L 24.348,0L 15.072,0 Z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_6" x:Key="Skin_Delete_Geometry">
+        F1 M 5.12667,0.183998L 0.00266703,3.72533L 11.208,20.0827L 3.62149e-007,36.4613L 5.12533,40L 14.984,25.5933L 24.816,39.9507L 29.94,36.4093L 18.756,20.0813L 29.9413,3.73466L 24.816,0.195999L 14.9813,14.568L 5.12667,0.183998 Z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_7" x:Key="Skin_Run_Geometry">
+        F1 M -1.27157e-006,0L -1.27157e-006,40L 26.6667,19.9987L -1.27157e-006,0 Z
+    </StreamGeometry>
+    
+    <StreamGeometry x:Uid="StreamGeometry_8" x:Key="Skin_UndoDelete_Geometry">
+        F1 M 12.3947,14.6147L 27.2693,14.6147C 31.3693,14.6147 34.7067,18.4373 34.7067,23.1333C 34.7067,27.8307 31.3693,31.6533 27.2693,31.6533L 19.832,31.6533L 19.832,37.3333L 27.2693,37.3333C 34.104,37.3333 39.664,30.9627 39.664,23.1333C 39.664,15.3053 34.104,8.93466 27.2693,8.93466L 12.3947,8.93466L 12.3947,0.415993L -7.24297e-007,11.7747L 12.3947,23.1333L 12.3947,14.6147 Z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_9" x:Key="Skin_Modify_Geometry">
+        F1 M 29.2977,1.36453L 7.96973,22.6872C 6.86307,23.7925 6.86307,25.5859 7.96973,26.6912L 11.9644,30.6859C 13.0697,31.7912 14.8631,31.7912 15.9684,30.6859L 37.2964,9.3632C 38.4031,8.25787 38.4031,6.46453 37.2964,5.3592L 33.3017,1.36453C 32.1951,0.259201 30.4031,0.259201 29.2977,1.36453 Z
+        M 11.0893,32.7027L 5.96533,27.58C 5.24133,26.856 4.01067,27.1173 3.64267,28.0733L 0.441333,36.3973C -7.15256e-007,37.5427 1.12533,38.6667 2.27067,38.2267L 10.596,35.0253C 11.5533,34.6573 11.8133,33.4267 11.0893,32.7027 Z
+        M 33.9665,12.6947L 25.9665,4.69734L 27.9692,2.69467L 35.9692,10.692L 33.9665,12.6947 Z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_10" x:Key="Skin_TakeAction_Geometry">
+        F1 M 40.2267,30.8813C 40.2267,31.6413 39.6107,32.2573 38.8507,32.2573L 32.776,32.2573C 32.0147,32.2573 31.3987,31.6413 31.3987,30.8813C 31.3987,30.1213 32.0147,29.5053 32.776,29.5053L 38.8507,29.5053C 39.6107,29.5053 40.2267,30.1213 40.2267,30.8813 Z M 43.1693,36.3867C 43.1693,37.1467 42.5533,37.7627 41.7933,37.7627L 35.7173,37.7627C 34.9573,37.7627 34.3413,37.1467 34.3413,36.3867C 34.3413,35.6267 34.9573,35.0107 35.7173,35.0107L 41.7933,35.0107C 42.5533,35.0107 43.1693,35.6267 43.1693,36.3867 Z M 37.284,25.376C 37.284,26.136 36.668,26.752 35.908,26.752L 29.8333,26.752C 29.0733,26.752 28.456,26.136 28.456,25.376C 28.456,24.616 29.0733,24 29.8333,24L 35.908,24C 36.668,24 37.284,24.616 37.284,25.376 Z
+        M 18.2387,39.6187C 16.9973,38.3787 16.2067,36.772 15.9867,35.0467L 12.8813,35.0467C 12.992,36.6693 13.508,38.2387 14.384,39.6187L 10.932,39.6187C 10.2933,37.6413 9.90533,35.5947 9.77467,33.524L 6.66933,33.524C 6.76933,35.588 7.116,37.6333 7.70133,39.6187L 3.56267,39.6187C 3.61067,36.8213 4.01333,30.64 6.36267,26.5853L 18.0613,31.6907C 18.624,34.5547 19.8213,37.2613 21.572,39.6187M 12.772,22.852C 14.0147,22.8653 15.2053,23.3493 16.0947,24.2013C 16.984,25.0533 17.504,26.2093 17.5453,27.428C 17.5453,27.4867 17.5493,27.7453 17.572,28.1427L 8.40933,24.144C 9.01333,23.656 9.70933,23.2907 10.4587,23.068C 11.208,22.8467 11.9947,22.7733 12.772,22.852 Z M 20.6507,27.428C 20.64,26.1427 20.2893,24.8813 19.636,23.7667C 18.9813,22.6533 18.0453,21.724 16.9173,21.0693L 27.616,2.876C 28.052,2.132 27.796,1.17467 27.0467,0.749336C 26.312,0.333336 25.3813,0.582668 24.9533,1.30933L 13.9573,20.0013C 12.5133,19.684 11.0107,19.728 9.588,20.128C 8.16667,20.528 6.86933,21.272 5.81467,22.292C -5.5631e-007,27.7933 0.450666,40.6573 0.473333,41.204C 0.489333,41.5973 0.659999,41.9693 0.949333,42.2413C 1.23867,42.5147 1.624,42.6667 2.02533,42.6667L 25.3067,42.6667C 25.632,42.6667 25.9493,42.5653 26.2147,42.3787C 26.4787,42.192 26.676,41.928 26.78,41.624C 26.8827,41.3213 26.8853,40.9933 26.788,40.688C 26.692,40.3827 26.4987,40.116 26.2387,39.924C 20.74,35.876 20.6507,27.5107 20.6507,27.428 Z
+    </StreamGeometry>
+    
+    <StreamGeometry x:Uid="StreamGeometry_11" x:Key="Skin_Dismiss_Geometry">
+        F1 M 5.12667,0.183998L 0.00266703,3.72533L 11.208,20.0827L 3.62149e-007,36.4613L 5.12533,40L 14.984,25.5933L 24.816,39.9507L 29.94,36.4093L 18.756,20.0813L 29.9413,3.73466L 24.816,0.195999L 14.9813,14.568L 5.12667,0.183998 Z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_12" x:Key="Skin_DismissAll_Geometry">
+        F1 M 5.12667,0.183998L 0.00266703,3.72533L 11.208,20.0827L 3.62149e-007,36.4613L 5.12533,40L 14.984,25.5933L 24.816,39.9507L 29.94,36.4093L 18.756,20.0813L 29.9413,3.73466L 24.816,0.195999L 14.9813,14.568L 5.12667,0.183998 Z
+    </StreamGeometry>
+
+    <Style x:Uid="Style_1" x:Key="Shared.TextBlockStyle.SegoeUI.Normal.12px" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_1" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+        <Setter x:Uid="Setter_2" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+        <Setter x:Uid="Setter_3" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}"/>
+    </Style>
+
+    <Style x:Uid="Style_38" x:Key="Shared.TextBlockStyle.SegoeUI.Normal.14px" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_175" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+        <Setter x:Uid="Setter_176" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+        <Setter x:Uid="Setter_177" Property="FontSize" Value="{StaticResource Shared.FontSize.14px}"/>
+    </Style>
+
+    <StreamGeometry x:Uid="StreamGeometry_13" x:Key="WindowCloseGeometry">
+        F1M0,0L2,0 5,3 8,0 10,0 6,4 10,8 8,8 5,5 2,8 0,8 4,4 0,0z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_4" x:Key="Skin_DownIcon_01_Geometry">
+        F1 M 0,0L 10.6667,13.3333L 21.3333,0L 0,0 Z
+    </StreamGeometry>
+
+    <StreamGeometry x:Uid="StreamGeometry_5" x:Key="Skin_RightIcon_01_Geometry">
+        F1 M 1.1406e-007,7.62939e-006L 1.1406e-007,21.3333L 13.3333,10.6667L 1.1406e-007,7.62939e-006 Z
+    </StreamGeometry>
+
+    <DrawingBrush x:Uid="DrawingBrush_1" x:Key="Candler" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_1">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_1" Brush="#FF959595" Geometry="F1 M 95.268,41.7599L 76.0773,41.7292L 76.108,23.3665L 95.2973,23.3985M 95.2347,63.0932L 76.0427,63.0612L 76.0733,44.3959L 95.264,44.4265M 95.1987,84.1985L 76.0093,84.1665L 76.0387,65.7279L 95.2293,65.7599M 73.4107,41.7239L 52.0773,41.6892L 52.108,23.3279L 73.4413,23.3625M 73.376,63.0572L 52.0427,63.0225L 52.0733,44.3559L 73.4067,44.3905M 73.3427,84.1625L 52.0093,84.1279L 52.0387,65.6892L 73.372,65.7239M 49.4107,41.6852L 28.0773,41.6505L 28.108,23.2879L 49.4413,23.3225M 49.3773,63.0185L 28.044,62.9825L 28.0733,44.3172L 49.4067,44.3519M 49.3427,84.1239L 28.0093,84.0892L 28.0387,65.6492L 49.372,65.6852M 25.4107,41.6465L 4.888,41.6132L 4.91733,23.2505L 25.4413,23.2839M 25.3773,62.9799L 4.852,62.9452L 4.88266,44.2799L 25.4067,44.3132M 25.3427,84.0852L 4.81866,84.0505L 4.848,65.6119L 25.372,65.6465M 80.132,8.4012L 80.1213,15.6305C 80.1187,16.7879 79.1707,17.7332 78.0133,17.7319L 72.888,17.7239C 71.7307,17.7212 70.7853,16.7732 70.788,15.6159L 70.7387,8.35319L 32.072,8.35319L 32.12,15.5519C 32.1187,16.7092 31.1693,17.6559 30.012,17.6532L 24.888,17.6452C 23.7307,17.6439 22.7853,16.6945 22.7867,15.5372L 22.7387,8.35319L 0.131996,8.27187L -3.49681e-006,89.6039L 16,89.6305L 17.3333,89.6332L 100,89.7665L 100.132,8.43452L 80.132,8.4012 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_2" Geometry="F1 M 22.738,8.35292L 21.4047,8.35292L 21.4047,2.51025C 21.4047,1.02225 22.622,-0.195068 24.11,-0.195068L 30.6993,-0.195068C 32.1873,-0.195068 33.4047,1.02225 33.4047,2.51025L 33.4047,8.35292L 32.0713,8.35292">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_1" Thickness="2.66667" MiterLimit="2.75" Brush="#FF959595"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing x:Uid="GeometryDrawing_3" Geometry="F1 M 69.4047,9.68626L 69.4047,3.17293C 69.4047,1.62227 70.622,0.352921 72.11,0.352921L 78.6993,0.352921C 80.1873,0.352921 81.4047,1.62227 81.4047,3.17293L 81.4047,9.17426">
+                        <GeometryDrawing.Pen>
+                            <Pen x:Uid="Pen_2" Thickness="2.66667" MiterLimit="2.75" Brush="#FF959595"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Uid="DrawingBrush_2" x:Key="Candler_test" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup x:Uid="DrawingGroup_2">
+                <DrawingGroup.Children>
+                    <GeometryDrawing x:Uid="GeometryDrawing_4" Brush="#FF535353" Geometry="F1 M 34.4729,25.0031C 34.4063,24.8444 34.3969,24.7817 34.3623,24.7457C 31.2356,21.4057 28.0996,18.0751 24.9889,14.7204C 24.5516,14.2497 24.2956,14.3764 23.9263,14.7617C 21.5236,17.2617 19.0983,19.7391 16.6969,22.2417C 15.3529,23.6431 15.3756,23.6497 14.0449,22.2084C 13.0569,21.1377 12.0436,20.0897 11.2636,19.2684C 9.27693,21.2671 7.3476,23.2084 5.5636,25.0031L 34.4729,25.0031 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_5" Brush="#FF535353" Geometry="F1 M 2.648,2.688L 2.648,26.6613L 34.7373,26.6613L 34.7373,20.0653C 35.4373,20.5613 34.6427,21.4707 35.492,21.856C 36.3573,22.248 36.6333,21.4253 37.272,20.9693L 37.272,22.4893C 37.272,24.016 37.204,25.548 37.292,27.0707C 37.3707,28.416 36.4373,29.3293 34.9973,29.3253C 24.1107,29.2787 13.2253,29.2733 2.34,29.3267C 0.692001,29.3333 0.0120006,28.2027 0.0146672,26.972C 0.0253339,22.3627 0.0186672,17.752 0.0186672,13.1413C 0.0186672,9.58667 5.16574e-007,6.032 0.0280005,2.47867C 0.0413338,0.694668 0.782667,0.0106659 2.46267,0.0186672C 13.32,0.0733337 24.18,0.0653343 35.0373,0.0213356C 36.3573,0.017334 37.3573,0.798668 37.2907,2.31334C 37.2107,4.11333 37.272,5.92133 37.272,7.94533C 36.9747,7.61733 36.824,7.348 36.5973,7.23067C 36.308,7.08134 35.9053,6.91867 35.6427,7.01467C 35.4,7.10267 35.1813,7.50667 35.128,7.80267C 35.0427,8.27333 35.1053,8.77067 35.1053,9.224L 34.8333,9.24533C 34.7827,9.15733 34.6973,9.064 34.6973,8.972C 34.6893,6.896 34.692,4.81867 34.692,2.688L 2.648,2.688 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_6" Brush="#FF535353" Geometry="F1 M 13.0243,8.00373C 13.0109,9.1424 11.8536,10.3011 10.7016,10.3317C 9.5376,10.3624 8.33093,9.15173 8.3496,7.9704C 8.36693,6.79173 9.49627,5.6624 10.6629,5.65574C 11.8736,5.64907 13.0389,6.80774 13.0243,8.00373 Z "/>
+                    <GeometryDrawing x:Uid="GeometryDrawing_7" Brush="#FF535353" Geometry="F1 M 42.0041,15.2056C 40.8375,16.3429 39.6681,17.4789 38.5055,18.6203C 37.8455,19.2683 37.2041,19.9363 36.5321,20.5723C 36.3788,20.7163 36.1321,20.7629 35.9268,20.8549C 35.8495,20.6496 35.7108,20.4469 35.7028,20.2403C 35.6775,19.4283 35.6935,18.6149 35.6935,17.7323L 29.4028,17.7323L 29.4028,12.7296L 35.6935,12.7296C 35.6935,11.6976 35.6788,10.7323 35.7028,9.76694C 35.7095,9.53493 35.8535,9.30693 35.9321,9.0776C 36.1535,9.18827 36.4215,9.25227 36.5881,9.41893C 38.2561,11.0749 39.9068,12.7509 41.5681,14.4163C 41.6921,14.5403 41.8575,14.6256 42.0041,14.7296L 42.0041,15.2056 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <Style x:Uid="Style_2" x:Key="Shared.TextBlockStyle.SegoeUI.SemiBold.12px" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_4" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+        <Setter x:Uid="Setter_5" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}"/>
+        <Setter x:Uid="Setter_6" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}"/>
+    </Style>
+
+    <Style x:Uid="Style_3" x:Key="Shared.TextBlockStyle.SegoeUI.SemiBold.15px" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_7" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+        <Setter x:Uid="Setter_8" Property="FontWeight" Value="{StaticResource Shared.FontWeight.SemiBold}"/>
+        <Setter x:Uid="Setter_9" Property="FontSize" Value="{StaticResource Shared.FontSize.15px}"/>
+    </Style>
+
+    <Style x:Uid="Style_4" x:Key="DropdownMenuItemStyle" TargetType="{x:Type MenuItem}">
+        <Setter x:Uid="Setter_10" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type MenuItem}">
+                    <Grid x:Uid="Grid_1" Height="25" Background="{DynamicResource Brush.DropdownMenuItem.Background}" Margin="-1,0,0,0">
+                        <Border x:Uid="bd" x:Name="bd" CornerRadius="2" BorderThickness="1" Margin="1,1,0,1" BorderBrush="Transparent" SnapsToDevicePixels="True">
+                            <TextBlock x:Uid="tb" x:Name="tb" Text="{TemplateBinding Header}" Background="Transparent" Margin="2" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_1" Property="IsHighlighted" Value="True">
+                            <Setter x:Uid="Setter_11" TargetName="bd" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                            <Setter x:Uid="Setter_12" TargetName="bd" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+                            <Setter x:Uid="Setter_13" TargetName="tb" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Black.Highlight}"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_2" Property="IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_14" TargetName="tb" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Gray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_5" x:Key="MenuItemSeparator" TargetType="{x:Type Separator}">
+        <Setter x:Uid="Setter_15" Property="Height" Value="1" />
+        <Setter x:Uid="Setter_16" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_2" TargetType="{x:Type Separator}">
+                    <Border x:Uid="Border_1" Margin="0,0,0,0" BorderBrush="{DynamicResource Brush.Item.Border}" BorderThickness="1" SnapsToDevicePixels="True"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_6" x:Key="CustomContextMenu" TargetType="{x:Type ContextMenu}">
+        <Setter x:Uid="Setter_17" Property="OverridesDefaultStyle" Value="True"/>
+        <Setter x:Uid="Setter_18" Property="SnapsToDevicePixels" Value="True"/>
+        <Setter x:Uid="Setter_19" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_3" TargetType="{x:Type ContextMenu}">
+                    <Border x:Uid="Border_2" BorderBrush="{DynamicResource Brush.Item.Border}" BorderThickness="1" SnapsToDevicePixels="True"
+                            Background="{DynamicResource Brush.Background.White}" Padding="0,3,0,3" CornerRadius="4">
+                        <StackPanel x:Uid="StackPanel_1" ClipToBounds="True" Orientation="Vertical" IsItemsHost="True" Margin="5,4,5,4"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_7" x:Key="ItemButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_20" Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+        <Setter x:Uid="Setter_21" Property="Background" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_22" Property="BorderBrush" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_23" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_4" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border" x:Name="Border" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter x:Uid="ContentPresenter_1" HorizontalAlignment="Stretch"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_8" x:Key="FocusVisual">
+        <Setter x:Uid="Setter_24" Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_5" >
+                    <Rectangle x:Uid="Rectangle_1" StrokeThickness="1" Stroke="{DynamicResource Brush.TabFocusBorder}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_9" x:Key="FlatButtonBaseStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_25" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_6" TargetType="{x:Type Button}">
+                    <Grid x:Uid="Grid_2" >
+                        <Border x:Uid="FrameRect" Name="FrameRect" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="{DynamicResource Brush.Title}" Visibility="Hidden"/>
+                        <Border x:Uid="ButtonBorder" Name="ButtonBorder" CornerRadius="0" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}" Margin="2">
+                            <Rectangle x:Uid="Rectangle_2" Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"/>
+                        </Border>
+                        <TextBlock x:Uid="TextBlock_1" VerticalAlignment="Center"
+                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                   Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
+                                   TextAlignment="Center"
+                                   Style="{StaticResource Shared.TextBlockStyle.SegoeUI.Normal.12px}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_3" Property="IsMouseOver" Value="True">
+                            <Setter x:Uid="Setter_26" Property="Visibility" TargetName="FrameRect" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_10" x:Key="FlatBlueButtonStyle" BasedOn="{StaticResource FlatButtonBaseStyle}" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_27" Property="Background" Value="{DynamicResource Brush.Title}"/>
+        <Setter x:Uid="Setter_28" Property="Foreground" Value="{DynamicResource Brush.SharedStyle.FlatBlueButton.Foreground}"/>
+    </Style>
+
+    <Style x:Uid="Style_11" x:Key="FlatButtonStyle" BasedOn="{StaticResource FlatButtonBaseStyle}" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_29" Property="Background" Value="{DynamicResource Brush.SharedStyle.FlatButton.Background}"/>
+        <Setter x:Uid="Setter_30" Property="Foreground" Value="{DynamicResource Brush.SharedStyle.FlatButton.Foreground}"/>
+    </Style>
+
+    <Style x:Uid="Style_12" x:Key="ExpandButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_31" Property="BorderThickness" Value="1"/>
+        <Setter x:Uid="Setter_32" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_7" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_3" BorderThickness="1" SnapsToDevicePixels="True"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter x:Uid="ContentPresenter_2" HorizontalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger x:Uid="DataTrigger_1" Binding="{Binding Path=DataContext.RootContext.IsExpand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}" Value="True">
+                            <Setter x:Uid="Setter_33" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <MultiDataTrigger x:Uid="MultiDataTrigger_1" >
+                            <MultiDataTrigger.Conditions>
+                                <Condition x:Uid="Condition_1" Binding="{Binding Path=DataContext.IsFocusVisible, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}" Value="True"></Condition>
+                                <Condition x:Uid="Condition_2" Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" Value="True"></Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter x:Uid="Setter_34" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_13" x:Key="CollapsedButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_35" Property="Visibility" Value="Collapsed"/>
+        <Setter x:Uid="Setter_36" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+        <Setter x:Uid="Setter_37" Property="BorderBrush" Value="{DynamicResource Brush.Background.White}"/>
+        <Setter x:Uid="Setter_38" Property="BorderThickness" Value="1"/>
+        <Setter x:Uid="Setter_39" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_8" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_4" x:Name="Border" BorderThickness="1" SnapsToDevicePixels="True"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter x:Uid="ContentPresenter_3" HorizontalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding Path=DataContext.RootContext.IsExpand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}" Value="True">
+                            <Setter x:Uid="Setter_40" Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_14" x:Key="HidePaneButtonStyle" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_41" Property="BorderThickness" Value="1"/>
+        <Setter x:Uid="Setter_42" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_9" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_5" x:Name="Border"
+                            BorderThickness="1"
+                            SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter x:Uid="ContentPresenter_4" HorizontalAlignment="Stretch"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger x:Uid="DataTrigger_3" Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsKeyboardFocused}" Value="True">
+                            <Setter x:Uid="Setter_43" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_15" x:Key="FilePaneRootExpandButtonStyle" BasedOn="{StaticResource ExpandButtonStyle}" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_44" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+        <Setter x:Uid="Setter_45" Property="BorderBrush" Value="{DynamicResource Brush.Background.Gray}"/>
+    </Style>
+
+    <Style x:Uid="Style_16" x:Key="FilePaneAddCloudExpandButtonStyle" BasedOn="{StaticResource FilePaneRootExpandButtonStyle}" TargetType="{x:Type Button}"/>
+
+    <Style x:Uid="Style_17" x:Key="FilePaneCloudExpandButtonStyle" BasedOn="{StaticResource ExpandButtonStyle}" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_46" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+        <Setter x:Uid="Setter_47" Property="BorderBrush" Value="{DynamicResource Brush.Background.White}"/>
+    </Style>
+
+    <Style x:Uid="Style_18" x:Key="FilePaneRootHidePaneButtonStyle" BasedOn="{StaticResource HidePaneButtonStyle}" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_48" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+        <Setter x:Uid="Setter_49" Property="BorderBrush" Value="{DynamicResource Brush.Background.Gray}"/>
+    </Style>
+
+    <Style x:Uid="Style_19" x:Key="FilePaneCloudHidePaneButtonStyle" BasedOn="{StaticResource HidePaneButtonStyle}" TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_50" Property="Background" Value="{DynamicResource Brush.Background.White}"/>
+        <Setter x:Uid="Setter_51" Property="BorderBrush" Value="{DynamicResource Brush.Background.White}"/>
+    </Style>
+
+    <!--<local:EntryConverter  x:Key="EntryConverter"/>-->
+
+    <Style x:Uid="Style_20" x:Key="Shared.ProcessBarStyle" TargetType="{x:Type ProgressBar}">
+        <Setter x:Uid="Setter_52" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_10" TargetType="{x:Type ProgressBar}">
+                    <Grid x:Uid="Grid_3" MinHeight="12">
+                        <Border x:Uid="PART_Track" x:Name="PART_Track" SnapsToDevicePixels="True"
+                                        CornerRadius="1" Background="{DynamicResource Brush.SharedStyle.ProcessBar.TrackPart.Background}"
+                                        BorderBrush="{x:Null}" BorderThickness="0"/>
+                        <Border x:Uid="PART_Indicator" x:Name="PART_Indicator" SnapsToDevicePixels="True"
+                                        CornerRadius="0" Background="{DynamicResource Brush.SharedStyle.ProcessBar.IndicatorPart.Background}"
+                                        BorderBrush="{x:Null}" BorderThickness="0"
+                                        HorizontalAlignment="Left"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Flat ComboBox -->
+    <ControlTemplate x:Uid="ControlTemplate_11" TargetType="ToggleButton" x:Key="ComboBoxToggleButtonTemplate">
+        <Grid x:Uid="Grid_4" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Uid="ColumnDefinition_1" Width="*"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_2" Width="20" />
+            </Grid.ColumnDefinitions>
+            <Border x:Uid="Border_6" Grid.ColumnSpan="2" Name="Border"
+                BorderBrush="{DynamicResource Brush.ComboBox.Border.Normal}" CornerRadius="0" BorderThickness="1"
+                Background="{DynamicResource Brush.ComboBox.Background.Normal}" />
+            <Border x:Uid="Border_7" Grid.Column="1" Margin="1,1,1,1" BorderBrush="{DynamicResource Brush.ComboBox.Border.Light}" Name="ButtonBorder"
+                CornerRadius="0" BorderThickness="0" Background="{DynamicResource Brush.ComboBox.Background.Normal}" />
+            <Path x:Uid="Arrow" Name="Arrow" Grid.Column="1" Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                HorizontalAlignment="Center" Fill="{DynamicResource Brush.ComboBox.Arrow.UnChecked}" VerticalAlignment="Center" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger x:Uid="Trigger_4" Property="ToggleButton.IsChecked" Value="True">
+                <Setter x:Uid="Setter_53" Property="Panel.Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.Background.White}"/>
+                <Setter x:Uid="Setter_54" Property="Shape.Fill" TargetName="Arrow" Value="{DynamicResource Brush.ComboBox.Arrow.Checked}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_5" Property="UIElement.IsEnabled" Value="False">
+                <Setter x:Uid="Setter_55" Property="Panel.Background" TargetName="Border" Value="{DynamicResource Brush.ComboBox.Background.Disabled}"/>
+                <Setter x:Uid="Setter_56" Property="Panel.Background" TargetName="ButtonBorder" Value="{DynamicResource Brush.ComboBox.Background.Disabled}"/>
+                <Setter x:Uid="Setter_57" Property="Border.BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource Brush.ComboBox.Border.Disabled}"/>
+                <Setter x:Uid="Setter_58" Property="TextElement.Foreground" Value="{DynamicResource Brush.ComboBox.Foreground.Disabled}"/>
+                <Setter x:Uid="Setter_59" Property="Shape.Fill" TargetName="Arrow" Value="{DynamicResource Brush.ComboBox.Arrow.IsEnabled}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Uid="Style_21" x:Key="ComboBoxFlatStyle"  TargetType="{x:Type ComboBox}">
+        <Setter x:Uid="Setter_60" Property="UIElement.SnapsToDevicePixels" Value="True"/>
+        <Setter x:Uid="Setter_61" Property="FrameworkElement.OverridesDefaultStyle" Value="True"/>
+        <Setter x:Uid="Setter_62" Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter x:Uid="Setter_63" Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter x:Uid="Setter_64" Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter x:Uid="Setter_65" Property="TextElement.Foreground" Value="{DynamicResource Brush.Text.Foreground}"/>
+        <Setter x:Uid="Setter_66" Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+        <Setter x:Uid="Setter_67" Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_12" TargetType="ComboBox">
+                    <Grid x:Uid="Grid_5" >
+                        <ToggleButton x:Uid="ToggleButton" Name="ToggleButton" Grid.Column="2"
+                                      IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      ClickMode="Press" Focusable="False" Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
+                        <ContentPresenter x:Uid="ContentSite" Name="ContentSite" Margin="5,3,23,3"
+                                          HorizontalAlignment="Left" VerticalAlignment="Center" IsHitTestVisible="False"
+                                          Content="{TemplateBinding ComboBox.SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                        <TextBox x:Uid="PART_EditableTextBox" Name="PART_EditableTextBox" Margin="3, 3, 23, 3" Focusable="True"
+                                IsReadOnly="{TemplateBinding IsReadOnly}" Visibility="Hidden" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBox.Template>
+                                <ControlTemplate x:Uid="ControlTemplate_13" TargetType="TextBox" >
+                                    <Border x:Uid="PART_ContentHost" Name="PART_ContentHost" Focusable="False"/>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                        <!-- Popup showing items -->
+                        <Popup x:Uid="Popup" Name="Popup" Placement="Bottom"
+                            Focusable="False" AllowsTransparency="True" IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}" PopupAnimation="None">
+                            <Grid x:Uid="DropDown" Name="DropDown" SnapsToDevicePixels="True"
+                                  MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                  MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+                                <Border x:Uid="DropDownBorder" Name="DropDownBorder" Background="{DynamicResource Brush.Background.White}" Margin="0,1,0,0"
+                                        CornerRadius="0" BorderThickness="1,1,1,1" BorderBrush="{DynamicResource Brush.ComboBox.Border.Normal}"/>
+                                <ScrollViewer x:Uid="ScrollViewer_1" Margin="4" SnapsToDevicePixels="True">
+                                    <ItemsPresenter x:Uid="ItemsPresenter_1" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_6" Property="ItemsControl.HasItems" Value="False">
+                            <Setter x:Uid="Setter_68" Property="FrameworkElement.MinHeight" TargetName="DropDownBorder" Value="95"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_7" Property="UIElement.IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_69" Property="TextElement.Foreground" Value="{DynamicResource Brush.ComboBox.Foreground.Disabled}"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_8" Property="ItemsControl.IsGrouping" Value="True">
+                            <Setter x:Uid="Setter_70" Property="ScrollViewer.CanContentScroll" Value="False"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_9" Property="ComboBox.IsEditable" Value="True">
+                            <Setter x:Uid="Setter_71" Property="KeyboardNavigation.IsTabStop" Value="False"/>
+                            <Setter x:Uid="Setter_72" Property="UIElement.Visibility" TargetName="PART_EditableTextBox" Value="Visible"/>
+                            <Setter x:Uid="Setter_73" Property="UIElement.Visibility" TargetName="ContentSite" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End of Flat ComboBox -->
+
+    <Style x:Uid="Style_22" x:Key="ImageButtonStyle" TargetType="controls:ImageButton">
+        <Setter x:Uid="Setter_74" Property="Width" Value="26"/>
+        <Setter x:Uid="Setter_75" Property="Height" Value="26"/>
+        <Setter x:Uid="Setter_76" Property="BorderBrush" Value="Transparent"/>
+        <Setter x:Uid="Setter_77" Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_78" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_14" TargetType="controls:ImageButton">
+                    <Border x:Uid="Border_8" CornerRadius="0" SnapsToDevicePixels="True"
+                                BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid x:Uid="Grid_6" >
+                            <Image x:Uid="Image_1" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" Source="{TemplateBinding ImageSource}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="True"/>
+                            <Grid x:Uid="fadGrid" Background="{DynamicResource Brush.Background.Gray}" Opacity="0" Name="fadGrid"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_10" Property="IsEnabled" Value="false">
+                            <Setter x:Uid="Setter_79" Property="Grid.Opacity" TargetName="fadGrid" Value="0.5"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_11" Property="IsKeyboardFocused" Value="True">
+                            <Setter x:Uid="Setter_80" Property="Border.BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_36" x:Key="ImageToggleButtonStyle" TargetType="controls:ImageToggleButton">
+        <Setter x:Uid="Setter_160" Property="Width" Value="26"/>
+        <Setter x:Uid="Setter_161" Property="Height" Value="26"/>
+        <Setter x:Uid="Setter_162" Property="BorderBrush" Value="Transparent"/>
+        <Setter x:Uid="Setter_163" Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_164" Property="Background" Value="Transparent"/>
+        <Setter x:Uid="Setter_165" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_22" TargetType="controls:ImageToggleButton">
+                    <Border x:Uid="Border_19" CornerRadius="0" SnapsToDevicePixels="True"
+                                BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid x:Uid="Grid_7" Background="{TemplateBinding Background}">
+                            <Image x:Uid="Image_5" Width="24" Height="24" Source="{TemplateBinding ImageSource}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="True"/>
+                            <Grid x:Uid="Grid_8" Background="{DynamicResource Brush.Background.Gray}" Opacity="0" Name="fadGrid"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_20" Property="IsChecked" Value="True">
+                            <Setter x:Uid="Setter_166" Property="Background" Value="{DynamicResource Brush.Item.SelectedBackground}"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_21" Property="IsEnabled" Value="false">
+                            <Setter x:Uid="Setter_167" Property="Grid.Opacity" TargetName="fadGrid" Value="0.5"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_22" Property="IsKeyboardFocused" Value="True">
+                            <Setter x:Uid="Setter_168" Property="Border.BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_23" x:Key="CloseButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_81" Property="Background"
+                Value="Transparent" />
+        <Setter x:Uid="Setter_82" Property="BorderBrush"
+                Value="Transparent" />
+        <Setter x:Uid="Setter_83" Property="Margin"
+                Value="6,6,6,6" />
+        <Setter x:Uid="Setter_84" Property="Width"
+                Value="12" />
+        <Setter x:Uid="Setter_85" Property="Height"
+                Value="12" />
+        <Setter x:Uid="Setter_86" Property="VerticalAlignment"
+                Value="Top" />
+        <Setter x:Uid="Setter_87" Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter x:Uid="Setter_88" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_15" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_9" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1">
+                        <Image x:Uid="Image_2" Width="{TemplateBinding Width}"
+                               Height="{TemplateBinding Height}"
+                               SnapsToDevicePixels="True">
+                            <Image.Source>
+                                <BitmapImage x:Uid="BitmapImage_1" UriSource="/Resources/CancelSubPane.ico" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_12" Property="IsKeyboardFocused"
+                                 Value="True">
+                            <Setter x:Uid="Setter_89" Property="BorderBrush"
+                                    Value="{DynamicResource Brush.TabFocusBorder}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_24" x:Key="PinButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_90" Property="Background"
+                Value="Transparent" />
+        <Setter x:Uid="Setter_91" Property="BorderBrush"
+                Value="Transparent" />
+        <Setter x:Uid="Setter_92" Property="Margin"
+                Value="6,6,6,6" />
+        <Setter x:Uid="Setter_93" Property="Width"
+                Value="12" />
+        <Setter x:Uid="Setter_94" Property="Height"
+                Value="12" />
+        <Setter x:Uid="Setter_95" Property="VerticalAlignment"
+                Value="Top" />
+        <Setter x:Uid="Setter_96" Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter x:Uid="Setter_97" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_16" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_10" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1">
+                        <Image x:Uid="Image_3" Width="{TemplateBinding Width}"
+                               Height="{TemplateBinding Height}"
+                               SnapsToDevicePixels="True">
+                            <Image.Source>
+                                <BitmapImage x:Uid="BitmapImage_2" UriSource="/Resources/PinTabItem.ico" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_13" Property="IsKeyboardFocused"
+                                 Value="True">
+                            <Setter x:Uid="Setter_98" Property="BorderBrush"
+                                    Value="{DynamicResource Brush.TabFocusBorder}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_25" x:Key="UnpinButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter x:Uid="Setter_99" Property="Background"
+                Value="Transparent" />
+        <Setter x:Uid="Setter_100" Property="BorderBrush"
+                Value="Transparent" />
+        <Setter x:Uid="Setter_101" Property="Margin"
+                Value="6,6,6,6" />
+        <Setter x:Uid="Setter_102" Property="Width"
+                Value="12" />
+        <Setter x:Uid="Setter_103" Property="Height"
+                Value="12" />
+        <Setter x:Uid="Setter_104" Property="VerticalAlignment"
+                Value="Top" />
+        <Setter x:Uid="Setter_105" Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter x:Uid="Setter_106" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_17" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_11" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1">
+                        <Image x:Uid="Image_4" Width="{TemplateBinding Width}"
+                               Height="{TemplateBinding Height}"
+                               SnapsToDevicePixels="True">
+                            <Image.Source>
+                                <BitmapImage x:Uid="BitmapImage_3" UriSource="/Resources/UnpinTabItem.ico" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_14" Property="IsKeyboardFocused"
+                                 Value="True">
+                            <Setter x:Uid="Setter_107" Property="BorderBrush"
+                                    Value="{DynamicResource Brush.TabFocusBorder}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_26" x:Key="FlatRadioButtonStyle" TargetType="{x:Type RadioButton}">
+        <Setter x:Uid="Setter_108" Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_109" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_18" TargetType="{x:Type RadioButton}">
+                    <Border x:Uid="Border_12" SnapsToDevicePixels="True">
+                        <BulletDecorator x:Uid="BulletDecorator_1" FlowDirection="LeftToRight" VerticalAlignment="Center">
+                            <BulletDecorator.Bullet>
+                                <Border x:Uid="Border_13" Height="16" Width="16" CornerRadius="8" BorderBrush="{DynamicResource Brush.FlatRadioButton.Border}" BorderThickness="1">
+                                    <Ellipse x:Uid="fill" x:Name="fill" Height="10" Width="10" Fill="Transparent"/>
+                                </Border>
+                            </BulletDecorator.Bullet>
+                            <Border x:Uid="Border_14" x:Name="Border" SnapsToDevicePixels="True"
+                                            Background="Transparent" BorderBrush="Transparent">
+                                <ContentPresenter x:Uid="ContentPresenter_5" Margin="5,0,0,0"/>
+                            </Border>
+                        </BulletDecorator>
+                        <Border.Style>
+                            <Style x:Uid="Style_27" TargetType="{x:Type Border}">
+                                <Setter x:Uid="Setter_110" Property="BorderThickness" Value="1"/>
+                                <Setter x:Uid="Setter_111" Property="BorderBrush" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <DataTrigger x:Uid="DataTrigger_4" Binding="{Binding Path=IsKeyboardFocused, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type RadioButton}}}" Value="True">
+                                        <Setter x:Uid="Setter_112" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_15" Property="IsChecked" Value="true">
+                            <Setter x:Uid="Setter_113" TargetName="fill" Property="Fill" Value="{DynamicResource Brush.FlatRadioButton.IsChecked}"/>
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_19" Property="IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_158" Property="Foreground" Value="{DynamicResource Brush.FilePaneCloudView.AddToZipButton.Foreground.Disable}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_37" x:Key="FlatCheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter x:Uid="Setter_174" Property="Background" Value="{DynamicResource Brush.Background.White}" />
+        <Setter x:Uid="Setter_169" Property="BorderBrush" Value="{DynamicResource Brush.Background.White}" />
+        <Setter x:Uid="Setter_170" Property="BorderThickness" Value="1" />
+        <Setter x:Uid="Setter_171" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_23" TargetType="{x:Type CheckBox}">
+                    <BulletDecorator x:Uid="BulletDecorator_2" FlowDirection="LeftToRight" VerticalAlignment="Center">
+                        <BulletDecorator.Bullet>
+                            <Border x:Uid="Border_21" Height="14" Width="14" BorderBrush="{DynamicResource Brush.FlatRadioButton.Border}" BorderThickness="1">
+                                <Rectangle x:Uid="checkboxFill" x:Name="checkboxFill" Width="9" Height="9" Fill="Transparent"/>
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <Border x:Uid="Border_20"
+                                x:Name="Border"
+                                BorderThickness="1"
+                                SnapsToDevicePixels="True"
+                                Background="Transparent"
+                                BorderBrush="Transparent">
+                            <ContentPresenter x:Uid="ContentPresenter_8" Margin="5,0,0,0"/>
+                        </Border>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="Trigger_23" Property="IsChecked" Value="True">
+                            <Setter x:Uid="Setter_172" TargetName="checkboxFill" Property="Fill" Value="{DynamicResource Brush.FlatRadioButton.IsChecked}" />
+                        </Trigger>
+                        <Trigger x:Uid="Trigger_24" Property="IsKeyboardFocused" Value="True">
+                            <Setter x:Uid="Setter_173" Property="BorderBrush" Value="{DynamicResource Brush.TabFocusBorder}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_28" x:Key="SeparatorStyle"  TargetType="{x:Type Separator}">
+        <Setter x:Uid="Setter_114" Property="Focusable"  Value="false" />
+        <Setter x:Uid="Setter_115" Property="OverridesDefaultStyle"  Value="true" />
+        <Setter x:Uid="Setter_116" Property="Margin"  Value="2,1,2,1" />
+        <Setter x:Uid="Setter_117" Property="Template" >
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_19" TargetType="{x:Type Separator}">
+                    <Grid x:Uid="divider" x:Name="divider" SnapsToDevicePixels="True" Focusable="False" Margin="{TemplateBinding Margin}">
+                        <Border x:Uid="Border_15" BorderBrush="{DynamicResource Brush.Separator.DarkLine}" Height="2" BorderThickness="0,1,0,0" />
+                        <Border x:Uid="Border_16" BorderBrush="{DynamicResource Brush.Separator.LightLine}" Height="2" BorderThickness="0,0,0,1" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_29" x:Key="StateButtonBaseStyle" TargetType="{x:Type controls:StateButton}">
+        <Style.Resources>
+            <Style x:Uid="Style_30" x:Key="IconContentGridStyle" TargetType="{x:Type Grid}">
+                <Setter x:Uid="Setter_118" Property="Visibility" Value="Visible"/>
+                <Setter x:Uid="Setter_119" Property="Margin" Value="0"/>
+                <Setter x:Uid="Setter_120" Property="MaxWidth" Value="15"/>
+                <Setter x:Uid="Setter_121" Property="MaxHeight" Value="15"/>
+            </Style>
+            <Style x:Uid="Style_31" x:Key="FocusedBorderStyle" TargetType="{x:Type Border}">
+                <Setter x:Uid="Setter_122" Property="Visibility" Value="Collapsed"/>
+            </Style>
+            <Style x:Uid="Style_32" x:Key="BlinkingIconStyle" TargetType="{x:Type Path}">
+                <Setter x:Uid="Setter_123" Property="Visibility" Value="Collapsed"/>
+            </Style>
+        </Style.Resources>
+        <Setter x:Uid="Setter_124" Property="Foreground" Value="{DynamicResource BaseForeground}" />
+        <Setter x:Uid="Setter_125" Property="GenericColor" Value="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}"/>
+        <Setter x:Uid="Setter_126" Property="MouseOverColor" Value="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}"/>
+        <Setter x:Uid="Setter_127" Property="MouseDownColor" Value="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}"/>
+        <Setter x:Uid="Setter_128" Property="ChangeColor" Value="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}"/>
+        <Setter x:Uid="Setter_129" Property="SelectedHoverColor" Value="{DynamicResource Brush.SharedStyle.FlatButtonBase.ButtonBorder}"/>
+        <Setter x:Uid="Setter_130" Property="Background" Value="Transparent" />
+        <Setter x:Uid="Setter_131" Property="BorderBrush" Value="Transparent" />
+        <Setter x:Uid="Setter_132" Property="BorderThickness" Value="0" />
+        <Setter x:Uid="Setter_133" Property="CornerRadius" Value="0"/>
+        <Setter x:Uid="Setter_134" Property="Width" Value="15"/>
+        <Setter x:Uid="Setter_135" Property="Height" Value="15"/>
+        <Setter x:Uid="Setter_136" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_20" TargetType="{x:Type controls:StateButton}">
+                    <Grid x:Uid="grid" 
+                          SnapsToDevicePixels="True"
+                          x:Name="grid">
+                        <Border x:Uid="Border_17" Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"/>
+                        <Grid x:Uid="ContentGrid" x:Name="ContentGrid" 
+                              Margin="{TemplateBinding Padding}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Uid="ContentColumn" Width="Auto" x:Name="ContentColumn" />
+                                <ColumnDefinition x:Uid="IconColumn" x:Name="IconColumn"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ContentPresenter x:Uid="contentPresenter" x:Name="contentPresenter"                                          
+                                              HorizontalAlignment="Center"                                          
+                                              VerticalAlignment="Center"   
+                                              TextBlock.Foreground="{TemplateBinding Foreground}">
+                                <ContentPresenter.Resources>
+                                    <Style x:Uid="Style_33" TargetType="{x:Type TextBlock}">
+                                        <Setter x:Uid="Setter_137" Property="TextTrimming"
+                                            Value="CharacterEllipsis" />
+                                        <Setter x:Uid="Setter_138" Property="VerticalAlignment"
+                                                Value="Center"/>
+                                    </Style>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+
+                            <Grid x:Uid="content" Grid.Column="1"
+                                  x:Name="content">
+                                <Path x:Uid="DefaultIcon" x:Name="DefaultIcon"
+                                      Fill="{TemplateBinding GenericColor}"
+                                      Data="{TemplateBinding StateDefaultIcon}"
+                                      Stretch="Uniform"
+                                      />
+                                <Path x:Uid="ChangeIcon" x:Name="ChangeIcon"
+                                      Fill="{TemplateBinding ChangeColor}"
+                                      Data="{TemplateBinding StateChangeIcon}"
+                                      Stretch="Uniform"
+                                      Visibility="Collapsed"
+                                      />
+                                <Path x:Uid="BlinkingIcon" x:Name="BlinkingIcon"
+                                      Fill="{TemplateBinding MouseDownColor}"
+                                      Data="{TemplateBinding StateDefaultIcon}"
+                                      Stretch="Uniform"
+                                      Style="{StaticResource BlinkingIconStyle}" 
+                                      />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger x:Uid="MultiTrigger_1">
+                            <MultiTrigger.Conditions>
+                                <Condition x:Uid="Condition_3" Property="IsMouseOver" Value="True" />
+                                <Condition x:Uid="Condition_4" Property="State" Value="0" />
+                            </MultiTrigger.Conditions>
+                            <Setter x:Uid="Setter_139" TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverColor}"/>
+                            <Setter x:Uid="Setter_140" Property="Fill" TargetName="DefaultIcon" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverColor}" />
+                        </MultiTrigger>
+
+                        <Trigger x:Uid="Trigger_16" Property="IsPressed" Value="true">
+                            <Setter x:Uid="Setter_141" TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseDownColor}" />
+                            <Setter x:Uid="Setter_142" Property="Fill" TargetName="DefaultIcon" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseDownColor}" />
+                            <Setter x:Uid="Setter_143" Property="Fill" TargetName="ChangeIcon" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseDownColor}" />
+                        </Trigger>
+
+                        <Trigger x:Uid="Trigger_17" Property="State" Value="1">
+                            <Setter x:Uid="Setter_144" TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseDownColor}" />
+                            <Setter x:Uid="Setter_145" Property="Visibility" TargetName="DefaultIcon" Value="Collapsed" />
+                            <Setter x:Uid="Setter_146" Property="Visibility" TargetName="ChangeIcon" Value="Visible" />
+                        </Trigger>
+
+                        <MultiTrigger x:Uid="MultiTrigger_2">
+                            <MultiTrigger.Conditions>
+                                <Condition x:Uid="Condition_5" Property="State" Value="1" />
+                                <Condition x:Uid="Condition_6" Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter x:Uid="Setter_147" TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedHoverColor}" />
+                            <Setter x:Uid="Setter_148" Property="Fill" TargetName="ChangeIcon" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedHoverColor}" />
+                        </MultiTrigger>
+
+                        <Trigger x:Uid="Trigger_18" Property="IsEnabled" Value="False">
+                            <Setter x:Uid="Setter_149" Property="Opacity" TargetName="ContentGrid" Value="0.3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_34" x:Key="ButtonToolTip" TargetType="{x:Type ToolTip}" >
+        <Setter x:Uid="Setter_150" Property="OverridesDefaultStyle" Value="true" />
+        <Setter x:Uid="Setter_159" Property="SnapsToDevicePixels" Value="True" />
+        <Setter x:Uid="Setter_151" Property="HasDropShadow" Value="True" />
+        <Setter x:Uid="Setter_154" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_21" TargetType="{x:Type ToolTip}" >
+                    <StackPanel x:Uid="StackPanel_2">
+                        <Border x:Uid="Border_18" CornerRadius="0"
+                                SnapsToDevicePixels="True"
+                            BorderThickness="1"
+                                Margin="2"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                            BorderBrush="{DynamicResource Brush.Tooltip.Border}"
+                            Background="{DynamicResource Brush.Tooltip.Background}">
+                            <ContentPresenter x:Uid="ContentPresenter_6" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Uid="Style_35" x:Key="ToolTipTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter x:Uid="Setter_178" Property="Width" Value="220"/>
+        <Setter x:Uid="Setter_179" Property="TextWrapping" Value="Wrap"/>
+        <Setter x:Uid="Setter_155" Property="Foreground" Value="{DynamicResource Brush.Tooltip.Text}" />
+        <Setter x:Uid="Setter_156" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}" />
+        <Setter x:Uid="Setter_157" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}" />
+    </Style>
+
+    <Style x:Uid="CheckBoxStyle" x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter x:Uid="CheckBoxStyle.FocusVisualStyle" Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
+        <Setter x:Uid="CheckBoxStyle.Template" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="CheckBoxStyle.ControlTemplate" TargetType="{x:Type CheckBox}">
+                    <BulletDecorator x:Uid="CheckBoxStyle.BulletDecorator" FlowDirection="LeftToRight" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <BulletDecorator.Bullet>
+                            <Image x:Uid="CheckBoxStyle.Image" x:Name="cb" Height="16" Width="16" Source="{utils:MultiDPIImageSource false}" SnapsToDevicePixels="true"/>
+                        </BulletDecorator.Bullet>
+                        <Border x:Uid="CheckBoxStyle.Border" x:Name="Border" SnapsToDevicePixels="True"
+                                        Background="Transparent" BorderBrush="Transparent">
+                            <ContentPresenter x:Uid="CheckBoxStyle.ContentPresenter"/>
+                        </Border>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger x:Uid="CheckBoxStyle.IsChecked" Property="IsChecked" Value="True">
+                            <Setter x:Uid="CheckBoxStyle.IsChecked.Source" TargetName="cb" Property="Source" Value="{utils:MultiDPIImageSource true}"></Setter>
+                            <Setter x:Uid="CheckBoxStyle.IsChecked.Background" Property="Background" Value="{DynamicResource Brush.Background.Gray}"/>
+                            <Setter x:Uid="CheckBoxStyle.IsChecked.BorderBrush" Property="BorderBrush" Value="{DynamicResource Brush.Background.Gray}"/>
+                        </Trigger>
+                        <Trigger x:Uid="CheckBoxStyle.IsEnabled" Property="IsEnabled" Value="false">
+                            <Setter x:Uid="CheckBoxStyle.IsChecked.Property" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <controls:ObjectToStringConverter x:Uid="controls:objectToStringConverter" x:Key="objectToStringConverter" />
+
+    <Style x:Uid="Style_39" x:Key="FlatImageButtonStyle" TargetType="Button">
+        <Setter x:Uid="Setter_180" Property="Background" Value="Transparent"/>
+        <Setter x:Uid="Setter_181" Property="BorderBrush" Value="Transparent"/>
+        <Setter x:Uid="Setter_182" Property="BorderThickness" Value="1"/>
+        <Setter x:Uid="Setter_183" Property="Focusable" Value="True"/>
+        <Setter x:Uid="Setter_184" Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_185" Property="SnapsToDevicePixels" Value="True"/>
+        <Setter x:Uid="Setter_186" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_24" TargetType="{x:Type Button}">
+                    <Border
+                            x:Uid="Border_22" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Image x:Uid="Image_6" Width="24"
+                               Height="24"
+                               SnapsToDevicePixels="True"
+                               Source="{TemplateBinding Tag, Converter={StaticResource objectToStringConverter}}">
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger x:Uid="Trigger_25" Property="IsMouseOver" Value="True">
+                <Setter x:Uid="Setter_188" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                <Setter x:Uid="Setter_189" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_26" Property="IsKeyboardFocused" Value="True">
+                <Setter x:Uid="Setter_191" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                <Setter x:Uid="Setter_192" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_27" Property="IsPressed" Value="True">
+                <Setter x:Uid="Setter_193" Property="Background" Value="{DynamicResource Brush.Item.SelectedBackground}"/>
+                <Setter x:Uid="Setter_194" Property="BorderBrush" Value="{DynamicResource Brush.Item.SelectedBorder}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_28" Property="IsEnabled" Value="False">
+                <Setter x:Uid="Setter_195" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Gray}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Uid="Style_40" x:Key="SymbolsButtonStyle" TargetType="Button">
+        <Setter x:Uid="Setter_196" Property="Background" Value="Transparent"/>
+        <Setter x:Uid="Setter_197" Property="BorderBrush" Value="Transparent"/>
+        <Setter x:Uid="Setter_198" Property="BorderThickness" Value="1"/>
+        <Setter x:Uid="Setter_199" Property="Focusable" Value="True"/>
+        <Setter x:Uid="Setter_200" Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter x:Uid="Setter_201" Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Uid="ControlTemplate_25" TargetType="{x:Type Button}">
+                    <Border x:Uid="Border_23" SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter x:Uid="ContentPresenter_9"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger x:Uid="Trigger_29" Property="IsMouseOver" Value="True">
+                <Setter x:Uid="Setter_202" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                <Setter x:Uid="Setter_203" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_30" Property="IsKeyboardFocused" Value="True">
+                <Setter x:Uid="Setter_204" Property="Background" Value="{DynamicResource Brush.Item.HoverBackground}"/>
+                <Setter x:Uid="Setter_205" Property="BorderBrush" Value="{DynamicResource Brush.Item.HoverBorder}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_31" Property="IsPressed" Value="True">
+                <Setter x:Uid="Setter_206" Property="Background" Value="{DynamicResource Brush.Item.SelectedBackground}"/>
+                <Setter x:Uid="Setter_207" Property="BorderBrush" Value="{DynamicResource Brush.Item.SelectedBorder}"/>
+            </Trigger>
+            <Trigger x:Uid="Trigger_32" Property="IsEnabled" Value="False">
+                <Setter x:Uid="Setter_208" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Gray}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,316 @@
+﻿<controls:BaseWindow x:Uid="LockPDFDialogWindow" x:Class="PdfUtil.WPFUI.Controls.LockPDFDialog"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:controls="clr-namespace:PdfUtil.WPFUI.Controls"
+                     x:Name="LockPDFDialogWindow"
+                     mc:Ignorable="d"
+                     Title="Lock a PDF"
+                     WindowStyle="SingleBorderWindow"
+                     ResizeMode="NoResize"
+                     ShowInTaskbar="False"
+                     KeyDown="LockPDFDialog_KeyDown"
+                     SnapsToDevicePixels="True"
+                     SizeToContent="Height"
+                     Width="580"
+                     Loaded="LockPDFDialog_Loaded"
+                     Unloaded="LockPDFDialog_UnLoaded">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_3">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <controls:EnumToBoolConverter x:Uid="controls:EnumToBoolConverter" x:Key="EnumToBoolConverter"/>
+
+            <Style x:Uid="Style_3" x:Key="CheckBoxBaseStyle"
+                   BasedOn="{StaticResource FlatCheckBoxStyle}"
+                   TargetType="CheckBox">
+                <Setter x:Uid="Setter_11" Property="Width" Value="Auto"/>
+                <Setter x:Uid="Setter_12" Property="HorizontalAlignment" Value="Left"/>
+                <Setter x:Uid="Setter_13" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_14" Property="FontSize" Value="{StaticResource Shared.FontSize.12px}"/>
+            </Style>
+
+            <Style x:Uid="Style_4" x:Key="PermissionCheckBoxStyle"
+                   BasedOn="{StaticResource CheckBoxBaseStyle}"
+                   TargetType="CheckBox">
+                <Style.Triggers>
+                    <Trigger x:Uid="Trigger_2" Property="IsEnabled" Value="False">
+                        <Setter x:Uid="Setter_15" Property="Foreground" Value="{DynamicResource Brush.Item.Text.Gray}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Uid="Style_7" x:Key="ButtonStyle"
+                   TargetType="Button"
+                   BasedOn="{StaticResource FlatBlueButtonStyle}">
+                <Setter x:Uid="Setter_23" Property="Width" Value="88"/>
+                <Setter x:Uid="Setter_24" Property="Height" Value="30"/>
+                <Setter x:Uid="Setter_25" Property="HorizontalAlignment" Value="Right"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_1">
+        <Border x:Uid="Border_1"
+                BorderThickness="0"
+                Padding="0,10,0,0"
+                BorderBrush="{DynamicResource Brush.Item.Text.Gray}">
+            <Grid x:Uid="Grid_2">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+                    <RowDefinition x:Uid="RowDefinition_2" Height="Auto"/>
+                    <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
+                    <RowDefinition x:Uid="RowDefinition_4" Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock 
+                    x:Uid="description" x:Name="description"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    Text="To lock a PDF, provide password(s) and the permissions to be applied."
+                    TextWrapping="Wrap"
+                    Style="{StaticResource TitleTextBlockStyle}" 
+                    FontSize="{DynamicResource Shared.FontSize.15px}"/>
+                <StackPanel
+                    x:Uid="passwordPanel" Grid.Row="1"
+                    Margin="19,9,15,10"
+                    x:Name="passwordPanel">
+                    <TextBlock x:Uid="TextBlock_1" Text="PDF Lock Settings:"
+                               Grid.Row="0"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource TitleTextBlockStyle}"
+                               FontWeight="{StaticResource Shared.FontWeight.Bold}"/>
+                    <CheckBox x:Uid="openPDFCheckbox" x:Name="openPDFCheckbox"
+                              Margin="0,8,0,0"
+                              IsChecked="{Binding IsSetOpenPassword}"
+                              Style="{StaticResource CheckBoxBaseStyle}"
+                              TabIndex="0"
+                              Click="openPDFCheckbox_Click">
+                        <TextBlock x:Uid="TextBlock_8" Margin="5,0,0,0" Text="Password required to open this PDF"/>
+                    </CheckBox>
+                    <StackPanel x:Uid="StackPanel_1" Orientation="Horizontal" Margin="25,5,0,0">
+                        <TextBlock x:Uid="TextBlock_2"
+                                   Width="80"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   IsEnabled="{Binding ElementName=openPDFCheckbox, Path=IsChecked}"
+                                   Text="Password:"/>
+                        <controls:PasswordControl x:Uid="openPasswordBox" x:Name="openPasswordBox"
+                                                  Grid.Row="1"
+                                                  TabIndex="1"
+                                                  Password="{Binding OpenPassword, Mode=TwoWay}"
+                                                  IsEnabled="{Binding ElementName=openPDFCheckbox, Path=IsChecked}"/>
+                    </StackPanel>
+                    <StackPanel x:Uid="StackPanel_2" Orientation="Horizontal" Margin="25,8,0,0">
+                        <TextBlock x:Uid="TextBlock_3"
+                                   Width="80"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   IsEnabled="{Binding ElementName=openPDFCheckbox, Path=IsChecked}"
+                                   Text="Verify:"/>
+                        <controls:PasswordControl x:Uid="openPasswordVerifyBox" x:Name="openPasswordVerifyBox"
+                                                  Grid.Row="1"
+                                                  TabIndex="2"
+                                                  Password="{Binding OpenVerifyPassword, Mode=TwoWay}"
+                                                  IsEnabled="{Binding ElementName=openPDFCheckbox, Path=IsChecked}"/>
+                    </StackPanel>
+                    <CheckBox x:Uid="changePDFCheckbox" x:Name="changePDFCheckbox"
+                              Margin="0,10,0,0"
+                              IsChecked="{Binding IsSetPermissionPassword}"
+                              Style="{StaticResource CheckBoxBaseStyle}"
+                              TabIndex="3"
+                              Click="changePDFCheckbox_Click">
+                        <TextBlock x:Uid="TextBlock_9" Margin="5,0,0,0" Text="Password required to change permissions below"/>
+                    </CheckBox>
+                    <StackPanel x:Uid="StackPanel_3" Orientation="Horizontal" Margin="25,5,0,0">
+                        <TextBlock x:Uid="TextBlock_4"
+                                   Width="80"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"
+                                   Text="Password:"/>
+                        <controls:PasswordControl x:Uid="changePasswordBox" x:Name="changePasswordBox"
+                                                  Grid.Row="1"
+                                                  TabIndex="4"
+                                                  Password="{Binding PermissionPassword, Mode=TwoWay}"
+                                                  IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"/>
+                    </StackPanel>
+                    <StackPanel x:Uid="StackPanel_4" Orientation="Horizontal" Margin="25,8,0,0">
+                        <TextBlock x:Uid="TextBlock_5"
+                                   Width="80"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"
+                                   Text="Verify:"/>
+                        <controls:PasswordControl x:Uid="changePasswordVerifyBox" x:Name="changePasswordVerifyBox"
+                                                  Grid.Row="1"
+                                                  TabIndex="5"
+                                                  Password="{Binding PermissionVerifyPassword, Mode=TwoWay}"
+                                                  IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Uid="permissionPanel" Orientation="Vertical"
+                            Grid.Row="2"
+                            Margin="5,0,15,0"
+                            x:Name="permissionPanel">
+                    <ItemsControl x:Uid="ItemsControl_1"
+                                  IsTabStop="False"
+                                  Margin="30,0,0,0"
+                                  KeyboardNavigation.TabNavigation="Once">
+                        <Grid x:Uid="Grid_3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Uid="RowDefinition_5" Height="Auto"/>
+                                <RowDefinition x:Uid="RowDefinition_6" Height="Auto"/>
+                                <RowDefinition x:Uid="RowDefinition_7" Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Uid="ColumnDefinition_1" Width="100"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Uid="TextBlock_6" Grid.Row="0"
+                                   Grid.Column="0"
+                                   Margin="8,2,0,2"
+                                   Text="Printing allowed:"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"/>
+                            <RadioButton x:Uid="rbPrintingNone" x:Name="rbPrintingNone"
+                                     AutomationProperties.Name="Printing allowed none"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="15,2,0,2"
+                                     GroupName="GroupPrinting"
+                                     Style="{StaticResource RadioButtonStyle}"
+                                     IsChecked="{Binding Path=CurAllowPrinting, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_10" Text="None"/>
+                            </RadioButton>
+                            <RadioButton x:Uid="rbLowResolution" x:Name="rbLowResolution"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     GroupName="GroupPrinting"
+                                     Style="{StaticResource RadioButtonStyle}"
+                                     IsChecked="{Binding Path=CurAllowPrinting, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=LowResolution, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_11" Text="Low Resolution(150 dpi)"/>
+                            </RadioButton>
+                            <RadioButton x:Uid="rbHighResolution" x:Name="rbHighResolution"
+                                     Grid.Row="2"
+                                     Grid.Column="1"
+                                     GroupName="GroupPrinting"
+                                     Style="{StaticResource RadioButtonStyle}"
+                                     IsChecked="{Binding Path=CurAllowPrinting, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=HighResolution, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_12" Text="High Resolution"/>
+                            </RadioButton>
+                        </Grid>
+                    </ItemsControl>
+                    <ItemsControl x:Uid="ItemsControl_2"
+                                  IsTabStop="False"
+                                  KeyboardNavigation.TabNavigation="Once">
+                        <Grid x:Uid="Grid_4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Uid="RowDefinition_8" Height="Auto"/>
+                                <RowDefinition x:Uid="RowDefinition_9" Height="Auto"/>
+                                <RowDefinition x:Uid="RowDefinition_10" Height="Auto"/>
+                                <RowDefinition x:Uid="RowDefinition_11" Height="Auto"/>
+                                <RowDefinition x:Uid="RowDefinition_12" Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Uid="ColumnDefinition_3" Width="130"/>
+                                <ColumnDefinition x:Uid="ColumnDefinition_4" Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Uid="TextBlock_7" Text="Changes allowed:"
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource NormalTextBlockStyle}"
+                                       IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"/>
+                            <RadioButton x:Uid="rbChangesNone" x:Name="rbChangesNone"
+                                         AutomationProperties.Name="Changes allowed none"
+                                         Grid.Row="0"
+                                         Grid.Column="1"
+                                         GroupName="GroupChanges"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         IsChecked="{Binding Path=CurAllowChanges, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=None, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_13" Text="None"/>
+                            </RadioButton>
+                            <RadioButton x:Uid="rbModifyPages" x:Name="rbModifyPages"
+                                         Grid.Row="1"
+                                         Grid.Column="1"
+                                         GroupName="GroupChanges"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         IsChecked="{Binding Path=CurAllowChanges, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=ModifyPagesPermission, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_14" Text="Insert pages, delete pages and rotate pages"/>
+                            </RadioButton>
+                            <RadioButton x:Uid="rbModifySignature" x:Name="rbModifySignature"
+                                         Width="400"
+                                         Grid.Row="2"
+                                         Grid.Column="1"
+                                         GroupName="GroupChanges"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         IsChecked="{Binding Path=CurAllowChanges, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=ModifySignaturePermission, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_15" Text="Fill in form fields and sign existing signature fields" TextWrapping="Wrap"/>
+                            </RadioButton>
+                            <RadioButton x:Uid="rbModifyComments" x:Name="rbModifyComments"
+                                         Width="400"
+                                         Grid.Row="3"
+                                         Grid.Column="1"
+                                         GroupName="GroupChanges"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         IsChecked="{Binding Path=CurAllowChanges, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=ModifyCommentsPermission, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_16" Text="Comments, fill in form fields and sign existing signature fields" 
+                                           TextWrapping="Wrap"/>
+                            </RadioButton>
+                            <RadioButton x:Uid="rbAnyExceptExtracting" x:Name="rbAnyExceptExtracting"
+                                         Grid.Row="4"
+                                         Grid.Column="1"
+                                         GroupName="GroupChanges"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         IsChecked="{Binding Path=CurAllowChanges, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=AnyExceptExtracting, Mode=TwoWay}">
+                                <TextBlock x:Uid="TextBlock_17" Text="Any except extracting pages"/>
+                            </RadioButton>
+                        </Grid>
+                    </ItemsControl>
+                    <CheckBox x:Uid="cbAllowCopy" x:Name="cbAllowCopy"
+                              Margin="30,18,0,3"
+                              Style="{StaticResource PermissionCheckBoxStyle}"
+                              IsEnabled="{Binding ElementName=changePDFCheckbox, Path=IsChecked}"
+                              IsChecked="{Binding Path=IsAllowCopyingChecked, Mode=TwoWay}">
+                        <TextBlock x:Uid="TextBlock_18" Margin="5,0,0,0" Text="Allow copying of text, images, and other content"/>
+                    </CheckBox>
+                    <CheckBox x:Uid="cbAllowImpared" x:Name="cbAllowImpared"
+                              Margin="30,1,0,2"
+                              IsChecked="{Binding Path=IsAllowScreenReaderChecked, Mode=TwoWay}">
+                        <TextBlock x:Uid="TextBlock_19" Margin="5,0,0,0" Text="Allow text access for screen reader devices for visually impaired"/>
+                        <CheckBox.Style>
+                            <Style x:Uid="Style_8" TargetType="CheckBox" BasedOn="{StaticResource PermissionCheckBoxStyle}">
+                                <Setter x:Uid="Setter_26" Property="IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger x:Uid="MultiDataTrigger_1">
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition x:Uid="Condition_1" Binding="{Binding Path=IsChecked, ElementName=changePDFCheckbox}" Value="True"/>
+                                            <Condition x:Uid="Condition_2" Binding="{Binding Path=IsChecked, ElementName=cbAllowCopy}" Value="False"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter x:Uid="Setter_27" Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                </StackPanel>
+                <Button x:Uid="lockBtn" x:Name="lockBtn"
+                        Grid.Row="3"
+                        Margin="0,0,10,10"
+                        Style="{StaticResource ButtonStyle}"
+                        Click="lockBtn_Click"
+                        Content="Lock"/>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:BaseWindow>
+

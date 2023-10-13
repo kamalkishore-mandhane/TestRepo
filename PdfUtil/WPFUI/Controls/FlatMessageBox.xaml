@@ -1,0 +1,80 @@
+﻿<local:BaseWindow x:Uid="Window_1" x:Class="PdfUtil.WPFUI.Controls.FlatMessageBox"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:local="clr-namespace:PdfUtil.WPFUI.Controls"
+                  Title="WinZip PDF Express"
+                  SizeToContent="WidthAndHeight"
+                  KeyDown="Window_KeyDown"
+                  ResizeMode="NoResize"
+                  ShowInTaskbar="False"
+                  Loaded="FlatMessageBox_Loaded"
+                  Unloaded="FlatMessageBox_UnLoaded">
+
+    <Window.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_3">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/WinZipColorTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_2" Source="../Themes/SharedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Uid="Style_1" x:Key="ButtonStyle" BasedOn="{StaticResource FlatButtonStyle}" TargetType="Button">
+                <Style.Triggers>
+                    <Trigger x:Uid="Trigger_1" Property="IsDefault" Value="True">
+                        <Setter x:Uid="Setter_1" Property="Background" Value="{DynamicResource Brush.Title}"/>
+                        <Setter x:Uid="Setter_2" Property="Foreground" Value="{DynamicResource Brush.SharedStyle.FlatBlueButton.Foreground}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Uid="Style_2" x:Key="DialogTitleStyle" TargetType="TextBlock">
+                <Setter x:Uid="Setter_3" Property="FontFamily" Value="{StaticResource Shared.FontFamily.SegoeUI}"/>
+                <Setter x:Uid="Setter_4" Property="FontWeight" Value="{StaticResource Shared.FontWeight.Normal}"/>
+                <Setter x:Uid="Setter_5" Property="FontSize" Value="{StaticResource Shared.FontSize.15px}"/>
+                <Setter x:Uid="Setter_6" Property="Foreground" Value="{DynamicResource Brush.Title}"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Uid="Grid_1" Grid.IsSharedSizeScope="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_1" />
+            <ColumnDefinition x:Uid="ColumnDefinition_2" />
+            <ColumnDefinition x:Uid="ColumnDefinition_3" SharedSizeGroup="SharedButton"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_1" />
+            <RowDefinition x:Uid="RowDefinition_2" />
+        </Grid.RowDefinitions>
+
+        <Image x:Uid="DialogIcon" x:Name="DialogIcon" Grid.Row="0" Grid.Column="0"
+               Margin="10,0,0,0" Height="32" Width="32" SnapsToDevicePixels="True" HorizontalAlignment="Left"/>
+        <TextBlock x:Uid="DialogTitle" x:Name="DialogTitle"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left" Margin="10"
+                   Style="{StaticResource NormalTextBlockStyle}"
+                   Width="300" TextWrapping="Wrap"/>
+        <Border x:Uid="Border_1" x:Name="SkinBorder" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                Background="{DynamicResource Brush.SharedStyle.FlatButton.Background}"/>
+        <CheckBox x:Uid="DoNotShowCB" x:Name="DoNotShowCB" Grid.Row="1" Margin="10" Grid.ColumnSpan="2" Visibility="Collapsed"
+                  VerticalAlignment="Center"
+                  Style="{StaticResource FlatCheckBoxStyle}">
+            <TextBlock x:Uid="TextBlock_1" Text="Do not show" Margin="5,0,0,0"/>
+        </CheckBox> 
+        <StackPanel x:Uid="StackPanel_1" Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+            <Button x:Uid="ButtonYes" x:Name="ButtonYes" 
+                    Style="{StaticResource ButtonStyle}"
+                    MinWidth="74" Height="28" Margin="10,10,10,10"
+                    HorizontalAlignment="Right" Content="Yes"
+                    Click="ButtonYes_Click" IsDefault="True"/>
+            <Button x:Uid="ButtonNo" x:Name="ButtonNo" 
+                    Style="{StaticResource ButtonStyle}"
+                    MinWidth="74" Height="28" Margin="0,10,10,10"
+                    HorizontalAlignment="Right" Content="No"
+                    Click="ButtonNo_Click" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</local:BaseWindow>
+

@@ -1,0 +1,232 @@
+﻿<ctrl:BasePage x:Uid="Page_1" x:Class="SafeShare.WPFUI.View.ManageCloudPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="clr-namespace:SafeShare.WPFUI.View"
+               xmlns:ctrl="clr-namespace:SafeShare.WPFUI.Controls"
+               mc:Ignorable="d"
+               Height="Auto"
+               MinHeight="320"
+               Width="410"
+               Loaded="ManageCloudPageView_Loaded"
+               Unloaded="ManageCloudPageView_UnLoaded"
+               Title="ManageCloudPage">
+
+    <Page.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/ColorTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/SharedStyle.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/SharedGeometry.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:CloudServiceDataTemplateSelector x:Uid="local:CloudServiceDataTemplateSelector_1" x:Key="cloudServiceDataTemplateSelector" />
+            <ctrl:BoolToVisibilityValueConverter x:Uid="ctrl:BoolToVisibilityValueConverter_1" x:Key="bool2Vis" />
+
+            <DataTemplate x:Uid="DataTemplate_1" x:Key="ZipShareDataTemplate">
+                <Grid x:Uid="Grid_1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Uid="ColumnDefinition_1" Width="*" />
+                        <ColumnDefinition x:Uid="ColumnDefinition_2" Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Uid="RowDefinition_1" Height="Auto" />
+                        <RowDefinition x:Uid="RowDefinition_2" Height="Auto" />
+                        <RowDefinition x:Uid="RowDefinition_3" Height="40" />
+                    </Grid.RowDefinitions>
+
+                    <RadioButton x:Uid="RadioButton_1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                 AutomationProperties.Name="{Binding DisplayName}"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Left"
+                                 Margin="5,10,0,0"
+                                 GroupName="ServiceRadioButton"
+                                 FocusVisualStyle="{x:Null}"
+                                 IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}"
+                                 Template="{StaticResource BlackRadioButtonControlTemplate}">
+                        <StackPanel x:Uid="StackPanel_1" Orientation="Horizontal">
+                            <Image x:Uid="Image_1"
+                                   Source="{Binding Icon}"
+                                   Height="22" Width="30"
+                                   Stretch="Uniform"
+                                   Margin="8,0,4,0"
+                                   VerticalAlignment="Center" />
+                            <TextBlock x:Uid="TextBlock_1"
+                                       TextWrapping="Wrap"
+                                       MaxWidth="160"
+                                       VerticalAlignment="Center"
+                                       Text="{Binding DisplayName}"
+                                       Style="{StaticResource BlackContentTextBlockStyle}" />
+                        </StackPanel>
+                    </RadioButton>
+
+                    <TextBlock x:Uid="TextBlock_2" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                               VerticalAlignment="Center"
+                               Text="Send files up to 500MB securely"
+                               Margin="68,5,0,0"
+                               Style="{StaticResource GrayContentTextBlockStyle}" />
+
+                    <Button x:Uid="Button_1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                            AutomationProperties.Name="{Binding SelectedAccount.DisplayName}"
+                            VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                            Command="{Binding DataContext.ManageAccounts, RelativeSource={RelativeSource AncestorType=ListView}}"
+                            CommandParameter="{Binding}" >
+                        <Button.Template>
+                            <ControlTemplate x:Uid="ControlTemplate_1" TargetType="{x:Type Button}">
+                                <Border x:Uid="RoundedBorder" x:Name="RoundedBorder"
+                                        Background="Transparent"
+                                        BorderBrush="{DynamicResource Brush.ListView.Item.Button.Hover}"
+                                        BorderThickness="0"
+                                        CornerRadius="5">
+                                    <StackPanel x:Uid="StackPanel_2" Orientation="Horizontal" Margin="2,5">
+                                        <TextBlock x:Uid="TextBlock_7" Grid.Column="3"
+                                                   Margin="5,0"
+                                                   TextAlignment="Right"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   ToolTip="{Binding SelectedAccount.DisplayName}"
+                                                   Text="{Binding SelectedAccount.DisplayName}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+                                        <Path x:Uid="ExpandededArrow" x:Name="ExpandededArrow"
+                                              Width="8"
+                                              Height="8"
+                                              Stretch="Uniform"
+                                              SnapsToDevicePixels="True"
+                                              StrokeThickness="1"
+                                              Stroke="{DynamicResource Brush.Text.Gray.Foreground}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Data="M 0 4 L 4 0 L 0 -4" />
+                                    </StackPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger x:Uid="Trigger_1" Property="IsMouseOver" Value="True">
+                                        <Setter x:Uid="Setter_1" TargetName="RoundedBorder" Property="BorderThickness" Value="1" />
+                                    </Trigger>
+                                    <Trigger x:Uid="Trigger_2" Property="IsPressed" Value="True">
+                                        <Setter x:Uid="Setter_2" TargetName="RoundedBorder" Property="Background" Value="{DynamicResource Brush.White.Button.Backgroung}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.InputBindings>
+        <KeyBinding x:Uid="KeyBinding_1" Command="{Binding DoneManageService}" Key="Enter" />
+    </Page.InputBindings>
+
+    <Grid x:Uid="Grid_4">
+        <Border x:Uid="Border_1" Style="{StaticResource PageWindowBorder}" />
+        <Grid x:Uid="Grid_2">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_4" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_5" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_6" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_7" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_12" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_8" Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Uid="Grid_3" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_5" Width="*" />
+                    <ColumnDefinition x:Uid="ColumnDefinition_6" Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_9" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_10" Height="Auto" />
+                    <RowDefinition x:Uid="RowDefinition_11" Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button x:Uid="Button_2" Grid.Row="0" Grid.Column="0"
+                        Margin="10,14,0,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource BackButtonStyle}"
+                        Command="{Binding Back}" />
+
+                <TextBlock x:Uid="TextBlock_3" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="15,13,0,0"
+                        HorizontalAlignment="Left"
+                        Text="Manage share services"
+                        Style="{StaticResource TitleTextBlockStyle}" />
+
+                <TextBlock x:Uid="TextBlock_4" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="15,0,0,0"
+                        HorizontalAlignment="Left"
+                        Text="Select a service to send files that are too large to attach by email."
+                        TextWrapping="Wrap"
+                        Style="{StaticResource SubTitleTextBlockStyle}" />
+
+                <Button x:Uid="CloseButton" Grid.Row="0" Grid.Column="1"
+                        x:Name="CloseButton"
+                        Margin="0,5,5,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource CloseButtonStyle}"
+                        Command="ApplicationCommands.Close"
+                        TabIndex="10" />
+            </Grid>
+
+            <TextBlock x:Uid="TextBlock_5" Grid.Row="1"
+                    Margin="15,12,0,10"
+                    HorizontalAlignment="Left"
+                    Text="Services"
+                    Style="{StaticResource TitleTextBlockStyle}" />
+
+            <ListView x:Uid="ListView_1"
+                    x:Name="CloudServiceListView"
+                    AutomationProperties.Name="Cloud Services"
+                    MaxHeight="315"
+                    Grid.Row="2"
+                    Background="Transparent"
+                    ItemsSource="{Binding DisplayCloudServices}"
+                    BorderThickness="0"
+                    ScrollViewer.CanContentScroll="False"
+                    SelectionChanged="CloudServiceListView_SelectionChanged"
+                    PreviewMouseWheel="CloudServiceListView_PreviewMouseWheel"
+                    SelectedItem="{Binding SelectedService}"
+                    Template="{StaticResource ManageServiceListViewTemplate}"
+                    ItemTemplateSelector="{StaticResource cloudServiceDataTemplateSelector}"
+                    ItemContainerStyle="{StaticResource ManageServiceListViewItemContainerStyle}">
+            </ListView>
+
+            <Button x:Uid="SeeAllButton" x:Name="SeeAllButton" Grid.Row="3"
+                Margin="20,0,20,0"
+                HorizontalAlignment="Right"
+                Visibility="{Binding IsSeeAllButtonVisible, Converter={StaticResource bool2Vis}}"
+                Style="{StaticResource SeeAllButtonStyle}"
+                Command="{Binding SeeAll}" />
+
+            <TextBlock x:Uid="TextBlock_6" x:Name="ErrorMsgTextBlock"
+                    Grid.Row="4" Grid.RowSpan="2"
+                    Width="210"
+                    Margin="15,12,0,10"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Text="{Binding Path=ManageServiceErrorMessage}"
+                    Style="{StaticResource RedContentTextBlockStyle}" />
+
+            <Button x:Name="Button_Done"
+                    x:Uid="Button_3" Grid.Row="5"
+                    Content="Done"
+                    Margin="0,30,15,15"
+                    Width="120"
+                    Height="36"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Command="{Binding DoneManageService}"
+                    Style="{StaticResource RoundCornerBlackButtonStyle}"
+                    Foreground="{DynamicResource Brush.Text.White.Foreground}" />
+        </Grid>
+    </Grid>
+</ctrl:BasePage>

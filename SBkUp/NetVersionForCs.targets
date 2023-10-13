@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+  <!--Common path to WinZipRoot\Common-->
+    <WZCommonPath>$(MSBuildThisFileDirectory)..\..\Common\</WZCommonPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NetVersionRegexString>^\s*#define\s+WZ_NET461\s*$</NetVersionRegexString>
+    <NetVersionHeaderFile Condition="Exists('$(WZCommonPath)NetVersion.h')">$([System.IO.File]::ReadAllText(`$(WZCommonPath)NetVersion.h`))</NetVersionHeaderFile>
+    
+    <!---Set the WZ_NET461 flag to True when there is a #define WZ_NET461 in the common\NetVersion.h file-->
+    <WZ_NET461>False</WZ_NET461>
+    <WZ_NET461 Condition="'$([System.Text.RegularExpressions.Regex]::IsMatch($(NetVersionHeaderFile),
+                    $(NetVersionRegexString),
+                    System.Text.RegularExpressions.RegexOptions.Multiline))'=='True'">True</WZ_NET461>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(WZ_NET461)' == 'True'">
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <DefineConstants>$(DefineConstants);WZ_NET461</DefineConstants>
+  </PropertyGroup>
+</Project>

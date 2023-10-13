@@ -1,0 +1,237 @@
+﻿<ctrl:BasePage x:Uid="Page_1" x:Class="SafeShare.WPFUI.View.EncryptOptPage"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="clr-namespace:SafeShare.WPFUI.View"
+               xmlns:ctrl="clr-namespace:SafeShare.WPFUI.Controls"
+               mc:Ignorable="d"
+               Height="Auto"
+               MinHeight="320"
+               Width="410"
+               x:Name="EncryptOptPageView"
+               Loaded="EncryptOptPageView_Loaded"
+               Unloaded="EncryptOptPageView_UnLoaded">
+
+    <Page.Resources>
+        <ResourceDictionary x:Uid="ResourceDictionary_1">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Uid="ResourceDictionary_2">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary x:Uid="ResourceDictionary_3" Source="../Themes/ColorTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary x:Uid="ResourceDictionary_4" Source="../Themes/SharedStyle.xaml" />
+                <ResourceDictionary x:Uid="ResourceDictionary_5" Source="../Themes/SharedGeometry.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <ctrl:BoolToVisibilityValueConverter x:Uid="ctrl:BoolToVisibilityValueConverter_1" x:Key="bool2Vis" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Uid="ContainerGrid" x:Name="ContainerGrid">
+        <Border x:Uid="Border_1" Style="{StaticResource PageWindowBorder}" />
+        <Grid x:Uid="Grid_1">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_1" Height="52" />
+                <RowDefinition x:Uid="RowDefinition_2" Height="*" />
+            </Grid.RowDefinitions>
+
+            <DockPanel x:Uid="DockPanel_1" Grid.Row="0">
+                <Button x:Uid="BackButton" x:Name="BackButton"
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource BackButtonStyle}"
+                        VerticalAlignment="Center"
+                        Click="BackButton_Click" />
+                <StackPanel x:Uid="StackPanel_1" HorizontalAlignment="Right">
+                    <Button x:Uid="CloseButton" x:Name="CloseButton"
+                            Margin="0,5,5,0"
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource CloseButtonStyle}"
+                            VerticalAlignment="Top"
+                            Command="ApplicationCommands.Close" />
+                </StackPanel>
+            </DockPanel>
+
+            <StackPanel x:Uid="StackPanel_2" Grid.Row="1"
+                        x:Name="SaveCopyStackPanel"
+                        Margin="10,0,10,10">
+
+                <TextBlock x:Uid="TextBlock_1" Margin="5"
+                               Text="Encrypt with"
+                               Style="{StaticResource TitleTextBlockStyle}" />
+
+                <Grid x:Uid="Grid_2" Margin="5,3,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Uid="RowDefinition_3" Height="Auto" />
+                        <RowDefinition x:Uid="RowDefinition_4" Height="Auto" />
+                        <RowDefinition x:Uid="RowDefinition_5" Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Border x:Uid="Border_2" Grid.Row="0"
+                            Grid.RowSpan="3"
+                            Style="{StaticResource ContentBorderStyle}" />
+
+                    <StackPanel x:Uid="StackPanel_3" Grid.Row="0" Margin="10">
+                        <RadioButton x:Uid="RadioButton_1"
+                                     Margin="1,4,0,0"
+                                     x:Name="SuggestPasswordRadioButton"
+                                     GroupName="PasswordGroup"
+                                     HorizontalAlignment="Left"
+                                     IsChecked="{Binding Path=SuggestedPasswordIsChecked}"
+                                     Style="{StaticResource BlackRadioButtonStyle}">
+                            <TextBlock x:Uid="TextBlock_2" Margin="5,0,0,0"
+                                       Text="Suggested secure password"
+                                       Style="{StaticResource TitleTextBlockStyle}"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center" />
+                        </RadioButton>
+
+                        <TextBox x:Uid="SuggestedPassword" x:Name="SuggestedPassword"
+                                 AutomationProperties.Name="Suggested password"
+                                 Grid.Row="1"
+                                 Height="28"
+                                 Margin="10,10,10,0"
+                                 IsReadOnly="True"
+                                 Text="{Binding Path=SuggestedPassword}"
+                                 IsEnabled="{Binding ElementName=SuggestPasswordRadioButton, Path=IsChecked}"
+                                 Style="{StaticResource FilePathTextBox}">
+                        </TextBox>
+
+                        <Grid x:Uid="Grid_3" Grid.Row="2" Margin="10">
+                            <TextBlock x:Uid="TextBlock_3" VerticalAlignment="Center"
+                                       Width="210"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Left"
+                                       Text="Copied to clipboard"
+                                       Visibility="{Binding Path=CopiedSuggestPwdVisible, Converter={StaticResource bool2Vis}}"
+                                       Style="{StaticResource GrayContentTextBlockStyle}" />
+
+                            <TextBlock  x:Uid="TextBlock_9" Width="210"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Text="{Binding Path=SuggestedPwdErrorMsg}"
+                                       Visibility="{Binding Path=SuggestedPwdErrorMsgVisible, Converter={StaticResource bool2Vis}}"
+                                       Style="{StaticResource RedContentTextBlockStyle}" />
+
+                            <Button x:Uid="CopySuggestedButton" x:Name="CopySuggestedButton"
+                                    Content="Copy"
+                                    Margin="10,5,0,10"
+                                    Width="120"
+                                    Height="36"
+                                    IsEnabled="{Binding ElementName=SuggestPasswordRadioButton, Path=IsChecked}"
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource RoundCornerBlackButtonStyle}"
+                                    Foreground="{DynamicResource Brush.Text.White.Foreground}"
+                                    Click="CopySuggestedButton_Click" />
+                        </Grid>
+                    </StackPanel>
+
+                    <Separator x:Uid="Separator_1" Grid.Row="1" Margin="10,5" BorderBrush="{DynamicResource Brush.Window.Gray.LightBackground}" />
+
+                    <StackPanel x:Uid="StackPanel_4" Grid.Row="2" Margin="10">
+                        <RadioButton x:Uid="RadioButton_2"
+                                     Margin="1,4,0,0"
+                                     x:Name="CustomPasswordRadioButton"
+                                     GroupName="PasswordGroup"
+                                     HorizontalAlignment="Left"
+                                     IsChecked="{Binding Path=CustomPasswordIsChecked}"
+                                     Style="{StaticResource BlackRadioButtonStyle}">
+                            <TextBlock x:Uid="TextBlock_4" Margin="5,0,0,0"
+                                       Text="Custom password"
+                                       Style="{StaticResource TitleTextBlockStyle}"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center" />
+                        </RadioButton>
+
+                        <Grid x:Uid="Grid_4" Margin="10,0,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Uid="RowDefinition_6" Height="Auto" />
+                                <RowDefinition x:Uid="RowDefinition_7" Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Uid="ColumnDefinition_1" Width="Auto" />
+                                <ColumnDefinition x:Uid="ColumnDefinition_2" Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Uid="TextBlock_5" Grid.Row="0" Grid.Column="0"
+                                       Width="100"
+                                       Margin="5,5,0,5"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource NormalBlackContentTextBlockStyle}"
+                                       IsEnabled="{Binding ElementName=CustomPasswordRadioButton, Path=IsChecked}"
+                                       Text="Password" />
+
+                            <TextBox x:Uid="PasswordTextBox" x:Name="PasswordTextBox"
+                                     AutomationProperties.Name="Custom password"
+                                     Grid.Row="0" Grid.Column="1"
+                                     VerticalAlignment="Center"
+                                     Height="28"
+                                     Margin="0,5"
+                                     MaxLength="99"
+                                     Text="{Binding Path=CustomPassword}"
+                                     TextChanged="CustomPassword_TextChanged"
+                                     IsEnabled="{Binding ElementName=CustomPasswordRadioButton, Path=IsChecked}"
+                                     Style="{StaticResource FilePathTextBox}">
+                            </TextBox>
+
+                            <TextBlock x:Uid="TextBlock_6" Grid.Row="1" Grid.Column="0"
+                                       Width="100"
+                                       Margin="5,5,0,5"
+                                       VerticalAlignment="Center"
+                                       Style="{StaticResource NormalBlackContentTextBlockStyle}"
+                                       IsEnabled="{Binding ElementName=CustomPasswordRadioButton, Path=IsChecked}"
+                                       Text="Verification" />
+
+                            <TextBox x:Uid="VerificationTextBox" x:Name="VerificationTextBox"
+                                     AutomationProperties.Name="Custom password verification"
+                                     Grid.Row="1" Grid.Column="1"
+                                     VerticalAlignment="Center"
+                                     Height="28"
+                                     Margin="0,5"
+                                     MaxLength="99"
+                                     Text="{Binding Path=CustomVerifyPassword}"
+                                     TextChanged="CustomPassword_TextChanged"
+                                     IsEnabled="{Binding ElementName=CustomPasswordRadioButton, Path=IsChecked}"
+                                     Style="{StaticResource FilePathTextBox}">
+                            </TextBox>
+                        </Grid>
+
+                        <Grid x:Uid="Grid_5" Margin="10,0,10,0">
+                            <TextBlock x:Uid="TextBlock_7" Margin="0,0,10,0"
+                                       Width="210"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Text="Copied to clipboard"
+                                       Visibility="{Binding Path=CopiedCustomPwdVisible, Converter={StaticResource bool2Vis}}"
+                                       Style="{StaticResource GrayContentTextBlockStyle}" />
+
+                            <TextBlock x:Uid="TextBlock_8"
+                                       Width="210"
+                                       TextWrapping="Wrap"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Text="{Binding Path=CustomPwdErrorMsg}"
+                                       Visibility="{Binding Path=CustomPwdErrorMsgVisible, Converter={StaticResource bool2Vis}}"
+                                       Style="{StaticResource RedContentTextBlockStyle}" />
+
+                            <Button x:Uid="CopyCustomButton" x:Name="CopyCustomButton"
+                                    Grid.Row="2"
+                                    Margin="10,5,0,10"
+                                    Width="120"
+                                    Height="36"
+                                    HorizontalAlignment="Right"
+                                    Content="Copy"
+                                    IsEnabled="{Binding ElementName=CustomPasswordRadioButton, Path=IsChecked}"
+                                    Style="{StaticResource RoundCornerBlackButtonStyle}"
+                                    Foreground="{DynamicResource Brush.Text.White.Foreground}"
+                                    Click="CopyCustomButton_Click" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</ctrl:BasePage>
