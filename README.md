@@ -1,4 +1,4 @@
-# Applets
+# Applets  
 Applets is visual studio solution with projects DupFF, ImgUtil, PdfUtil, StartupPaneLib and Common.
 
 ## NuGet Packages used
