@@ -16,7 +16,7 @@ jobs:
   publish:
     name: dot net build Windows
     runs-on: windows-latest
-    if: github.repository == 'Alludo-WinZip/Applets' && github.event.pull_request.merged == true
+    if: github.repository == 'Alludo-WinZip/TestRepo' && github.event.pull_request.merged == true
 
     steps:
       - uses: actions/checkout@v3

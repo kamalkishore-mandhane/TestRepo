@@ -2,7 +2,7 @@ name: cmake-ci
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
       - 'ProjectVersionDetails.cmake'
 
@@ -14,7 +14,7 @@ jobs:
   build:
     name: dot net build Windows
     runs-on: windows-latest
-    if: github.repository != 'Alludo-WinZip/Applets'
+    if: github.repository != 'Alludo-WinZip/TestRepo'
 
     steps:
       - uses: actions/checkout@v3

@@ -2,7 +2,7 @@ name: pull-request-ci
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     types:
       - opened
       - synchronize
@@ -15,7 +15,7 @@ jobs:
   build:
     name: dot net build Windows
     runs-on: windows-latest
-    if: github.repository == 'Alludo-WinZip/Applets'
+    if: github.repository == 'Alludo-WinZip/TestRepo'
 
     steps:
       - uses: actions/checkout@v3
