@@ -38,6 +38,15 @@ jobs:
         run: |
           choco --version
 
+      - name: Download and install InstallShield Standalone Build
+        run: |
+          curl -L https://www.flexerasoftware.com/content/dam/flexera/fn/downloads/InstallShield/2022/IS2022SAB.zip -o IS2022SAB.zip
+          mkdir IS2022SAB
+          tar -xvf IS2022SAB.zip -C IS2022SAB
+          cd IS2022SAB
+          chmod +x setup.sh
+          ./setup.sh --mode silent --prefix /opt/installshield --install_silent
+
       - name: Install .NET Framework 4.6.1
         shell: powershell
         run: |
@@ -58,10 +67,7 @@ jobs:
           Enter-VsDevShell -VsInstallPath $installPath -SkipAutomaticLocation -Arch amd64 -HostArch amd64
           msbuild Applets.sln /t:restore,build -p:RestorePackagesConfig=true
 
-      - name: Download and install InstallShield SAB        
-        run: |
-          Invoke-WebRequest -Uri "https://download.revenera.com/isus/2021/installshield2021sab.exe" -OutFile "installshield2021sab.exe"
-          .\installshield2021sab.exe /s /v"/qn INSTALLDIR=\"C:\InstallShield\2021 SAB\""
+
 
       - name: Set license server environment variable        
         run: |
