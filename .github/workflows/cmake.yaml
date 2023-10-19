@@ -21,6 +21,7 @@ jobs:
         with:
           submodules: 'recursive'
           token: ${{ secrets.PAT_TOKEN }}
+          lfs: true
 
       - name: Get authenticated user and their permissions
         run: |
