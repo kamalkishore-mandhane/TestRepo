@@ -41,8 +41,9 @@ jobs:
 
       - name: Install InstallShield Standalone Build
         run: |
-          ./ISSAB/InstallShield2016StandaloneBuild.exe /S /v/qn /VSERVERNAME=<IT-Flexnet-P1> /VPORTNUMBER=<27000> /VLICENSETYPE=2 /VADDLOCAL=ALL
-          cd "C:\Program Files"           
+          ./ISSAB/InstallShield2016StandaloneBuild.exe /S /v/qn /VSERVERNAME=IT-Flexnet-P1 /VPORTNUMBER=27000 /VLICENSETYPE=2 /VADDLOCAL=ALL
+          cd "C:\Program Files"         
+          cd..
           dir
 
 
