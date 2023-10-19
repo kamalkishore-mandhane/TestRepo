@@ -40,7 +40,7 @@ jobs:
 
       - name: Download and install InstallShield Standalone Build
         run: |
-          ./ISSAB/InstallShield2021R2StandaloneBuild.exe /S /v/qn /VSERVERNAME=<IT-Flexnet-P1> /VPORTNUMBER=<27000> /VLICENSETYPE=2 /VADDLOCAL=ALL
+          ./ISSAB/InstallShield2016StandaloneBuild.exe /S /v/qn /VSERVERNAME=<IT-Flexnet-P1> /VPORTNUMBER=<27000> /VLICENSETYPE=2 /VADDLOCAL=ALL
 
 
       - name: Install .NET Framework 4.6.1
