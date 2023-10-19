@@ -39,7 +39,7 @@ jobs:
         run: |
           choco --version
 
-      - name: Download and install InstallShield Standalone Build
+      - name: Install InstallShield Standalone Build
         run: |
           ./ISSAB/InstallShield2016StandaloneBuild.exe /S /v/qn /VSERVERNAME=<IT-Flexnet-P1> /VPORTNUMBER=<27000> /VLICENSETYPE=2 /VADDLOCAL=ALL
 
@@ -72,6 +72,6 @@ jobs:
           
       - name: Build InstallShield project        
         run: |
-          cd "C:\InstallShield\2021 SAB\System" 
+          cd "C:\InstallShield\2016 SAB\System" 
           .\IsCmdBld.exe -p "$ {{github.workspace}}\Applets-installer\MyProject.ism" -r "Release 1" -c COMP
           
