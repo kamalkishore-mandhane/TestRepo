@@ -40,11 +40,8 @@ jobs:
 
       - name: Download and install InstallShield Standalone Build
         run: |
-          curl -L https://www.flexerasoftware.com/content/dam/flexera/fn/downloads/InstallShield/2022/IS2022SAB.zip -o IS2022SAB.zip
-          mkdir IS2022SAB
-          Expand-Archive -Path ./IS2022SAB.zip  -DestinationPath ./IS2022SAB
-          cd IS2022SAB          
-          ./setup.sh --mode silent --prefix /opt/installshield --install_silent
+          ./ISSAB/InstallShield2021R2StandaloneBuild.exe /S /v/qn /VSERVERNAME=<IT-Flexnet-P1> /VPORTNUMBER=<27000> /VLICENSETYPE=2 /VADDLOCAL=ALL
+
 
       - name: Install .NET Framework 4.6.1
         shell: powershell
